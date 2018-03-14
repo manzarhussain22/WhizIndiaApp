@@ -83,7 +83,6 @@
              _addControllerView.alpha = 1.;
          }
                          completion:nil];
-        
     }
     else
     {
