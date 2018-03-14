@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		946BA3F202E147A80EF76E68 /* libPods-WhizIndiaApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8287CD883B31E9BAEA9659 /* libPods-WhizIndiaApp.a */; };
+		963C1F9D202AD65000DFD3F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 963C1F9C202AD65000DFD3F2 /* main.m */; };
+		963C1FA0202AD65000DFD3F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 963C1F9F202AD65000DFD3F2 /* AppDelegate.m */; };
+		963C1FA3202AD65000DFD3F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963C1FA2202AD65000DFD3F2 /* ViewController.m */; };
+		963C1FA8202AD65300DFD3F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963C1FA7202AD65300DFD3F2 /* Assets.xcassets */; };
+		963C1FAB202AD65300DFD3F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963C1FA9202AD65300DFD3F2 /* LaunchScreen.storyboard */; };
+		965CD73C202DBAB600B862B8 /* WHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD73B202DBAB600B862B8 /* WHTextField.m */; };
+		965CD747202F276400B862B8 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD746202F276400B862B8 /* DataManager.m */; };
+		965CD74A202F30D700B862B8 /* LoginRequestModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD749202F30D700B862B8 /* LoginRequestModal.m */; };
+		965CD74D202F33C000B862B8 /* SharedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD74C202F33C000B862B8 /* SharedClass.m */; };
+		965CD750202F3A8D00B862B8 /* LoginResponseModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD74F202F3A8D00B862B8 /* LoginResponseModal.m */; };
+		965CD754202F465700B862B8 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD753202F465700B862B8 /* RegisterViewController.m */; };
+		965CD758202F46B500B862B8 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965CD757202F46B500B862B8 /* Register.storyboard */; };
+		965CD75B202F60A100B862B8 /* RegisterRequestModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD75A202F60A100B862B8 /* RegisterRequestModal.m */; };
+		965CD75E202F612200B862B8 /* RegisterResponseModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD75D202F612200B862B8 /* RegisterResponseModal.m */; };
+		965CD764202F7C8500B862B8 /* HomeMaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965CD763202F7C8500B862B8 /* HomeMaster.storyboard */; };
+		965CD767202F7CB100B862B8 /* HomeMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD766202F7CB100B862B8 /* HomeMasterViewController.m */; };
+		9671894F20516A3100B65E3D /* HomeSlaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671894E20516A3100B65E3D /* HomeSlaveViewController.m */; };
+		9671895120516A4F00B65E3D /* HomeSlave.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671895020516A4F00B65E3D /* HomeSlave.storyboard */; };
+		96718954205170BE00B65E3D /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96718953205170BE00B65E3D /* ContentTableViewCell.m */; };
+		967A840A2033101F00D16769 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A84092033101F00D16769 /* MenuViewController.m */; };
+		967A840C2033106400D16769 /* MenuView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967A840B2033106400D16769 /* MenuView.storyboard */; };
+		967A8413203317B800D16769 /* ShowSideMenuAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A8412203317B800D16769 /* ShowSideMenuAnimationView.m */; };
+		967A84172033188600D16769 /* HideSideMenuAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A84162033188600D16769 /* HideSideMenuAnimationView.m */; };
+		967A841A20331B2400D16769 /* SideMenuShowInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A841920331B2400D16769 /* SideMenuShowInteraction.m */; };
+		967A841D20331B8000D16769 /* SideMenuInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A841C20331B8000D16769 /* SideMenuInteraction.m */; };
+		96A282AD202AE6E70045B487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A282AB202AE6E70045B487 /* Main.storyboard */; };
+		96AB02D4205847C1004FC518 /* EditControllerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AB02D3205847C1004FC518 /* EditControllerTableViewCell.m */; };
+		96DF0EF22031B6BD00292573 /* MenuViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DF0EF12031B6BD00292573 /* MenuViewTableViewCell.m */; };
+		96F3EBA42055ADBB008613E6 /* AddEditCOntrollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3EBA32055ADBB008613E6 /* AddEditCOntrollerViewController.m */; };
+		96F3EBA62055ADDB008613E6 /* AddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhizIndiaApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp.debug.xcconfig"; sourceTree = "<group>"; };
+		963C1F98202AD64F00DFD3F2 /* WhizIndiaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhizIndiaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		963C1F9C202AD65000DFD3F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		963C1F9E202AD65000DFD3F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WhizIndiaApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		963C1F9F202AD65000DFD3F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WhizIndiaApp/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		963C1FA1202AD65000DFD3F2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = WhizIndiaApp/ViewController.h; sourceTree = SOURCE_ROOT; };
+		963C1FA2202AD65000DFD3F2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = WhizIndiaApp/ViewController.m; sourceTree = SOURCE_ROOT; };
+		963C1FA7202AD65300DFD3F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		963C1FAA202AD65300DFD3F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		963C1FAC202AD65300DFD3F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		965CD73A202DBAB600B862B8 /* WHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHTextField.h; path = WhizIndiaApp/WHTextField.h; sourceTree = SOURCE_ROOT; };
+		965CD73B202DBAB600B862B8 /* WHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHTextField.m; path = WhizIndiaApp/WHTextField.m; sourceTree = SOURCE_ROOT; };
+		965CD73D202DCB6600B862B8 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = WhizIndiaApp/Constants.h; sourceTree = SOURCE_ROOT; };
+		965CD73E202DCC5100B862B8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = WhizIndiaApp/PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
+		965CD745202F276400B862B8 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = WhizIndiaApp/DataManager.h; sourceTree = SOURCE_ROOT; };
+		965CD746202F276400B862B8 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = WhizIndiaApp/DataManager.m; sourceTree = SOURCE_ROOT; };
+		965CD748202F30D700B862B8 /* LoginRequestModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginRequestModal.h; path = WhizIndiaApp/LoginRequestModal.h; sourceTree = SOURCE_ROOT; };
+		965CD749202F30D700B862B8 /* LoginRequestModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginRequestModal.m; path = WhizIndiaApp/LoginRequestModal.m; sourceTree = SOURCE_ROOT; };
+		965CD74B202F33C000B862B8 /* SharedClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedClass.h; path = WhizIndiaApp/SharedClass.h; sourceTree = SOURCE_ROOT; };
+		965CD74C202F33C000B862B8 /* SharedClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedClass.m; path = WhizIndiaApp/SharedClass.m; sourceTree = SOURCE_ROOT; };
+		965CD74E202F3A8D00B862B8 /* LoginResponseModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginResponseModal.h; path = WhizIndiaApp/LoginResponseModal.h; sourceTree = SOURCE_ROOT; };
+		965CD74F202F3A8D00B862B8 /* LoginResponseModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginResponseModal.m; path = WhizIndiaApp/LoginResponseModal.m; sourceTree = SOURCE_ROOT; };
+		965CD752202F465700B862B8 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = WhizIndiaApp/RegisterViewController.h; sourceTree = SOURCE_ROOT; };
+		965CD753202F465700B862B8 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = WhizIndiaApp/RegisterViewController.m; sourceTree = SOURCE_ROOT; };
+		965CD757202F46B500B862B8 /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		965CD759202F60A100B862B8 /* RegisterRequestModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRequestModal.h; sourceTree = "<group>"; };
+		965CD75A202F60A100B862B8 /* RegisterRequestModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRequestModal.m; sourceTree = "<group>"; };
+		965CD75C202F612200B862B8 /* RegisterResponseModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterResponseModal.h; sourceTree = "<group>"; };
+		965CD75D202F612200B862B8 /* RegisterResponseModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterResponseModal.m; sourceTree = "<group>"; };
+		965CD763202F7C8500B862B8 /* HomeMaster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeMaster.storyboard; sourceTree = "<group>"; };
+		965CD765202F7CB100B862B8 /* HomeMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeMasterViewController.h; path = WhizIndiaApp/HomeMasterViewController.h; sourceTree = SOURCE_ROOT; };
+		965CD766202F7CB100B862B8 /* HomeMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeMasterViewController.m; path = WhizIndiaApp/HomeMasterViewController.m; sourceTree = SOURCE_ROOT; };
+		9671894D20516A3100B65E3D /* HomeSlaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeSlaveViewController.h; path = WhizIndiaApp/HomeSlaveViewController.h; sourceTree = SOURCE_ROOT; };
+		9671894E20516A3100B65E3D /* HomeSlaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeSlaveViewController.m; path = WhizIndiaApp/HomeSlaveViewController.m; sourceTree = SOURCE_ROOT; };
+		9671895020516A4F00B65E3D /* HomeSlave.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeSlave.storyboard; sourceTree = "<group>"; };
+		96718952205170BE00B65E3D /* ContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentTableViewCell.h; path = WhizIndiaApp/ContentTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		96718953205170BE00B65E3D /* ContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentTableViewCell.m; path = WhizIndiaApp/ContentTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		967A84082033101F00D16769 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = WhizIndiaApp/MenuViewController.h; sourceTree = SOURCE_ROOT; };
+		967A84092033101F00D16769 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = WhizIndiaApp/MenuViewController.m; sourceTree = SOURCE_ROOT; };
+		967A840B2033106400D16769 /* MenuView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MenuView.storyboard; sourceTree = "<group>"; };
+		967A8411203317B800D16769 /* ShowSideMenuAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowSideMenuAnimationView.h; sourceTree = "<group>"; };
+		967A8412203317B800D16769 /* ShowSideMenuAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowSideMenuAnimationView.m; sourceTree = "<group>"; };
+		967A84152033188600D16769 /* HideSideMenuAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HideSideMenuAnimationView.h; sourceTree = "<group>"; };
+		967A84162033188600D16769 /* HideSideMenuAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HideSideMenuAnimationView.m; sourceTree = "<group>"; };
+		967A841820331B2400D16769 /* SideMenuShowInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuShowInteraction.h; sourceTree = "<group>"; };
+		967A841920331B2400D16769 /* SideMenuShowInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuShowInteraction.m; sourceTree = "<group>"; };
+		967A841B20331B8000D16769 /* SideMenuInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuInteraction.h; sourceTree = "<group>"; };
+		967A841C20331B8000D16769 /* SideMenuInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuInteraction.m; sourceTree = "<group>"; };
+		96A282AC202AE6E70045B487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		96AB02D2205847C1004FC518 /* EditControllerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditControllerTableViewCell.h; sourceTree = "<group>"; };
+		96AB02D3205847C1004FC518 /* EditControllerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditControllerTableViewCell.m; sourceTree = "<group>"; };
+		96DF0EF02031B6BD00292573 /* MenuViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewTableViewCell.h; path = WhizIndiaApp/MenuViewTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		96DF0EF12031B6BD00292573 /* MenuViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewTableViewCell.m; path = WhizIndiaApp/MenuViewTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		96F3EBA22055ADBB008613E6 /* AddEditCOntrollerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEditCOntrollerViewController.h; sourceTree = "<group>"; };
+		96F3EBA32055ADBB008613E6 /* AddEditCOntrollerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEditCOntrollerViewController.m; sourceTree = "<group>"; };
+		96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddEditView.storyboard; sourceTree = "<group>"; };
+		C58089421DF1BC31755D39F0 /* Pods-WhizIndiaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhizIndiaApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp.release.xcconfig"; sourceTree = "<group>"; };
+		FF8287CD883B31E9BAEA9659 /* libPods-WhizIndiaApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WhizIndiaApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		963C1F95202AD64F00DFD3F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946BA3F202E147A80EF76E68 /* libPods-WhizIndiaApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3ED979ACC08BE95AD3191CB2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */,
+				C58089421DF1BC31755D39F0 /* Pods-WhizIndiaApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7BD0AAEBA34FCF6CC8DE83C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF8287CD883B31E9BAEA9659 /* libPods-WhizIndiaApp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		963C1F8F202AD64B00DFD3F2 = {
+			isa = PBXGroup;
+			children = (
+				963C1F9A202AD64F00DFD3F2 /* WhizIndiaApp */,
+				963C1F99202AD64F00DFD3F2 /* Products */,
+				3ED979ACC08BE95AD3191CB2 /* Pods */,
+				7BD0AAEBA34FCF6CC8DE83C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		963C1F99202AD64F00DFD3F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				963C1F98202AD64F00DFD3F2 /* WhizIndiaApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		963C1F9A202AD64F00DFD3F2 /* WhizIndiaApp */ = {
+			isa = PBXGroup;
+			children = (
+				965CD744202F226600B862B8 /* ResponseModal */,
+				965CD743202F223D00B862B8 /* RequestModal */,
+				965CD742202F223300B862B8 /* Helper */,
+				965CD741202EFF9000B862B8 /* Config */,
+				965CD740202EFF7800B862B8 /* CustomTextField */,
+				965CD73F202EFDAF00B862B8 /* Controllers */,
+				965CD751202F460F00B862B8 /* Interface */,
+				963C1FA7202AD65300DFD3F2 /* Assets.xcassets */,
+				963C1FA9202AD65300DFD3F2 /* LaunchScreen.storyboard */,
+				963C1FAC202AD65300DFD3F2 /* Info.plist */,
+				965CD73E202DCC5100B862B8 /* PrefixHeader.pch */,
+				963C1F9B202AD65000DFD3F2 /* Supporting Files */,
+			);
+			path = WhizIndiaApp;
+			sourceTree = "<group>";
+		};
+		963C1F9B202AD65000DFD3F2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				963C1F9C202AD65000DFD3F2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		965CD73F202EFDAF00B862B8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9671894C205169FF00B65E3D /* HomeSlave */,
+				967A840D2033175000D16769 /* Login */,
+				967A840E2033175800D16769 /* Register */,
+				967A840F2033176100D16769 /* HomeMaster */,
+				967A84102033176D00D16769 /* NavigationMenu */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		965CD740202EFF7800B862B8 /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				965CD73A202DBAB600B862B8 /* WHTextField.h */,
+				965CD73B202DBAB600B862B8 /* WHTextField.m */,
+			);
+			name = CustomTextField;
+			sourceTree = "<group>";
+		};
+		965CD741202EFF9000B862B8 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				965CD73D202DCB6600B862B8 /* Constants.h */,
+				963C1F9E202AD65000DFD3F2 /* AppDelegate.h */,
+				963C1F9F202AD65000DFD3F2 /* AppDelegate.m */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		965CD742202F223300B862B8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				965CD745202F276400B862B8 /* DataManager.h */,
+				965CD746202F276400B862B8 /* DataManager.m */,
+				965CD74B202F33C000B862B8 /* SharedClass.h */,
+				965CD74C202F33C000B862B8 /* SharedClass.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		965CD743202F223D00B862B8 /* RequestModal */ = {
+			isa = PBXGroup;
+			children = (
+				965CD748202F30D700B862B8 /* LoginRequestModal.h */,
+				965CD749202F30D700B862B8 /* LoginRequestModal.m */,
+				965CD759202F60A100B862B8 /* RegisterRequestModal.h */,
+				965CD75A202F60A100B862B8 /* RegisterRequestModal.m */,
+			);
+			name = RequestModal;
+			sourceTree = "<group>";
+		};
+		965CD744202F226600B862B8 /* ResponseModal */ = {
+			isa = PBXGroup;
+			children = (
+				965CD74E202F3A8D00B862B8 /* LoginResponseModal.h */,
+				965CD74F202F3A8D00B862B8 /* LoginResponseModal.m */,
+				965CD75C202F612200B862B8 /* RegisterResponseModal.h */,
+				965CD75D202F612200B862B8 /* RegisterResponseModal.m */,
+			);
+			name = ResponseModal;
+			sourceTree = "<group>";
+		};
+		965CD751202F460F00B862B8 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				96A282AB202AE6E70045B487 /* Main.storyboard */,
+				965CD757202F46B500B862B8 /* Register.storyboard */,
+				965CD763202F7C8500B862B8 /* HomeMaster.storyboard */,
+				967A840B2033106400D16769 /* MenuView.storyboard */,
+				9671895020516A4F00B65E3D /* HomeSlave.storyboard */,
+				96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		9671894C205169FF00B65E3D /* HomeSlave */ = {
+			isa = PBXGroup;
+			children = (
+				9671894D20516A3100B65E3D /* HomeSlaveViewController.h */,
+				9671894E20516A3100B65E3D /* HomeSlaveViewController.m */,
+				96718952205170BE00B65E3D /* ContentTableViewCell.h */,
+				96718953205170BE00B65E3D /* ContentTableViewCell.m */,
+				96F3EBA22055ADBB008613E6 /* AddEditCOntrollerViewController.h */,
+				96F3EBA32055ADBB008613E6 /* AddEditCOntrollerViewController.m */,
+				96AB02D2205847C1004FC518 /* EditControllerTableViewCell.h */,
+				96AB02D3205847C1004FC518 /* EditControllerTableViewCell.m */,
+			);
+			name = HomeSlave;
+			sourceTree = "<group>";
+		};
+		967A840D2033175000D16769 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				963C1FA1202AD65000DFD3F2 /* ViewController.h */,
+				963C1FA2202AD65000DFD3F2 /* ViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		967A840E2033175800D16769 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				965CD752202F465700B862B8 /* RegisterViewController.h */,
+				965CD753202F465700B862B8 /* RegisterViewController.m */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		967A840F2033176100D16769 /* HomeMaster */ = {
+			isa = PBXGroup;
+			children = (
+				965CD765202F7CB100B862B8 /* HomeMasterViewController.h */,
+				965CD766202F7CB100B862B8 /* HomeMasterViewController.m */,
+			);
+			name = HomeMaster;
+			sourceTree = "<group>";
+		};
+		967A84102033176D00D16769 /* NavigationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				96DF0EF02031B6BD00292573 /* MenuViewTableViewCell.h */,
+				96DF0EF12031B6BD00292573 /* MenuViewTableViewCell.m */,
+				967A84082033101F00D16769 /* MenuViewController.h */,
+				967A84092033101F00D16769 /* MenuViewController.m */,
+				967A8411203317B800D16769 /* ShowSideMenuAnimationView.h */,
+				967A8412203317B800D16769 /* ShowSideMenuAnimationView.m */,
+				967A84152033188600D16769 /* HideSideMenuAnimationView.h */,
+				967A84162033188600D16769 /* HideSideMenuAnimationView.m */,
+				967A841820331B2400D16769 /* SideMenuShowInteraction.h */,
+				967A841920331B2400D16769 /* SideMenuShowInteraction.m */,
+				967A841B20331B8000D16769 /* SideMenuInteraction.h */,
+				967A841C20331B8000D16769 /* SideMenuInteraction.m */,
+			);
+			name = NavigationMenu;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		963C1F97202AD64F00DFD3F2 /* WhizIndiaApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 963C1FAF202AD65300DFD3F2 /* Build configuration list for PBXNativeTarget "WhizIndiaApp" */;
+			buildPhases = (
+				0F35A29F5D42E82DC021DB2A /* [CP] Check Pods Manifest.lock */,
+				963C1F94202AD64F00DFD3F2 /* Sources */,
+				963C1F95202AD64F00DFD3F2 /* Frameworks */,
+				963C1F96202AD64F00DFD3F2 /* Resources */,
+				C9B1323F1C6E47DB537D4F60 /* [CP] Embed Pods Frameworks */,
+				3DD6691F63DD9F6E4E5898C0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhizIndiaApp;
+			productName = WhizIndiaApp;
+			productReference = 963C1F98202AD64F00DFD3F2 /* WhizIndiaApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		963C1F90202AD64B00DFD3F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = WhizIndia;
+				TargetAttributes = {
+					963C1F97202AD64F00DFD3F2 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = HF8YC3E6DM;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 963C1F93202AD64D00DFD3F2 /* Build configuration list for PBXProject "WhizIndiaApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 963C1F8F202AD64B00DFD3F2;
+			productRefGroup = 963C1F99202AD64F00DFD3F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				963C1F97202AD64F00DFD3F2 /* WhizIndiaApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		963C1F96202AD64F00DFD3F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96A282AD202AE6E70045B487 /* Main.storyboard in Resources */,
+				963C1FAB202AD65300DFD3F2 /* LaunchScreen.storyboard in Resources */,
+				967A840C2033106400D16769 /* MenuView.storyboard in Resources */,
+				965CD764202F7C8500B862B8 /* HomeMaster.storyboard in Resources */,
+				9671895120516A4F00B65E3D /* HomeSlave.storyboard in Resources */,
+				963C1FA8202AD65300DFD3F2 /* Assets.xcassets in Resources */,
+				965CD758202F46B500B862B8 /* Register.storyboard in Resources */,
+				96F3EBA62055ADDB008613E6 /* AddEditView.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F35A29F5D42E82DC021DB2A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3DD6691F63DD9F6E4E5898C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9B1323F1C6E47DB537D4F60 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		963C1F94202AD64F00DFD3F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				965CD73C202DBAB600B862B8 /* WHTextField.m in Sources */,
+				965CD767202F7CB100B862B8 /* HomeMasterViewController.m in Sources */,
+				967A841A20331B2400D16769 /* SideMenuShowInteraction.m in Sources */,
+				96AB02D4205847C1004FC518 /* EditControllerTableViewCell.m in Sources */,
+				965CD747202F276400B862B8 /* DataManager.m in Sources */,
+				963C1FA3202AD65000DFD3F2 /* ViewController.m in Sources */,
+				963C1FA0202AD65000DFD3F2 /* AppDelegate.m in Sources */,
+				967A84172033188600D16769 /* HideSideMenuAnimationView.m in Sources */,
+				9671894F20516A3100B65E3D /* HomeSlaveViewController.m in Sources */,
+				965CD75E202F612200B862B8 /* RegisterResponseModal.m in Sources */,
+				965CD75B202F60A100B862B8 /* RegisterRequestModal.m in Sources */,
+				965CD754202F465700B862B8 /* RegisterViewController.m in Sources */,
+				967A841D20331B8000D16769 /* SideMenuInteraction.m in Sources */,
+				967A8413203317B800D16769 /* ShowSideMenuAnimationView.m in Sources */,
+				965CD750202F3A8D00B862B8 /* LoginResponseModal.m in Sources */,
+				963C1F9D202AD65000DFD3F2 /* main.m in Sources */,
+				965CD74A202F30D700B862B8 /* LoginRequestModal.m in Sources */,
+				96F3EBA42055ADBB008613E6 /* AddEditCOntrollerViewController.m in Sources */,
+				967A840A2033101F00D16769 /* MenuViewController.m in Sources */,
+				965CD74D202F33C000B862B8 /* SharedClass.m in Sources */,
+				96DF0EF22031B6BD00292573 /* MenuViewTableViewCell.m in Sources */,
+				96718954205170BE00B65E3D /* ContentTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		963C1FA9202AD65300DFD3F2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				963C1FAA202AD65300DFD3F2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		96A282AB202AE6E70045B487 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96A282AC202AE6E70045B487 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		963C1FAD202AD65300DFD3F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		963C1FAE202AD65300DFD3F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		963C1FB0202AD65300DFD3F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HF8YC3E6DM;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = WhizIndiaApp/PrefixHeader.pch;
+				INFOPLIST_FILE = WhizIndiaApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WhizIndia.WhizIndiaApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		963C1FB1202AD65300DFD3F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C58089421DF1BC31755D39F0 /* Pods-WhizIndiaApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HF8YC3E6DM;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = WhizIndiaApp/PrefixHeader.pch;
+				INFOPLIST_FILE = WhizIndiaApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WhizIndia.WhizIndiaApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		963C1F93202AD64D00DFD3F2 /* Build configuration list for PBXProject "WhizIndiaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				963C1FAD202AD65300DFD3F2 /* Debug */,
+				963C1FAE202AD65300DFD3F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		963C1FAF202AD65300DFD3F2 /* Build configuration list for PBXNativeTarget "WhizIndiaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				963C1FB0202AD65300DFD3F2 /* Debug */,
+				963C1FB1202AD65300DFD3F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 963C1F90202AD64B00DFD3F2 /* Project object */;
+}

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add EditC Ontroller View Controller-->
+        <scene sceneID="PwB-6O-8z6">
+            <objects>
+                <viewController storyboardIdentifier="addEditView" id="9nn-El-NXh" customClass="AddEditCOntrollerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d3n-SW-vml">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJ2-7N-c3U">
+                                <rect key="frame" x="20" y="136" width="280" height="296"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="DnL-7j-oya">
+                                        <rect key="frame" x="20" y="30" width="240" height="120"/>
+                                        <subviews>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Controller Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwZ-rI-xaz" customClass="WHTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Controller Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q1U-4H-It4" customClass="WHTextField">
+                                                <rect key="frame" x="0.0" y="50" width="240" height="20"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Pass Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2I-Cl-gYf" customClass="WHTextField">
+                                                <rect key="frame" x="0.0" y="100" width="240" height="20"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-8Z-5fG">
+                                        <rect key="frame" x="40" y="207" width="200" height="30"/>
+                                        <color key="backgroundColor" red="0.94480043650000001" green="0.24937026109999999" blue="0.13650218119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="ADD CONTROLLER">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addControllerButtonTapped:" destination="9nn-El-NXh" eventType="touchUpInside" id="l7l-kT-RDc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHe-kW-Ome">
+                                        <rect key="frame" x="90" y="243" width="100" height="33"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Cancel">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="0.083451934611972423" blue="0.10594528603207576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="18" name=".SFNSText-Bold"/>
+                                                        <font key="NSOriginalFont" size="18" name=".SFNSText-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="FHe-kW-Ome" firstAttribute="top" secondItem="dVZ-8Z-5fG" secondAttribute="bottom" constant="6" id="T8m-cm-3aU"/>
+                                    <constraint firstItem="DnL-7j-oya" firstAttribute="top" secondItem="PJ2-7N-c3U" secondAttribute="top" constant="30" id="lLI-Is-A7v"/>
+                                    <constraint firstItem="dVZ-8Z-5fG" firstAttribute="top" secondItem="DnL-7j-oya" secondAttribute="bottom" constant="57" id="ljm-SB-4cg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9a5-B5-CbZ">
+                                <rect key="frame" x="20" y="80" width="280" height="408"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DKT-LZ-dn8">
+                                        <rect key="frame" x="5" y="10" width="270" height="313"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="editControllerCell" id="TBj-Ef-Pfc" customClass="EditControllerTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="270" height="30"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBj-Ef-Pfc" id="9FX-eh-vU9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXe-et-WxA" customClass="WHTextField">
+                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="30"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="UXe-et-WxA" secondAttribute="bottom" id="BCv-sW-gIa"/>
+                                                        <constraint firstItem="UXe-et-WxA" firstAttribute="top" secondItem="9FX-eh-vU9" secondAttribute="top" id="JKT-7a-cZg"/>
+                                                        <constraint firstItem="UXe-et-WxA" firstAttribute="leading" secondItem="9FX-eh-vU9" secondAttribute="leading" id="Xwx-SI-O3P"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UXe-et-WxA" secondAttribute="trailing" id="iad-aX-GgH"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="editControllerTextField" destination="UXe-et-WxA" id="h4f-SW-lzN"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="9nn-El-NXh" id="0jZ-Hn-r7u"/>
+                                            <outlet property="delegate" destination="9nn-El-NXh" id="m2t-St-Z7A"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNR-HP-Q1a">
+                                        <rect key="frame" x="40" y="333" width="200" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.08345193461" blue="0.105945286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="UPDATE CONTROLLER">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateControllerButtonTapped:" destination="9nn-El-NXh" eventType="touchUpInside" id="tMm-6j-1Bl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMr-xf-fT4">
+                                        <rect key="frame" x="90" y="373" width="100" height="25"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Cancel">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.94480043650000001" green="0.24937026109999999" blue="0.13650218119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="16" name=".SFNSText-Bold"/>
+                                                        <font key="NSOriginalFont" size="16" name=".SFNSText-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="IMr-xf-fT4" firstAttribute="top" secondItem="oNR-HP-Q1a" secondAttribute="bottom" constant="10" id="2QT-IT-l6D"/>
+                                    <constraint firstItem="DKT-LZ-dn8" firstAttribute="centerX" secondItem="9a5-B5-CbZ" secondAttribute="centerX" id="AY6-KD-3Sh"/>
+                                    <constraint firstItem="oNR-HP-Q1a" firstAttribute="centerX" secondItem="9a5-B5-CbZ" secondAttribute="centerX" id="Nuh-Ab-hPa"/>
+                                    <constraint firstItem="DKT-LZ-dn8" firstAttribute="top" secondItem="9a5-B5-CbZ" secondAttribute="top" constant="10" id="Qvp-da-4ie"/>
+                                    <constraint firstAttribute="bottom" secondItem="IMr-xf-fT4" secondAttribute="bottom" constant="10" id="S5p-eW-XAw"/>
+                                    <constraint firstItem="IMr-xf-fT4" firstAttribute="centerX" secondItem="oNR-HP-Q1a" secondAttribute="centerX" id="Udu-VC-pob"/>
+                                    <constraint firstAttribute="height" constant="408" id="qWp-NC-q9z"/>
+                                    <constraint firstItem="oNR-HP-Q1a" firstAttribute="top" secondItem="DKT-LZ-dn8" secondAttribute="bottom" constant="10" id="s7f-KE-MCK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PJ2-7N-c3U" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="1hl-eQ-zR2"/>
+                            <constraint firstItem="9a5-B5-CbZ" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="280/320" id="2dq-iM-jxX"/>
+                            <constraint firstItem="FHe-kW-Ome" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="33/568" id="3jr-I4-kzp"/>
+                            <constraint firstItem="FHe-kW-Ome" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="100/320" id="5XL-ka-ydP"/>
+                            <constraint firstItem="PJ2-7N-c3U" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="280/320" id="6mp-iv-Hzg"/>
+                            <constraint firstItem="dVZ-8Z-5fG" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="200/320" id="80C-oI-UFr"/>
+                            <constraint firstItem="DnL-7j-oya" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="8qa-BO-znf"/>
+                            <constraint firstItem="IMr-xf-fT4" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="100/320" id="8yQ-W4-9cJ"/>
+                            <constraint firstItem="9a5-B5-CbZ" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="KsP-GZ-Xhd"/>
+                            <constraint firstItem="dVZ-8Z-5fG" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="M34-wa-Bge"/>
+                            <constraint firstItem="DKT-LZ-dn8" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="270/320" id="Rt4-zM-qmc"/>
+                            <constraint firstItem="oNR-HP-Q1a" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="30/568" id="VYM-ZH-6lo"/>
+                            <constraint firstItem="oNR-HP-Q1a" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="200/320" id="ZhV-jT-bbi"/>
+                            <constraint firstItem="PJ2-7N-c3U" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="296/568" id="ZpN-jm-gB1"/>
+                            <constraint firstItem="FHe-kW-Ome" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="dLR-SG-ZVb"/>
+                            <constraint firstItem="IMr-xf-fT4" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="25/568" id="dw0-Z7-qDx"/>
+                            <constraint firstItem="9a5-B5-CbZ" firstAttribute="centerY" secondItem="d3n-SW-vml" secondAttribute="centerY" id="g9u-rV-H5R"/>
+                            <constraint firstItem="DnL-7j-oya" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="240/320" id="t3t-Am-YIO"/>
+                            <constraint firstItem="dVZ-8Z-5fG" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="30/568" id="tOY-u7-zkj"/>
+                            <constraint firstItem="PJ2-7N-c3U" firstAttribute="centerY" secondItem="d3n-SW-vml" secondAttribute="centerY" id="uEi-HC-kkP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pcT-wi-zum"/>
+                    </view>
+                    <connections>
+                        <outlet property="addControllerButton" destination="dVZ-8Z-5fG" id="6TS-lR-jCp"/>
+                        <outlet property="addControllerButtonTopConstraint" destination="ljm-SB-4cg" id="MVf-Xt-NGc"/>
+                        <outlet property="addControllerView" destination="PJ2-7N-c3U" id="H6D-nL-5SU"/>
+                        <outlet property="cancelButton" destination="FHe-kW-Ome" id="1Fk-nw-ybP"/>
+                        <outlet property="cancelButtonBottomConstraint" destination="S5p-eW-XAw" id="ntX-gy-wXt"/>
+                        <outlet property="cancelButtonTopConstraint" destination="T8m-cm-3aU" id="O4P-gC-mEP"/>
+                        <outlet property="controllerNameTxtField" destination="Q1U-4H-It4" id="ZJH-Fa-Gak"/>
+                        <outlet property="controllerNumberTxtField" destination="lwZ-rI-xaz" id="osn-ev-I09"/>
+                        <outlet property="controllerNumberTxtFieldTopConstraint" destination="lLI-Is-A7v" id="i6L-Sz-dmQ"/>
+                        <outlet property="controllerPasskeyTxtField" destination="e2I-Cl-gYf" id="pBZ-yp-GS7"/>
+                        <outlet property="editCancelButton" destination="IMr-xf-fT4" id="EiF-0L-nXk"/>
+                        <outlet property="editCancelButtonTopConstraint" destination="2QT-IT-l6D" id="MM6-5x-uxh"/>
+                        <outlet property="editControllerTableView" destination="DKT-LZ-dn8" id="r3W-OB-6DZ"/>
+                        <outlet property="editControllerTableViewTopConstraint" destination="Qvp-da-4ie" id="2l9-SI-F76"/>
+                        <outlet property="editControllerView" destination="9a5-B5-CbZ" id="NHD-EZ-Cbx"/>
+                        <outlet property="editViewHeightConstraint" destination="qWp-NC-q9z" id="lt8-l3-qa8"/>
+                        <outlet property="updateButtonTopConstraint" destination="s7f-KE-MCK" id="mLN-bf-7RZ"/>
+                        <outlet property="updateControllerButton" destination="oNR-HP-Q1a" id="ryi-jY-IGB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sab-6P-EZO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86.25" y="152.11267605633802"/>
+        </scene>
+    </scenes>
+</document>

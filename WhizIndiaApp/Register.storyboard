@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Register View Controller-->
+        <scene sceneID="bFE-Pc-8pQ">
+            <objects>
+                <viewController storyboardIdentifier="registerViewController" id="TbU-kH-l19" customClass="RegisterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fgw-t5-Bpx"/>
+                        <viewControllerLayoutGuide type="bottom" id="4kc-fT-Xze"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mi1-iZ-Cbc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yXK-2o-l04">
+                                <rect key="frame" x="83" y="40" width="154" height="29"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHIZ HOMES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-Lb-bsE">
+                                        <rect key="frame" x="0.0" y="0.0" width="154" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lWR-Ls-3pV">
+                                <rect key="frame" x="16" y="149" width="288" height="210"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fM-xw-RsX" customClass="WHTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RsB-31-9bM" customClass="WHTextField">
+                                        <rect key="frame" x="0.0" y="45" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YW5-QZ-gCg" customClass="WHTextField">
+                                        <rect key="frame" x="0.0" y="90" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8d-yR-OnP" customClass="WHTextField">
+                                        <rect key="frame" x="0.0" y="135" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date Of Birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UQu-CW-iFp" customClass="WHTextField">
+                                        <rect key="frame" x="0.0" y="180" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="iZc-wY-7D2">
+                                <rect key="frame" x="16" y="439" width="288" height="83"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drW-wW-ar6">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="34"/>
+                                        <color key="backgroundColor" red="0.94480043650000001" green="0.24937026109999999" blue="0.13650218119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="REGISTER">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerButtonTapped:" destination="TbU-kH-l19" eventType="touchUpInside" id="PAx-m5-Ni7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UY-PU-vSz">
+                                        <rect key="frame" x="0.0" y="49" width="288" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Already have an account? Click Here">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInButtonTapped:" destination="TbU-kH-l19" eventType="touchUpInside" id="Fc4-rK-l5L"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lWR-Ls-3pV" firstAttribute="centerX" secondItem="yXK-2o-l04" secondAttribute="centerX" id="6WU-po-LLG"/>
+                            <constraint firstItem="yXK-2o-l04" firstAttribute="top" secondItem="fgw-t5-Bpx" secondAttribute="bottom" constant="20" id="7sy-B5-1IY"/>
+                            <constraint firstItem="iZc-wY-7D2" firstAttribute="top" secondItem="lWR-Ls-3pV" secondAttribute="bottom" constant="80" id="FQE-2p-IqP"/>
+                            <constraint firstItem="lWR-Ls-3pV" firstAttribute="width" secondItem="mi1-iZ-Cbc" secondAttribute="width" multiplier="288/320" id="hEs-YE-Dki"/>
+                            <constraint firstItem="iZc-wY-7D2" firstAttribute="width" secondItem="lWR-Ls-3pV" secondAttribute="width" id="iVX-ax-pNN"/>
+                            <constraint firstItem="yXK-2o-l04" firstAttribute="centerX" secondItem="mi1-iZ-Cbc" secondAttribute="centerX" id="itN-Dn-wlo"/>
+                            <constraint firstItem="lWR-Ls-3pV" firstAttribute="top" secondItem="yXK-2o-l04" secondAttribute="bottom" constant="80" id="nr0-kw-vqc"/>
+                            <constraint firstItem="iZc-wY-7D2" firstAttribute="centerX" secondItem="lWR-Ls-3pV" secondAttribute="centerX" id="z2A-jZ-jF5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DOBField" destination="UQu-CW-iFp" id="F0v-q6-lD2"/>
+                        <outlet property="emailField" destination="YW5-QZ-gCg" id="XWF-Ug-Vp5"/>
+                        <outlet property="passwordField" destination="RsB-31-9bM" id="MUe-08-MJW"/>
+                        <outlet property="phoneNumberField" destination="N8d-yR-OnP" id="5db-ir-j0J"/>
+                        <outlet property="usernameField" destination="5fM-xw-RsX" id="pZx-8z-WKZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LRS-d1-yKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="79" y="203"/>
+        </scene>
+    </scenes>
+</document>
