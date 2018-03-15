@@ -24,6 +24,10 @@
 		965CD75E202F612200B862B8 /* RegisterResponseModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD75D202F612200B862B8 /* RegisterResponseModal.m */; };
 		965CD764202F7C8500B862B8 /* HomeMaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965CD763202F7C8500B862B8 /* HomeMaster.storyboard */; };
 		965CD767202F7CB100B862B8 /* HomeMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD766202F7CB100B862B8 /* HomeMasterViewController.m */; };
+		9660AF94205AEA61001B393C /* EditControllerResponseModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF93205AEA61001B393C /* EditControllerResponseModal.m */; };
+		9660AF97205AF3F9001B393C /* EditControllerRequestModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF96205AF3F9001B393C /* EditControllerRequestModal.m */; };
+		966D523520595F2B0044390B /* AddControllerRequestModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 966D523420595F2B0044390B /* AddControllerRequestModal.m */; };
+		966D5238205961610044390B /* AddControllerResponseModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 966D5237205961610044390B /* AddControllerResponseModal.m */; };
 		9671894F20516A3100B65E3D /* HomeSlaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671894E20516A3100B65E3D /* HomeSlaveViewController.m */; };
 		9671895120516A4F00B65E3D /* HomeSlave.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671895020516A4F00B65E3D /* HomeSlave.storyboard */; };
 		96718954205170BE00B65E3D /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96718953205170BE00B65E3D /* ContentTableViewCell.m */; };
@@ -73,6 +77,14 @@
 		965CD763202F7C8500B862B8 /* HomeMaster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeMaster.storyboard; sourceTree = "<group>"; };
 		965CD765202F7CB100B862B8 /* HomeMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeMasterViewController.h; path = WhizIndiaApp/HomeMasterViewController.h; sourceTree = SOURCE_ROOT; };
 		965CD766202F7CB100B862B8 /* HomeMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeMasterViewController.m; path = WhizIndiaApp/HomeMasterViewController.m; sourceTree = SOURCE_ROOT; };
+		9660AF92205AEA61001B393C /* EditControllerResponseModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditControllerResponseModal.h; sourceTree = "<group>"; };
+		9660AF93205AEA61001B393C /* EditControllerResponseModal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditControllerResponseModal.m; sourceTree = "<group>"; };
+		9660AF95205AF3F9001B393C /* EditControllerRequestModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditControllerRequestModal.h; sourceTree = "<group>"; };
+		9660AF96205AF3F9001B393C /* EditControllerRequestModal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditControllerRequestModal.m; sourceTree = "<group>"; };
+		966D523320595F2B0044390B /* AddControllerRequestModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddControllerRequestModal.h; path = WhizIndiaApp/AddControllerRequestModal.h; sourceTree = SOURCE_ROOT; };
+		966D523420595F2B0044390B /* AddControllerRequestModal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddControllerRequestModal.m; path = WhizIndiaApp/AddControllerRequestModal.m; sourceTree = SOURCE_ROOT; };
+		966D5236205961610044390B /* AddControllerResponseModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddControllerResponseModal.h; path = WhizIndiaApp/AddControllerResponseModal.h; sourceTree = SOURCE_ROOT; };
+		966D5237205961610044390B /* AddControllerResponseModal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddControllerResponseModal.m; path = WhizIndiaApp/AddControllerResponseModal.m; sourceTree = SOURCE_ROOT; };
 		9671894D20516A3100B65E3D /* HomeSlaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeSlaveViewController.h; path = WhizIndiaApp/HomeSlaveViewController.h; sourceTree = SOURCE_ROOT; };
 		9671894E20516A3100B65E3D /* HomeSlaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeSlaveViewController.m; path = WhizIndiaApp/HomeSlaveViewController.m; sourceTree = SOURCE_ROOT; };
 		9671895020516A4F00B65E3D /* HomeSlave.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeSlave.storyboard; sourceTree = "<group>"; };
@@ -224,6 +236,10 @@
 				965CD749202F30D700B862B8 /* LoginRequestModal.m */,
 				965CD759202F60A100B862B8 /* RegisterRequestModal.h */,
 				965CD75A202F60A100B862B8 /* RegisterRequestModal.m */,
+				966D523320595F2B0044390B /* AddControllerRequestModal.h */,
+				966D523420595F2B0044390B /* AddControllerRequestModal.m */,
+				9660AF95205AF3F9001B393C /* EditControllerRequestModal.h */,
+				9660AF96205AF3F9001B393C /* EditControllerRequestModal.m */,
 			);
 			name = RequestModal;
 			sourceTree = "<group>";
@@ -235,6 +251,10 @@
 				965CD74F202F3A8D00B862B8 /* LoginResponseModal.m */,
 				965CD75C202F612200B862B8 /* RegisterResponseModal.h */,
 				965CD75D202F612200B862B8 /* RegisterResponseModal.m */,
+				966D5236205961610044390B /* AddControllerResponseModal.h */,
+				966D5237205961610044390B /* AddControllerResponseModal.m */,
+				9660AF92205AEA61001B393C /* EditControllerResponseModal.h */,
+				9660AF93205AEA61001B393C /* EditControllerResponseModal.m */,
 			);
 			name = ResponseModal;
 			sourceTree = "<group>";
@@ -448,14 +468,18 @@
 				965CD747202F276400B862B8 /* DataManager.m in Sources */,
 				963C1FA3202AD65000DFD3F2 /* ViewController.m in Sources */,
 				963C1FA0202AD65000DFD3F2 /* AppDelegate.m in Sources */,
+				9660AF97205AF3F9001B393C /* EditControllerRequestModal.m in Sources */,
 				967A84172033188600D16769 /* HideSideMenuAnimationView.m in Sources */,
 				9671894F20516A3100B65E3D /* HomeSlaveViewController.m in Sources */,
 				965CD75E202F612200B862B8 /* RegisterResponseModal.m in Sources */,
 				965CD75B202F60A100B862B8 /* RegisterRequestModal.m in Sources */,
 				965CD754202F465700B862B8 /* RegisterViewController.m in Sources */,
+				9660AF94205AEA61001B393C /* EditControllerResponseModal.m in Sources */,
 				967A841D20331B8000D16769 /* SideMenuInteraction.m in Sources */,
 				967A8413203317B800D16769 /* ShowSideMenuAnimationView.m in Sources */,
+				966D523520595F2B0044390B /* AddControllerRequestModal.m in Sources */,
 				965CD750202F3A8D00B862B8 /* LoginResponseModal.m in Sources */,
+				966D5238205961610044390B /* AddControllerResponseModal.m in Sources */,
 				963C1F9D202AD65000DFD3F2 /* main.m in Sources */,
 				965CD74A202F30D700B862B8 /* LoginRequestModal.m in Sources */,
 				96F3EBA42055ADBB008613E6 /* AddEditCOntrollerViewController.m in Sources */,

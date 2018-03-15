@@ -13,7 +13,7 @@
 @property(strong, nonatomic) NSDictionary *controllers;
 @property(strong, nonatomic) NSString *homeId;
 @property(strong, nonatomic) NSMutableDictionary *detailedController;
-@property(strong, nonatomic) NSDictionary *userDict;
+@property(strong, nonatomic) NSMutableDictionary *userDict;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

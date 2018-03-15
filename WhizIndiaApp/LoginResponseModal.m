@@ -15,7 +15,7 @@
 {
     self = [self init];
     if (self == nil) return nil;
-    userDict = dictionary;
+    userDict = [dictionary mutableCopy];
     detailedController = [[NSMutableDictionary alloc] init];
     controllers = dictionary[controllersKey];
     for (NSString *key in [controllers allKeys]) {

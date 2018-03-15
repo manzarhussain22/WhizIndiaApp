@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "WHTextField.h"
 
+@protocol AddEditCOntrollerDelegate<NSObject>
+
+-(void)addEditControllerSuccess;
+-(void)addEditControllerFailure;
+@end
+
+
 @interface AddEditCOntrollerViewController : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet id<AddEditCOntrollerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIView *addControllerView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *editCancelButton;
@@ -22,4 +30,5 @@
 @property (weak, nonatomic) IBOutlet UIView *editControllerView;
 @property (weak, nonatomic) IBOutlet UITableView *editControllerTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *editViewHeightConstraint;
+@property (strong, nonatomic) NSString *controllerID;
 @end

@@ -14,16 +14,19 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
+  - lottie-ios (2.5.0)
   - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
   - AFNetworking
+  - lottie-ios
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: 9878d0a41c63eeeeaf1ab71fdcb90b2851ffd160
+PODFILE CHECKSUM: f5db5a7a668148ae671f61f53e6853092616a8cd
 
 COCOAPODS: 1.2.1

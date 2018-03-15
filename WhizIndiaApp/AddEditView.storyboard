@@ -84,18 +84,18 @@
                                 <rect key="frame" x="20" y="80" width="280" height="408"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DKT-LZ-dn8">
-                                        <rect key="frame" x="5" y="10" width="270" height="313"/>
+                                        <rect key="frame" x="10" y="10" width="260" height="313"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="editControllerCell" id="TBj-Ef-Pfc" customClass="EditControllerTableViewCell">
-                                                <rect key="frame" x="0.0" y="28" width="270" height="30"/>
+                                                <rect key="frame" x="0.0" y="28" width="260" height="30"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBj-Ef-Pfc" id="9FX-eh-vU9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXe-et-WxA" customClass="WHTextField">
-                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="30"/>
+                                                        <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Controller Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXe-et-WxA" customClass="WHTextField">
+                                                            <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -173,7 +173,7 @@
                             <constraint firstItem="IMr-xf-fT4" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="100/320" id="8yQ-W4-9cJ"/>
                             <constraint firstItem="9a5-B5-CbZ" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="KsP-GZ-Xhd"/>
                             <constraint firstItem="dVZ-8Z-5fG" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="M34-wa-Bge"/>
-                            <constraint firstItem="DKT-LZ-dn8" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="270/320" id="Rt4-zM-qmc"/>
+                            <constraint firstItem="DKT-LZ-dn8" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="260/320" id="Rt4-zM-qmc"/>
                             <constraint firstItem="oNR-HP-Q1a" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="30/568" id="VYM-ZH-6lo"/>
                             <constraint firstItem="oNR-HP-Q1a" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="200/320" id="ZhV-jT-bbi"/>
                             <constraint firstItem="PJ2-7N-c3U" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="296/568" id="ZpN-jm-gB1"/>

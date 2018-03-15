@@ -9,6 +9,8 @@
 #ifndef Constants_h
 #define Constants_h
 
+#define menuSection2Array [NSArray arrayWithObjects:@"About Us",@"Contact Us",@"Logout", nil]
+
 //Cells
 #define MenuCellIdentifier @"menuCell"
 #define ContentCellIdentifier @"contentCell"
@@ -36,5 +38,18 @@
 
 //Register Response Modal Keys
 #define statusKey @"key"
+
+//Add Controller Service
+#define AddControllerService @"http://www.whizindia.com/rest/controller/verifyController"
+//Add Controller Service Keys
+#define add_controllerIdKey @"controllerId"
+#define add_controllerPassKey @"passKey"
+#define add_controllerUsernameKey @"userName"
+#define add_controllerNameKey @"controllerName"
+
+#define EditControllerService @"http://www.whizindia.com/rest/controller/updateController"
+
+#define devicesKey @"devices"
+
 
 #endif /* Constants_h */

@@ -16,11 +16,16 @@
 #import "HomeSlaveViewController.h"
 #import "AddEditCOntrollerViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DataManager.h"
+#import "LoginRequestModal.h"
+#import "LoginResponseModal.h"
 
 
-@interface HomeMasterViewController ()<UIViewControllerTransitioningDelegate, MenuViewDelegate>
+
+@interface HomeMasterViewController ()<UIViewControllerTransitioningDelegate, MenuViewDelegate,AddEditCOntrollerDelegate,DataManagerDelegate>
 {
     BOOL isMenu;
+    BOOL isEdit;
     MenuViewController *menuView;
     HomeSlaveViewController *homeSlaveView;
     ShowSideMenuAnimationView* showSideMenuAnimationViewController;
@@ -30,6 +35,8 @@
     SideMenuShowInteraction* sideMenuShowInteractionController;
     AddEditCOntrollerViewController *addEditView;
     UIVisualEffectView *blurEffectView;
+    NSString *homeSlaveViewControllerId;
+    
 }
 
 
@@ -68,26 +75,10 @@
     [self.headerView addGestureRecognizer:tapped];
     
     [self setupUIConstraints];
+    [self checkAndSetUpContentView];
     [self setupMenuView];
-    NSString *controllerId = [[[[[SharedClass  sharedInstance] userObj].controllers allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]] firstObject];
-    
-    if ([[[SharedClass sharedInstance] userObj].controllers count]>0) {
-        [self setUpContentViewFor:controllerId];
-    }
-    else
-    {
-        _noControllersLabel.hidden = NO;
-    }
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"AddEditView" bundle:nil];
-    addEditView = (AddEditCOntrollerViewController *)[sb instantiateViewControllerWithIdentifier:@"addEditView"];
-    
-    addEditView.view.frame = self.view.frame;
-    addEditView.addControllerView.layer.cornerRadius = (10./568.) * kScreenHeight;
-    addEditView.editControllerView.layer.cornerRadius = (10./568.) * kScreenHeight;
-    [addEditView.cancelButton addTarget:self action:@selector(addEditCancelButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [addEditView.editCancelButton addTarget:self action:@selector(addEditCancelButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [self setUpAddEditView];
     if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-        
         self.view.backgroundColor = [UIColor clearColor];
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -95,12 +86,46 @@
         blurEffectView.frame = self.view.bounds;
         blurEffectView.alpha = 0.0;
         blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self.view addSubview:blurEffectView];
+       // [self.view addSubview:blurEffectView];
     } else {
         self.view.backgroundColor = [UIColor whiteColor];
     }
-    
+   
 }
+
+-(void)setUpAddEditView
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"AddEditView" bundle:nil];
+    addEditView = (AddEditCOntrollerViewController *)[sb instantiateViewControllerWithIdentifier:@"addEditView"];
+    addEditView.controllerID = homeSlaveViewControllerId;
+    addEditView.view.frame = self.view.frame;
+    addEditView.addControllerView.layer.cornerRadius = (10./568.) * kScreenHeight;
+    addEditView.editControllerView.layer.cornerRadius = (10./568.) * kScreenHeight;
+    [addEditView.cancelButton addTarget:self action:@selector(addEditCancelButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [addEditView.editCancelButton addTarget:self action:@selector(addEditCancelButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    addEditView.addControllerView.hidden = YES;
+    addEditView.editControllerView.hidden = YES;
+    addEditView.delegate = self;
+}
+
+-(void)checkAndSetUpContentView
+{
+    if (homeSlaveViewControllerId == nil || [homeSlaveViewControllerId isEqualToString:@""]) {
+        homeSlaveViewControllerId = [[[[[SharedClass  sharedInstance] userObj].controllers allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]] firstObject];
+    }
+    
+    if ([[[SharedClass sharedInstance] userObj].controllers count]>0) {
+        _editButton.hidden = NO;
+        [self setUpContentViewFor];
+    
+    }
+    else
+    {
+        _noControllersLabel.hidden = NO;
+        _editButton.hidden = YES;
+    }
+}
+
 -(void)viewTapped:(UITapGestureRecognizer *)gesture
 {
     [self hideMenu:YES];
@@ -119,17 +144,17 @@
 }
 
 - (IBAction)menuButtonTapped:(id)sender {
-    
+    menuView.controllerID = homeSlaveViewControllerId;
     [self hideMenu:NO];
     
 }
 
--(void)setUpContentViewFor:(NSString *)controllerID
+-(void)setUpContentViewFor
 {
     self.noControllersLabel.hidden = YES;
     UIStoryboard *st = [UIStoryboard storyboardWithName:@"HomeSlave" bundle:nil];
     homeSlaveView = (HomeSlaveViewController *)[st instantiateViewControllerWithIdentifier:@"homeSlave"];
-    homeSlaveView.controllerID = controllerID;
+    homeSlaveView.controllerID = homeSlaveViewControllerId;
     CGRect frame = self.contentView.frame;
     frame.origin.y = 0.0;
     [self.contentView addSubview:homeSlaveView.view];
@@ -140,8 +165,10 @@
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MenuView" bundle:nil];
     menuView = (MenuViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"sideMenuView"];
+    menuView.controllerID = homeSlaveViewControllerId;
     menuView.delegate = self;
     menuView.transitioningDelegate = self;
+    
     
 }
 
@@ -160,10 +187,12 @@
 
 - (IBAction)addButtonTapped:(id)sender
 {
-    [self.view addSubview:blurEffectView];
-    [self.view addSubview:addEditView.view];
+    isEdit = NO;
     addEditView.addControllerView.hidden = NO;
     addEditView.editControllerView.hidden = YES;
+    [self.view addSubview:blurEffectView];
+    [self.view addSubview:addEditView.view];
+    
     addEditView.view.alpha = 1.;
     blurEffectView.alpha = 0.0;
     [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^
@@ -176,10 +205,12 @@
 
 - (IBAction)editButtonTapped:(id)sender {
     {
+        isEdit = YES;
         [self.view addSubview:blurEffectView];
         [self.view addSubview:addEditView.view];
         addEditView.addControllerView.hidden = YES;
         addEditView.editControllerView.hidden = NO;
+        addEditView.controllerID = homeSlaveView.controllerID;
         addEditView.view.alpha = 1.;
         blurEffectView.alpha = 0.0;
         [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^
@@ -217,10 +248,21 @@
 -(void)showDetailedControllerFor:(NSString *)controllerID
 {
     if ([controllerID isEqualToString:@"Logout"]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:NO completion:nil];
         return;
     }
-    [self setUpContentViewFor:controllerID];
+    homeSlaveViewControllerId = controllerID;
+    [self setUpContentViewFor];
+    if (![menuSection2Array containsObject:controllerID]) {
+       [self setUpAddEditView];
+        _editButton.hidden = NO;
+        _addButton.hidden = NO;
+    }
+    else
+    {
+        _editButton.hidden = YES;
+        _addButton.hidden = YES;
+    }
 }
 
 #pragma mark - Transition Delegates
@@ -248,5 +290,59 @@
     return sideMenuHideInteractionController.interactionInProgress ? sideMenuHideInteractionController : nil;
     
 }
+
+#pragma mark - AddEditController Delegate
+
+-(void)addEditControllerSuccess
+{
+    [self refreshUserData];
+}
+
+-(void)addEditControllerFailure
+{
+    [self addEditCancelButtonTapped];
+}
+
+#pragma mark - Refresh UserData
+
+-(void)refreshUserData
+{
+    DataManager *manager = [[DataManager alloc] init];
+    manager.delegate = self;
+    [manager startLoginServiceWithParams:[self prepareDictionaryForLogin]];
+}
+#pragma mark - Modalobject
+
+- (NSMutableDictionary *) prepareDictionaryForLogin {
+    
+    LoginRequestModal* loginObj = [[LoginRequestModal alloc] init];
+    loginObj.email = [[SharedClass sharedInstance] username];
+    loginObj.password = [[SharedClass sharedInstance] password];
+    return [loginObj createRequestDictionary];
+    
+}
+
+#pragma mark - DataManager Delegate
+-(void)didFinishServiceWithSuccess:(LoginResponseModal *)responseData
+{
+    [[SharedClass sharedInstance] setUserObj:responseData];
+    if ([[[SharedClass sharedInstance] userObj].homeId isEqualToString:@"1"]) {
+        [self checkAndSetUpContentView];
+        [self setupMenuView];
+    }
+    else
+    {
+        NSLog(@"Error in login %@",responseData.homeId);
+    }
+    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@",isEdit?@"Updated Successfully":@"Added Successfully"]];
+    [self addEditCancelButtonTapped];
+}
+
+-(void)didFinishServiceWithFailure:(NSString *)errorMsg
+{
+    [SVProgressHUD dismiss];
+    [self addEditCancelButtonTapped];
+}
+
 
 @end

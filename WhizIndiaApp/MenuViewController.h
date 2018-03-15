@@ -17,4 +17,5 @@
 
 @interface MenuViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) id<MenuViewDelegate> delegate;
+@property(strong, nonatomic) NSString *controllerID;
 @end

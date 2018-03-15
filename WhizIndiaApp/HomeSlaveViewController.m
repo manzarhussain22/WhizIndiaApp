@@ -28,8 +28,8 @@
     for (NSString *key in [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]]) {
         [controllerNameArr addObject:[controllerDescriptor objectForKey:key]];
     }
-    NSArray *arr = [NSArray arrayWithObjects:@"About Us",@"Contact Us",@"Logout", nil];
-    if ([arr containsObject:_controllerID]) {
+    
+    if ([menuSection2Array containsObject:_controllerID]) {
         self.controllerTitle.text = [_controllerID uppercaseString];
     }
     else

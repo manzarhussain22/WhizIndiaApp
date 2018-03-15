@@ -41,13 +41,7 @@
         [_menuSectionOneItems addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:str]];
     }
     _menuSectionTwoItems = [NSArray arrayWithObjects:@"About Us",@"Contact Us",@"Logout", nil];
-    if (_menuSectionOneItems.count>0) {
-        selectedRowIndex = [NSIndexPath indexPathForRow:0 inSection:0];
-    }
-    else
-    {
-        selectedRowIndex = [NSIndexPath indexPathForRow:0 inSection:1];
-    }
+    
     _menuTableViewLeadingConstraint.constant = (10./320.) * kScreenWidth;
     _menuTableViewTrailingConstraint.constant = _menuTableViewLeadingConstraint.constant;
 }
@@ -56,6 +50,28 @@
 {
     [super viewWillAppear:animated];
     
+    if (![_menuSectionTwoItems containsObject:_controllerID]) {
+        int count = -1;
+        for (NSString *str in controllerKey) {
+            count++;
+            if ([str isEqualToString:_controllerID]) {
+                break;
+            }
+        }
+        selectedRowIndex = [NSIndexPath indexPathForRow:count inSection:0];
+    }
+    else
+    {
+        int count = -1;
+        for (NSString *str in _menuSectionTwoItems) {
+            count++;
+            if ([str isEqualToString:_controllerID]) {
+                break;
+            }
+        }
+        selectedRowIndex = [NSIndexPath indexPathForRow:count inSection:1];
+    }
+    [self.menuTableView reloadData];
 }
 
 -(void)dismissMenu:(UITapGestureRecognizer*)recognizer

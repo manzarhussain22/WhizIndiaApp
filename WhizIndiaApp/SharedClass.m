@@ -53,4 +53,9 @@ static SharedClass *singletonObject = nil;
     [progressView removeFromSuperview];
 }
 
+-(void)createSharedMaskView
+{
+    
+}
+
 @end

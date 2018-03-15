@@ -9,7 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "WHTextField.h"
 
-@interface EditControllerTableViewCell : UITableViewCell
+@protocol EditControllerCellDelegate<NSObject>
+
+-(void)textFieldEnteredValue:(NSString *)value forCellIndex:(NSIndexPath *)cellIndex;
+
+@end
+
+@interface EditControllerTableViewCell : UITableViewCell<UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet WHTextField *editControllerTextField;
+@property NSIndexPath *cellIndex;
+@property(weak, nonatomic) id<EditControllerCellDelegate> delegate;
 
 @end

@@ -105,6 +105,11 @@
        [self showAlertWithMessage:@"Password cannot be empty"];
         return;
     }
+    else
+    {
+        [[SharedClass sharedInstance] setUsername:_userNameField.text];
+        [[SharedClass sharedInstance] setPassword:_passwordField.text];
+    }
     [SVProgressHUD showWithStatus:@"Logging In"];
     DataManager *manager = [[DataManager alloc] init];
     manager.delegate = self;

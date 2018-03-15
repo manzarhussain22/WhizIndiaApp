@@ -13,6 +13,7 @@
 
 -(void) didFinishServiceWithSuccess:(id)responseData;
 -(void) didFinishServiceWithFailure:(NSString *)errorMsg;
+-(void) didFinishEditControllerServiceWithSuccess:(id)responseData;
 
 @end
 
@@ -23,5 +24,6 @@
 
 -(void)startLoginServiceWithParams:(NSMutableDictionary *)postData;
 -(void)startRegisterServiceWithParams:(NSMutableDictionary *)postData;
-
+-(void)startAddControllerServiceWithParams:(NSMutableDictionary *)postData;
+-(void)startEditControllerServiceWithParams:(NSMutableDictionary *)postData;
 @end
