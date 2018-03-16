@@ -24,4 +24,5 @@
 @property BOOL isSideMenuOpened;
 -(void)showProgressView:(UIViewController *)viewController;
 -(void)dismissProgressView;
+-(void)showAlertWithMessage:(NSString *)message onView:(UIViewController *)view;
 @end

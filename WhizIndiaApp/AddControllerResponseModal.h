@@ -11,6 +11,7 @@
 @interface AddControllerResponseModal : NSObject
 
 @property(strong, nonatomic) NSDictionary *devices;
+@property(strong, nonatomic) NSString *addControllerStatus;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

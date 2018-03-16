@@ -249,6 +249,7 @@
 {
     if ([controllerID isEqualToString:@"Logout"]) {
         [self dismissViewControllerAnimated:NO completion:nil];
+        [[SharedClass sharedInstance] setIsRegisterStory:NO];
         return;
     }
     homeSlaveViewControllerId = controllerID;
@@ -256,12 +257,10 @@
     if (![menuSection2Array containsObject:controllerID]) {
        [self setUpAddEditView];
         _editButton.hidden = NO;
-        _addButton.hidden = NO;
     }
     else
     {
         _editButton.hidden = YES;
-        _addButton.hidden = YES;
     }
 }
 
@@ -300,6 +299,7 @@
 
 -(void)addEditControllerFailure
 {
+    [[SharedClass sharedInstance] showAlertWithMessage:[NSString stringWithFormat:@"Error in %@",isEdit?@"Editing":@"Adding"] onView:self];
     [self addEditCancelButtonTapped];
 }
 

@@ -53,9 +53,13 @@ static SharedClass *singletonObject = nil;
     [progressView removeFromSuperview];
 }
 
--(void)createSharedMaskView
+-(void)showAlertWithMessage:(NSString *)message onView:(UIViewController *)view
 {
-    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!!!" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    [view presentViewController:alert animated:YES completion:nil];
 }
 
 @end

@@ -57,6 +57,7 @@
         _userNameField.text = [[SharedClass sharedInstance] username];
         _passwordField.text = [[SharedClass sharedInstance] password];
         [self performSelector:@selector(loginButtonTapped:) withObject:nil afterDelay:1.9];
+        [[SharedClass sharedInstance] setIsRegisterStory:NO];
     }
 }
 
@@ -97,12 +98,12 @@
 - (IBAction)loginButtonTapped:(id)sender {
     [self.view endEditing:YES];
     if ([_userNameField.text isEqualToString:@""] || _userNameField.text==nil) {
-        [self showAlertWithMessage:@"Username cannot be empty"];
+        [[SharedClass sharedInstance] showAlertWithMessage:@"Username cannot be empty" onView:self];
         return;
     }
     else if ([_passwordField.text isEqualToString:@""] || _passwordField.text==nil)
     {
-       [self showAlertWithMessage:@"Password cannot be empty"];
+        [[SharedClass sharedInstance] showAlertWithMessage:@"Password cannot be empty" onView:self];
         return;
     }
     else
@@ -154,6 +155,7 @@
     }
     else
     {
+        [[SharedClass sharedInstance] showAlertWithMessage:@"Error in Login" onView:self];
         NSLog(@"Error in login %@",responseData.homeId);
     }
     
@@ -162,15 +164,6 @@
 -(void)didFinishServiceWithFailure:(NSString *)errorMsg
 {
     [SVProgressHUD dismiss];
-}
-
--(void)showAlertWithMessage:(NSString *)message
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!!!" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
-    [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

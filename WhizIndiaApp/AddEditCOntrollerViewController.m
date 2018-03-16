@@ -44,13 +44,18 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:tap];
     
-    NSDictionary *controllerDescriptor = [[[SharedClass sharedInstance] userObj].userDict objectForKey:_controllerID];
-    deviceIDArr = [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
-    deviceNameArr = [[NSMutableArray alloc] init];
-    [deviceNameArr addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:_controllerID]];
-    for (NSString *key in deviceIDArr) {
-        [deviceNameArr addObject:[controllerDescriptor objectForKey:key]];
+    if(_controllerID != nil && ![_controllerID isEqualToString:@""])
+    {
+        NSDictionary *controllerDescriptor = [[[SharedClass sharedInstance] userObj].userDict objectForKey:_controllerID];
+        deviceIDArr = [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
+        deviceNameArr = [[NSMutableArray alloc] init];
+        [deviceNameArr addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:_controllerID]];
+        for (NSString *key in deviceIDArr) {
+            [deviceNameArr addObject:[controllerDescriptor objectForKey:key]];
+        }
     }
+    
+    
     
 }
 
@@ -236,14 +241,18 @@
 
 -(void)didFinishServiceWithSuccess:(AddControllerResponseModal *)responseData
 {
-    if (responseData.devices.count>0) {
+    if (![[[responseData.devices valueForKey:statusKey] valueForKey:@"status"] isEqualToString:@"-999"]) {
         if ([self.delegate respondsToSelector:@selector(addEditControllerSuccess)]) {
             [self.delegate addEditControllerSuccess];
         }
     }
     else
     {
-        NSLog(@"Error in Add Controller");
+        [SVProgressHUD dismiss];
+        if ([self.delegate respondsToSelector:@selector(addEditControllerFailure)]) {
+            [self.delegate addEditControllerFailure];
+        }
+        NSLog(@"Error in adding");
     }
 }
 -(void)didFinishEditControllerServiceWithSuccess:(EditControllerResponseModal *)responseData
@@ -255,7 +264,11 @@
     }
     else
     {
-        NSLog(@"Error in Edit Controller");
+        [SVProgressHUD dismiss];
+        if ([self.delegate respondsToSelector:@selector(addEditControllerFailure)]) {
+            [self.delegate addEditControllerFailure];
+        }
+        NSLog(@"Error in Editing");
     }
 }
 
