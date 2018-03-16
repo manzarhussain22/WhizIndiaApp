@@ -1,9 +1,9 @@
 //
 //  RegisterViewController.m
-//  WhizIndiaApp
+//  AUTOIApp
 //
 //  Created by Manzar_Hussain on 10/02/18.
-//  Copyright © 2018 WhizIndia. All rights reserved.
+//  Copyright © 2018 AUTOI. All rights reserved.
 //
 
 #import "RegisterViewController.h"
@@ -13,11 +13,20 @@
 #import "RegisterResponseModal.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate, DataManagerDelegate>
+{
+    BOOL isUsernameVerified;
+    BOOL isPasswordVerified;
+    BOOL isEmailIDVerified;
+    BOOL isPhoneVerified;
+    BOOL isDOBVerified;
+}
 @property (weak, nonatomic) IBOutlet WHTextField *usernameField;
 @property (weak, nonatomic) IBOutlet WHTextField *passwordField;
 @property (weak, nonatomic) IBOutlet WHTextField *emailField;
 @property (weak, nonatomic) IBOutlet WHTextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet WHTextField *DOBField;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UIButton *alreadyHaveAccountButton;
 
 @end
 
@@ -30,16 +39,21 @@
     _emailField.delegate = self;
     _phoneNumberField.delegate = self;
     _DOBField.delegate = self;
-    
     [self addDatePickerViewToTextField:_DOBField];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:tap];
+    _registerButton.layer.cornerRadius = (17./568.) * kScreenHeight;
+    _alreadyHaveAccountButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _alreadyHaveAccountButton.titleLabel.numberOfLines = 2;
+    _alreadyHaveAccountButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [_alreadyHaveAccountButton setTitle:@"Already have an account?\nClick Here" forState:UIControlStateNormal];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [[SharedClass sharedInstance] setIsRegisterStory:YES];
+    [self enableDisableRegisterButton];
 }
 
 -(void)viewTapped:(UITapGestureRecognizer *)tapped
@@ -66,7 +80,7 @@
 - (void)textFieldDidBeginEditing:(WHTextField *)textField
 {
     [textField showBelowBorder];
-    
+
 }
 
 -(void)textFieldDidEndEditing:(WHTextField *)textField
@@ -74,6 +88,47 @@
     [textField hideBelowBorder];
     [[SharedClass sharedInstance] setUsername:_emailField.text];
     [[SharedClass sharedInstance] setPassword:_passwordField.text];
+    if (_usernameField.text !=nil && ![_usernameField.text isEqualToString:@""]) {
+        isUsernameVerified = YES;
+    }
+    else
+    {
+        isUsernameVerified = NO;
+    }
+    if (_passwordField.text !=nil && ![_passwordField.text isEqualToString:@""])
+    {
+      isPasswordVerified = YES;
+    }
+    else
+    {
+        isPasswordVerified = NO;
+    }
+    if (_emailField.text !=nil && ![_emailField.text isEqualToString:@""])
+    {
+        isEmailIDVerified = YES;
+    }
+    else
+    {
+        isEmailIDVerified = NO;
+    }
+    if (_phoneNumberField.text !=nil && ![_phoneNumberField.text isEqualToString:@""])
+    {
+        isPhoneVerified = YES;
+    }
+    else
+    {
+        isPhoneVerified = NO;
+    }
+    if (_DOBField.text !=nil && ![_DOBField.text isEqualToString:@""])
+    {
+        isDOBVerified = YES;
+    }
+    else
+    {
+        isDOBVerified = NO;
+    }
+    
+    [self enableDisableRegisterButton];
 }
 
 -(BOOL)textFieldShouldReturn:(WHTextField *)textField
@@ -97,9 +152,42 @@
     {
         [_DOBField resignFirstResponder];
     }
+    
+    
+    
     return YES;
 }
 
+-(void)enableDisableRegisterButton
+{
+    int totalFields = 5;
+    int count = 0;
+    if (isUsernameVerified) {
+        count++;
+    }
+    if (isPasswordVerified) {
+        count++;
+    }
+    if (isEmailIDVerified) {
+        count++;
+    }
+    if (isPhoneVerified) {
+        count++;
+    }
+    if (isDOBVerified) {
+        count++;
+    }
+    
+    if (count == totalFields) {
+        _registerButton.enabled = YES;
+        [_registerButton setBackgroundColor:[UIColor colorWithRed:241./255. green:64./255. blue:35./255. alpha:1.0]];
+    }
+    else
+    {
+        _registerButton.enabled = NO;
+        [_registerButton setBackgroundColor:[UIColor lightGrayColor]];
+    }
+}
 
 
 - (void) addDatePickerViewToTextField:(UITextField *)txtField {

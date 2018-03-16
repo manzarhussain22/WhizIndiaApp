@@ -1,9 +1,9 @@
 //
 //  AddControllerRequestModal.m
-//  WhizIndiaApp
+//  AUTOIApp
 //
 //  Created by Manzar_Hussain on 14/03/18.
-//  Copyright © 2018 WhizIndia. All rights reserved.
+//  Copyright © 2018 AUTOI. All rights reserved.
 //
 
 #import "AddControllerRequestModal.h"

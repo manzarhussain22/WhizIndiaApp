@@ -1,9 +1,9 @@
 //
 //  RegisterViewController.h
-//  WhizIndiaApp
+//  AUTOIApp
 //
 //  Created by Manzar_Hussain on 10/02/18.
-//  Copyright © 2018 WhizIndia. All rights reserved.
+//  Copyright © 2018 AUTOI. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

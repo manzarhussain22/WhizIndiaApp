@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yXK-2o-l04">
-                                <rect key="frame" x="83" y="40" width="154" height="29"/>
+                                <rect key="frame" x="83.5" y="40" width="153.5" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHIZ HOMES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-Lb-bsE">
-                                        <rect key="frame" x="0.0" y="0.0" width="154" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="29"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -33,34 +34,34 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lWR-Ls-3pV">
-                                <rect key="frame" x="16" y="149" width="288" height="210"/>
+                                <rect key="frame" x="35" y="149" width="250" height="210"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fM-xw-RsX" customClass="WHTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RsB-31-9bM" customClass="WHTextField">
-                                        <rect key="frame" x="0.0" y="45" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="45" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YW5-QZ-gCg" customClass="WHTextField">
-                                        <rect key="frame" x="0.0" y="90" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="90" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8d-yR-OnP" customClass="WHTextField">
-                                        <rect key="frame" x="0.0" y="135" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="135" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date Of Birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UQu-CW-iFp" customClass="WHTextField">
-                                        <rect key="frame" x="0.0" y="180" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="180" width="250" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -68,11 +69,11 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="iZc-wY-7D2">
-                                <rect key="frame" x="16" y="439" width="288" height="83"/>
+                                <rect key="frame" x="35" y="439" width="250" height="83"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drW-wW-ar6">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="34"/>
-                                        <color key="backgroundColor" red="0.94480043650000001" green="0.24937026109999999" blue="0.13650218119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="34"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <state key="normal" title="REGISTER">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,7 +83,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UY-PU-vSz">
-                                        <rect key="frame" x="0.0" y="49" width="288" height="34"/>
+                                        <rect key="frame" x="0.0" y="49" width="250" height="34"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Already have an account? Click Here">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,7 +100,7 @@
                             <constraint firstItem="lWR-Ls-3pV" firstAttribute="centerX" secondItem="yXK-2o-l04" secondAttribute="centerX" id="6WU-po-LLG"/>
                             <constraint firstItem="yXK-2o-l04" firstAttribute="top" secondItem="fgw-t5-Bpx" secondAttribute="bottom" constant="20" id="7sy-B5-1IY"/>
                             <constraint firstItem="iZc-wY-7D2" firstAttribute="top" secondItem="lWR-Ls-3pV" secondAttribute="bottom" constant="80" id="FQE-2p-IqP"/>
-                            <constraint firstItem="lWR-Ls-3pV" firstAttribute="width" secondItem="mi1-iZ-Cbc" secondAttribute="width" multiplier="288/320" id="hEs-YE-Dki"/>
+                            <constraint firstItem="lWR-Ls-3pV" firstAttribute="width" secondItem="mi1-iZ-Cbc" secondAttribute="width" multiplier="250/320" id="hEs-YE-Dki"/>
                             <constraint firstItem="iZc-wY-7D2" firstAttribute="width" secondItem="lWR-Ls-3pV" secondAttribute="width" id="iVX-ax-pNN"/>
                             <constraint firstItem="yXK-2o-l04" firstAttribute="centerX" secondItem="mi1-iZ-Cbc" secondAttribute="centerX" id="itN-Dn-wlo"/>
                             <constraint firstItem="lWR-Ls-3pV" firstAttribute="top" secondItem="yXK-2o-l04" secondAttribute="bottom" constant="80" id="nr0-kw-vqc"/>
@@ -108,9 +109,11 @@
                     </view>
                     <connections>
                         <outlet property="DOBField" destination="UQu-CW-iFp" id="F0v-q6-lD2"/>
+                        <outlet property="alreadyHaveAccountButton" destination="8UY-PU-vSz" id="Mnm-U7-tjK"/>
                         <outlet property="emailField" destination="YW5-QZ-gCg" id="XWF-Ug-Vp5"/>
                         <outlet property="passwordField" destination="RsB-31-9bM" id="MUe-08-MJW"/>
                         <outlet property="phoneNumberField" destination="N8d-yR-OnP" id="5db-ir-j0J"/>
+                        <outlet property="registerButton" destination="drW-wW-ar6" id="9Qq-6W-Brz"/>
                         <outlet property="usernameField" destination="5fM-xw-RsX" id="pZx-8z-WKZ"/>
                     </connections>
                 </viewController>
