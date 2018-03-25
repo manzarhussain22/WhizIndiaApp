@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A71DE904D6590C90DBE6234983FA07BE'
+               BlueprintIdentifier = '2E9E6514270ED0BD6902CF878444BEF1'
                BlueprintName = 'Pods-WhizIndiaApp'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-WhizIndiaApp.a'>

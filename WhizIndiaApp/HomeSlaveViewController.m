@@ -8,11 +8,18 @@
 
 #import "HomeSlaveViewController.h"
 #import "ContentTableViewCell.h"
+#import "MQTTHelper.h"
 
-@interface HomeSlaveViewController ()
+#define mqttTopic @"/test/light1"
+
+@interface HomeSlaveViewController ()<ContentTableViewCellDelegate,MQTTHelperDelegate>
 {
     NSDictionary *controllerDescriptor;
+    NSArray *deviceIDArr;
     NSMutableArray *controllerNameArr;
+    BOOL isSwitchOn;
+    MQTTHelper *mqttHelper;
+    NSString *contentDeviceID;
 }
 @property (weak, nonatomic) IBOutlet UITableView *contentTableView;
 
@@ -23,10 +30,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _buttonStatus = [[NSMutableDictionary alloc] init];
     controllerDescriptor = [[[SharedClass sharedInstance] userObj].userDict objectForKey:_controllerID];
     controllerNameArr = [[NSMutableArray alloc] init];
-    for (NSString *key in [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]]) {
+    deviceIDArr = [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
+    for (NSString *key in deviceIDArr) {
         [controllerNameArr addObject:[controllerDescriptor objectForKey:key]];
+        [_buttonStatus setObject:[NSNumber numberWithBool:NO] forKey:key];
     }
     
     if ([menuSection2Array containsObject:_controllerID]) {
@@ -52,7 +62,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContentTableViewCell *contentCell = [tableView dequeueReusableCellWithIdentifier:ContentCellIdentifier forIndexPath:indexPath];
+    contentCell.deviceID = [deviceIDArr objectAtIndex:indexPath.section];
     contentCell.detailDescription.text = [controllerNameArr objectAtIndex:indexPath.section];
+    contentCell.indexPath = indexPath;
+    contentCell.delegate = self;
+    [contentCell.controllerSwitch setOn:((NSNumber *)[_buttonStatus objectForKey:[deviceIDArr objectAtIndex:indexPath.section]]).boolValue animated:YES];
     return contentCell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -66,5 +80,66 @@
     return headerView;
 }
 
+#pragma mark - ContentCellDelegate
+
+-(void)switchTapped:(BOOL)isOn forDeviceID:(NSString *)deviceID
+{
+    contentDeviceID = deviceID;
+    [_buttonStatus setObject:[NSNumber numberWithBool:isOn] forKey:deviceID];
+    isSwitchOn = isOn;
+    mqttHelper = [[MQTTHelper alloc] init];
+    mqttHelper.delegate = self;
+    [mqttHelper initiateConnection];
+}
+
+-(void)reloadCellOnFailure
+{
+    [_buttonStatus setObject:[NSNumber numberWithBool:!isSwitchOn] forKey:contentDeviceID];
+    [_contentTableView reloadData];
+}
+
+-(void)reloadCellOnSuccess
+{
+    [_buttonStatus setObject:[NSNumber numberWithBool:isSwitchOn] forKey:contentDeviceID];
+    [_contentTableView reloadData];
+}
+
+#pragma mark - MQTTHelperDelegate
+-(void)connectedSuccessfully
+{
+    NSUInteger index = ((NSNumber *)[_buttonStatus objectForKey:contentDeviceID]).unsignedIntegerValue;
+    NSData *data = [NSData dataWithBytes:&index length:sizeof(index)];
+    [mqttHelper subscribeToTopic:mqttTopic completionhandler:^(BOOL sucess){
+        if (sucess) {
+            [mqttHelper publishMessage:data];
+        }
+        else
+        {
+            [self reloadCellOnFailure];
+        }
+    }];
+}
+
+-(void)connectionError:(NSError *)error
+{
+    [self reloadCellOnFailure];
+}
+
+-(void)connectionRefused:(NSError *)error
+{
+    [self reloadCellOnFailure];;
+}
+
+-(void)protocolError:(NSError *)error
+{
+    [self reloadCellOnFailure];
+}
+
+-(void)messageDeliveredForTopic:(NSString *)topic
+{
+    if ([topic isEqualToString:mqttTopic]) {
+        [self reloadCellOnSuccess];
+    }
+}
 
 @end

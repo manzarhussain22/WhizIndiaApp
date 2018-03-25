@@ -4,7 +4,7 @@
 def available_Whiz_Homes_Pods
 	pod 'AFNetworking'
     pod 'SVProgressHUD'
-    pod 'lottie-ios'
+    pod 'MQTTClient'
 end
 
 target 'WhizIndiaApp' do

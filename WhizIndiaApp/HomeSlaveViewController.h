@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString *controllerID;
 @property (weak, nonatomic) IBOutlet UILabel *controllerTitle;
+@property (strong, nonatomic)NSMutableDictionary *buttonStatus;
 
 @end

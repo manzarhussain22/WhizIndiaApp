@@ -15,11 +15,9 @@
     // Initialization code
     
     [self.layer setCornerRadius:(20.0f/568.)*kScreenHeight];
-    
     // border
     [self.layer setBorderColor:[UIColor blackColor].CGColor];
     [self.layer setBorderWidth:1.0f];
-    
     // drop shadow
     [self.layer setShadowColor:[UIColor redColor].CGColor];
     [self.layer setShadowOpacity:0.8];
@@ -28,6 +26,11 @@
     [_controllerSwitch setTintColor:[UIColor blackColor]];
     _contentImageLeadingConstraint.constant = (16./320.) * kScreenWidth;
     _contentLabelLeadingConstraint.constant = _contentImageLeadingConstraint.constant;
+}
+- (IBAction)deviceButtonTapped:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(switchTapped:forDeviceID:)]) {
+        [self.delegate switchTapped:[sender isOn] forDeviceID:_deviceID];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

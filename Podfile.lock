@@ -14,19 +14,26 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
-  - lottie-ios (2.5.0)
+  - MQTTClient (0.13.0):
+    - MQTTClient/Core (= 0.13.0)
+  - MQTTClient/Core (0.13.0):
+    - MQTTClient/Manager
+    - MQTTClient/Min
+  - MQTTClient/Manager (0.13.0):
+    - MQTTClient/Min
+  - MQTTClient/Min (0.13.0)
   - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
   - AFNetworking
-  - lottie-ios
+  - MQTTClient
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
-  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
+  MQTTClient: aced164e080fb139daa98fc745d01da279e55945
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: f5db5a7a668148ae671f61f53e6853092616a8cd
+PODFILE CHECKSUM: 49625852f705d802e362161ece4a78f0c31c516d
 
 COCOAPODS: 1.2.1

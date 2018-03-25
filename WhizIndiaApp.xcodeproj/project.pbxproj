@@ -13,6 +13,7 @@
 		963C1FA3202AD65000DFD3F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963C1FA2202AD65000DFD3F2 /* ViewController.m */; };
 		963C1FA8202AD65300DFD3F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963C1FA7202AD65300DFD3F2 /* Assets.xcassets */; };
 		963C1FAB202AD65300DFD3F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963C1FA9202AD65300DFD3F2 /* LaunchScreen.storyboard */; };
+		9656837F2067A291000B22E5 /* MQTTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9656837E2067A291000B22E5 /* MQTTHelper.m */; };
 		965CD73C202DBAB600B862B8 /* WHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD73B202DBAB600B862B8 /* WHTextField.m */; };
 		965CD747202F276400B862B8 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD746202F276400B862B8 /* DataManager.m */; };
 		965CD74A202F30D700B862B8 /* LoginRequestModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 965CD749202F30D700B862B8 /* LoginRequestModal.m */; };
@@ -55,6 +56,8 @@
 		963C1FA7202AD65300DFD3F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		963C1FAA202AD65300DFD3F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963C1FAC202AD65300DFD3F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9656837D2067A291000B22E5 /* MQTTHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQTTHelper.h; sourceTree = "<group>"; };
+		9656837E2067A291000B22E5 /* MQTTHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MQTTHelper.m; path = WhizIndiaApp/MQTTHelper.m; sourceTree = SOURCE_ROOT; };
 		965CD73A202DBAB600B862B8 /* WHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHTextField.h; path = WhizIndiaApp/WHTextField.h; sourceTree = SOURCE_ROOT; };
 		965CD73B202DBAB600B862B8 /* WHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHTextField.m; path = WhizIndiaApp/WHTextField.m; sourceTree = SOURCE_ROOT; };
 		965CD73D202DCB6600B862B8 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = WhizIndiaApp/Constants.h; sourceTree = SOURCE_ROOT; };
@@ -225,6 +228,8 @@
 				965CD746202F276400B862B8 /* DataManager.m */,
 				965CD74B202F33C000B862B8 /* SharedClass.h */,
 				965CD74C202F33C000B862B8 /* SharedClass.m */,
+				9656837D2067A291000B22E5 /* MQTTHelper.h */,
+				9656837E2067A291000B22E5 /* MQTTHelper.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				963C1FA0202AD65000DFD3F2 /* AppDelegate.m in Sources */,
 				9660AF97205AF3F9001B393C /* EditControllerRequestModal.m in Sources */,
 				967A84172033188600D16769 /* HideSideMenuAnimationView.m in Sources */,
+				9656837F2067A291000B22E5 /* MQTTHelper.m in Sources */,
 				9671894F20516A3100B65E3D /* HomeSlaveViewController.m in Sources */,
 				965CD75E202F612200B862B8 /* RegisterResponseModal.m in Sources */,
 				965CD75B202F60A100B862B8 /* RegisterRequestModal.m in Sources */,
