@@ -65,6 +65,7 @@
 
 - (IBAction)registerButtonTapped:(id)sender {
     DataManager *manager = [[DataManager alloc] init];
+    manager.serviceKey = RegisterService;
     manager.delegate = self;
     [manager startRegisterServiceWithParams:[self prepareDictionaryForRegister]];
     

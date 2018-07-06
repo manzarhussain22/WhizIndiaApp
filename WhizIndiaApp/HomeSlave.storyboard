@@ -40,6 +40,10 @@
                                     <constraint firstItem="iwo-Fd-Lp0" firstAttribute="centerX" secondItem="ETY-iF-gP4" secondAttribute="centerX" id="ek9-LI-jpC"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zh-Qn-ooj" customClass="BEMSimpleLineGraphView">
+                                <rect key="frame" x="16" y="60" width="288" height="508"/>
+                                <color key="backgroundColor" red="0.0" green="0.64313725489999995" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P5H-GW-dAa">
                                 <rect key="frame" x="16" y="60" width="288" height="508"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -100,6 +104,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7zh-Qn-ooj" firstAttribute="top" secondItem="ETY-iF-gP4" secondAttribute="bottom" constant="10" id="Cah-iy-9y6"/>
+                            <constraint firstItem="XVs-BT-PJX" firstAttribute="top" secondItem="7zh-Qn-ooj" secondAttribute="bottom" id="Crk-dm-bC4"/>
+                            <constraint firstItem="7zh-Qn-ooj" firstAttribute="leading" secondItem="83U-jj-Vfx" secondAttribute="leadingMargin" id="L9l-e0-cfR"/>
                             <constraint firstItem="P5H-GW-dAa" firstAttribute="top" secondItem="ETY-iF-gP4" secondAttribute="bottom" constant="10" id="MP7-6M-ZMW"/>
                             <constraint firstItem="XVs-BT-PJX" firstAttribute="top" secondItem="P5H-GW-dAa" secondAttribute="bottom" id="Q5K-NE-nAG"/>
                             <constraint firstItem="ETY-iF-gP4" firstAttribute="height" secondItem="83U-jj-Vfx" secondAttribute="height" multiplier="50/568" id="QNR-9s-qIr"/>
@@ -107,18 +114,20 @@
                             <constraint firstItem="ETY-iF-gP4" firstAttribute="leading" secondItem="83U-jj-Vfx" secondAttribute="leading" id="TJG-Jl-X2D"/>
                             <constraint firstAttribute="trailing" secondItem="ETY-iF-gP4" secondAttribute="trailing" id="Tnf-Mp-KtK"/>
                             <constraint firstItem="ETY-iF-gP4" firstAttribute="top" secondItem="83U-jj-Vfx" secondAttribute="top" id="Vbs-fi-7Ke"/>
+                            <constraint firstItem="7zh-Qn-ooj" firstAttribute="trailing" secondItem="83U-jj-Vfx" secondAttribute="trailingMargin" id="ggH-TD-qtw"/>
                             <constraint firstItem="P5H-GW-dAa" firstAttribute="leading" secondItem="83U-jj-Vfx" secondAttribute="leadingMargin" id="xgo-qy-zY7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentTableView" destination="P5H-GW-dAa" id="yPK-8V-iko"/>
                         <outlet property="controllerTitle" destination="iwo-Fd-Lp0" id="Wto-8m-EUe"/>
+                        <outlet property="matrixView" destination="7zh-Qn-ooj" id="aIn-oz-7y4"/>
                         <outlet property="view" destination="83U-jj-Vfx" id="oS9-rr-9kD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4p8-M2-p4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78" y="156"/>
+            <point key="canvasLocation" x="9" y="-2099"/>
         </scene>
     </scenes>
     <resources>

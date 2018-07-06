@@ -255,12 +255,22 @@
     homeSlaveViewControllerId = controllerID;
     [self setUpContentViewFor];
     if (![menuSection2Array containsObject:controllerID]) {
-       [self setUpAddEditView];
-        _editButton.hidden = NO;
+        if ([controllerID isEqualToString:@"Matrix"]) {
+            _editButton.hidden = YES;
+            _addButton.hidden = YES;
+        }
+        else
+        {
+            [self setUpAddEditView];
+            _editButton.hidden = NO;
+            _addButton.hidden = NO;
+        }
     }
     else
     {
+       
         _editButton.hidden = YES;
+        _addButton.hidden = NO;
     }
 }
 
@@ -309,6 +319,7 @@
 {
     DataManager *manager = [[DataManager alloc] init];
     manager.delegate = self;
+    manager.serviceKey = LoginService;
     [manager startLoginServiceWithParams:[self prepareDictionaryForLogin]];
 }
 #pragma mark - Modalobject

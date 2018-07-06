@@ -161,6 +161,7 @@
     [self.view endEditing:YES];
     [SVProgressHUD showWithStatus:@"Adding...."];
     DataManager *manager = [[DataManager alloc] init];
+    manager.serviceKey = AddControllerService;
     manager.delegate = self;
     [manager startAddControllerServiceWithParams:[self prepareDictionaryToAddController]];
 }
@@ -169,6 +170,7 @@
     [self.view endEditing:YES];
     [SVProgressHUD showWithStatus:@"Updating...."];
     DataManager *manager = [[DataManager alloc] init];
+    manager.serviceKey = EditControllerService;
     [manager startEditControllerServiceWithParams:[self prepareDictionaryToEditController]];
     manager.delegate = self;
 }

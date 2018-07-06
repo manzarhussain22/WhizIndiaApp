@@ -40,7 +40,10 @@
     for (NSString *str in controllerKey) {
         [_menuSectionOneItems addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:str]];
     }
-    _menuSectionTwoItems = [NSArray arrayWithObjects:@"About Us",@"Contact Us",@"Logout", nil];
+    if (controllerKey.count>0) {
+        [_menuSectionOneItems addObject:@"Matrix"];
+    }
+    _menuSectionTwoItems = menuSection2Array;
     
     _menuTableViewLeadingConstraint.constant = (10./320.) * kScreenWidth;
     _menuTableViewTrailingConstraint.constant = _menuTableViewLeadingConstraint.constant;
@@ -52,6 +55,9 @@
     
     if (![_menuSectionTwoItems containsObject:_controllerID]) {
         int count = -1;
+        if ([_controllerID isEqualToString:@"Matrix"]) {
+            count++;
+        }
         for (NSString *str in controllerKey) {
             count++;
             if ([str isEqualToString:_controllerID]) {
@@ -140,6 +146,10 @@
     switch (indexPath.section) {
         case 0:
             if ([self.delegate respondsToSelector:@selector(showDetailedControllerFor:)]) {
+                if (indexPath.row == _menuSectionOneItems.count - 1) {
+                    [self.delegate showDetailedControllerFor:[_menuSectionOneItems objectAtIndex:indexPath.row]];
+                }
+                else
                 [self.delegate showDetailedControllerFor:[controllerKey objectAtIndex:indexPath.row]];
             }
             break;

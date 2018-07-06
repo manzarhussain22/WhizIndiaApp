@@ -20,9 +20,11 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
+#define WebServiceURL @"http://www.whizindia.com/rest"
+
 //Login/Register Service
-#define LoginService @"http://www.whizindia.com/rest/login/authenticateUserWH"
-#define RegisterService @"http://www.whizindia.com/rest/register/registerMemberWH"
+#define LoginService @"login/authenticateUserWH"
+#define RegisterService @"register/registerMemberWH"
 
 //Login/Register Request Modal Keys
 #define emailKey @"email"
@@ -40,14 +42,14 @@
 #define statusKey @"key"
 
 //Add Controller Service
-#define AddControllerService @"http://www.whizindia.com/rest/controller/verifyController"
+#define AddControllerService @"controller/verifyController"
 //Add Controller Service Keys
 #define add_controllerIdKey @"controllerId"
 #define add_controllerPassKey @"passKey"
 #define add_controllerUsernameKey @"userName"
 #define add_controllerNameKey @"controllerName"
 
-#define EditControllerService @"http://www.whizindia.com/rest/controller/updateController"
+#define EditControllerService @"controller/updateController"
 
 #define devicesKey @"devices"
 

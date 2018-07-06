@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
+  - BEMSimpleLineGraph (4.1)
   - MQTTClient (0.13.0):
     - MQTTClient/Core (= 0.13.0)
   - MQTTClient/Core (0.13.0):
@@ -26,14 +27,16 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - BEMSimpleLineGraph
   - MQTTClient
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  BEMSimpleLineGraph: 44fd451f27f8e9cf96f2da5bea27603093576dd1
   MQTTClient: aced164e080fb139daa98fc745d01da279e55945
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: 49625852f705d802e362161ece4a78f0c31c516d
+PODFILE CHECKSUM: 2c2ec63880a7e45b8811eb479837c5cc4d9d6096
 
 COCOAPODS: 1.2.1

@@ -13,23 +13,31 @@
 #import "EditControllerResponseModal.h"
 
 @implementation DataManager
-@synthesize serviceKey;
+@synthesize serviceKey, baseUrl;
+
+- (id)init
+{
+    if (! self) {
+        
+        self = [super init];
+    }
+    baseUrl = [NSURL URLWithString:WebServiceURL];
+    return self;
+}
 
 -(void)startLoginServiceWithParams:(NSMutableDictionary *)postData
 {
-    NSURL* url;
-    url = [NSURL URLWithString:LoginService];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseUrl];
     manager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer.timeoutInterval = 30;
     //    manager.responseSerializer.acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 350)];
     
-    [manager POST:LoginService parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:self.serviceKey parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response:- %@",responseObject);
         if ([self.delegate respondsToSelector:@selector(didFinishServiceWithSuccess:)]) {
-            [self.delegate didFinishServiceWithSuccess:[self prepareResponseObjectForServiceKey:LoginService withData:responseObject]];
+            [self.delegate didFinishServiceWithSuccess:[self prepareResponseObjectForServiceKey:self.serviceKey withData:responseObject]];
         }
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error :- %@",error);
@@ -40,19 +48,16 @@
 }
 -(void)startRegisterServiceWithParams:(NSMutableDictionary *)postData
 {
-    NSURL* url;
-    url = [NSURL URLWithString:RegisterService];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseUrl];
     manager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer.timeoutInterval = 30;
     //    manager.responseSerializer.acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 350)];
     
-    [manager POST:RegisterService parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:self.serviceKey parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response:- %@",responseObject);
         if ([self.delegate respondsToSelector:@selector(didFinishServiceWithSuccess:)]) {
-            [self.delegate didFinishServiceWithSuccess:[self prepareResponseObjectForServiceKey:RegisterService withData:responseObject]];
+            [self.delegate didFinishServiceWithSuccess:[self prepareResponseObjectForServiceKey:self.serviceKey withData:responseObject]];
         }
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error :- %@",error);
@@ -64,19 +69,16 @@
 
 -(void)startAddControllerServiceWithParams:(NSMutableDictionary *)postData
 {
-    NSURL* url;
-    url = [NSURL URLWithString:AddControllerService];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseUrl];
     manager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer.timeoutInterval = 30;
     //    manager.responseSerializer.acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 350)];
     
-    [manager POST:AddControllerService parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:self.serviceKey parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response:- %@",responseObject);
         if ([self.delegate respondsToSelector:@selector(didFinishServiceWithSuccess:)]) {
-            [self.delegate didFinishServiceWithSuccess:[self prepareResponseObjectForServiceKey:AddControllerService withData:responseObject]];
+            [self.delegate didFinishServiceWithSuccess:[self prepareResponseObjectForServiceKey:self.serviceKey withData:responseObject]];
         }
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error :- %@",error);
@@ -88,19 +90,16 @@
 
 -(void)startEditControllerServiceWithParams:(NSMutableDictionary *)postData
 {
-    NSURL* url;
-    url = [NSURL URLWithString:EditControllerService];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseUrl];
     manager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer.timeoutInterval = 30;
     //    manager.responseSerializer.acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 350)];
     
-    [manager POST:EditControllerService parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:self.serviceKey parameters:postData progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response:- %@",responseObject);
         if ([self.delegate respondsToSelector:@selector(didFinishEditControllerServiceWithSuccess:)]) {
-            [self.delegate didFinishEditControllerServiceWithSuccess:[self prepareResponseObjectForServiceKey:EditControllerService withData:responseObject]];
+            [self.delegate didFinishEditControllerServiceWithSuccess:[self prepareResponseObjectForServiceKey:self.serviceKey withData:responseObject]];
         }
     }failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error :- %@",error);

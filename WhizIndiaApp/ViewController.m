@@ -113,6 +113,7 @@
     }
     [SVProgressHUD showWithStatus:@"Logging In"];
     DataManager *manager = [[DataManager alloc] init];
+    manager.serviceKey = LoginService;
     manager.delegate = self;
     [manager startLoginServiceWithParams:[self prepareDictionaryForLogin]];
 }

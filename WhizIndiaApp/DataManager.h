@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) NSString *serviceKey;
 @property (strong, nonatomic) id<DataManagerDelegate> delegate;
+@property (strong, nonatomic) NSURL* baseUrl;
 
 -(void)startLoginServiceWithParams:(NSMutableDictionary *)postData;
 -(void)startRegisterServiceWithParams:(NSMutableDictionary *)postData;
