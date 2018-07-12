@@ -14,11 +14,11 @@
 {
     self = [super initWithCoder:aDecoder];
     border = [CALayer layer];
-    CGFloat borderWidth = 2;
-    border.frame = CGRectMake(0, (self.frame.size.height - borderWidth), (self.frame.size.width/320.) * kScreenWidth, (self.frame.size.height/568.) * kScreenHeight);
+    CGFloat borderWidth = 2.;
+    border.frame = CGRectMake(0, ((self.frame.size.height - borderWidth)/568.) * kScreenHeight, (self.frame.size.width/320.) * kScreenWidth, (self.frame.size.height/568.) * kScreenHeight);
     border.borderWidth = borderWidth;
     
-    [self setTintColor:[UIColor colorWithRed:241./255. green:64./255. blue:35./255. alpha:1]];
+    [self setTintColor:[UIColor whiteColor]];
     if (self.tag == 2) {
         self.textColor = [UIColor blackColor];
         self.backgroundColor = [UIColor clearColor];
@@ -35,7 +35,7 @@
     }
     else
     {
-    border.borderColor = [UIColor clearColor].CGColor;
+    border.borderColor = [UIColor lightTextColor].CGColor;
     self.textColor = [UIColor whiteColor];
     self.backgroundColor = [UIColor clearColor];
         [self.layer addSublayer:border];
@@ -47,7 +47,7 @@
     return self;
 }
 - (void) drawPlaceholderInRect:(CGRect)rect {
-    UIColor *colour = [UIColor lightGrayColor];
+    UIColor *colour = [UIColor whiteColor];
     NSDictionary *attributes = @{NSForegroundColorAttributeName: colour, NSFontAttributeName: self.font};
     CGRect boundingRect = [self.placeholder boundingRectWithSize:rect.size options:0 attributes:attributes context:nil];
     [self.placeholder drawAtPoint:CGPointMake(0, (rect.size.height/2)-boundingRect.size.height/2) withAttributes:attributes];
@@ -92,13 +92,15 @@
     }
     else
     {
-        border.borderColor = [UIColor colorWithRed:241./255. green:64./255. blue:35./255. alpha:1].CGColor;
+        border.borderColor = [UIColor whiteColor].CGColor;
+        border.borderWidth = 4;
     }
 
 }
 -(void)hideBelowBorder
 {
-    border.borderColor = [UIColor clearColor].CGColor;
+    border.borderColor = [UIColor lightTextColor].CGColor;
+    border.borderWidth = 2;
 }
 
 -(void)updateBorderWidth

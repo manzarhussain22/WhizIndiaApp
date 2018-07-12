@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuTableViewTrailingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuTableViewLeadingConstraint;
+@property (weak, nonatomic) IBOutlet UIView *profileView;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @property (strong, nonatomic) NSMutableArray *menuSectionOneItems;
 @property (strong, nonatomic) NSArray *menuSectionTwoItems;
@@ -30,6 +33,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _profileView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    _profileView.layer.shadowOffset = CGSizeMake(0, -5);
+    _profileView.layer.shadowOpacity = .8;
+    _profileView.layer.shadowRadius = 10.;
+    _profileView.layer.masksToBounds = NO;
     _menuSectionOneItems = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *topTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissMenu:)];
@@ -164,6 +172,8 @@
     selectedRowIndex = indexPath;
     [self.menuTableView reloadData];
 
+}
+- (IBAction)editProfileButtonTapped:(id)sender {
 }
 
 

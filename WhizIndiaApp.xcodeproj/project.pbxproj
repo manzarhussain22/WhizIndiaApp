@@ -43,11 +43,15 @@
 		96DF0EF22031B6BD00292573 /* MenuViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DF0EF12031B6BD00292573 /* MenuViewTableViewCell.m */; };
 		96F3EBA42055ADBB008613E6 /* AddEditCOntrollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3EBA32055ADBB008613E6 /* AddEditCOntrollerViewController.m */; };
 		96F3EBA62055ADDB008613E6 /* AddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */; };
+		CE806AED5B9AD6D215A91E37 /* Pods_AutoIHomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB224F3D62A529F6359767C /* Pods_AutoIHomes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DC3E7EC062012651B65CE57 /* Pods-AutoIHomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoIHomes.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes.release.xcconfig"; sourceTree = "<group>"; };
+		3CD8EF3F358DA60A9868A659 /* Pods-AutoIHomes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoIHomes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes.debug.xcconfig"; sourceTree = "<group>"; };
+		4CB224F3D62A529F6359767C /* Pods_AutoIHomes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoIHomes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhizIndiaApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp.debug.xcconfig"; sourceTree = "<group>"; };
-		963C1F98202AD64F00DFD3F2 /* WhizIndiaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhizIndiaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		963C1F98202AD64F00DFD3F2 /* AutoIHomes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoIHomes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963C1F9C202AD65000DFD3F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		963C1F9E202AD65000DFD3F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WhizIndiaApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		963C1F9F202AD65000DFD3F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WhizIndiaApp/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -122,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				946BA3F202E147A80EF76E68 /* libPods-WhizIndiaApp.a in Frameworks */,
+				CE806AED5B9AD6D215A91E37 /* Pods_AutoIHomes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +138,8 @@
 			children = (
 				68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */,
 				C58089421DF1BC31755D39F0 /* Pods-WhizIndiaApp.release.xcconfig */,
+				3CD8EF3F358DA60A9868A659 /* Pods-AutoIHomes.debug.xcconfig */,
+				0DC3E7EC062012651B65CE57 /* Pods-AutoIHomes.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8287CD883B31E9BAEA9659 /* libPods-WhizIndiaApp.a */,
+				4CB224F3D62A529F6359767C /* Pods_AutoIHomes.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,7 +166,7 @@
 		963C1F99202AD64F00DFD3F2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				963C1F98202AD64F00DFD3F2 /* WhizIndiaApp.app */,
+				963C1F98202AD64F00DFD3F2 /* AutoIHomes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -341,9 +349,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		963C1F97202AD64F00DFD3F2 /* WhizIndiaApp */ = {
+		963C1F97202AD64F00DFD3F2 /* AutoIHomes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 963C1FAF202AD65300DFD3F2 /* Build configuration list for PBXNativeTarget "WhizIndiaApp" */;
+			buildConfigurationList = 963C1FAF202AD65300DFD3F2 /* Build configuration list for PBXNativeTarget "AutoIHomes" */;
 			buildPhases = (
 				0F35A29F5D42E82DC021DB2A /* [CP] Check Pods Manifest.lock */,
 				963C1F94202AD64F00DFD3F2 /* Sources */,
@@ -356,9 +364,9 @@
 			);
 			dependencies = (
 			);
-			name = WhizIndiaApp;
+			name = AutoIHomes;
 			productName = WhizIndiaApp;
-			productReference = 963C1F98202AD64F00DFD3F2 /* WhizIndiaApp.app */;
+			productReference = 963C1F98202AD64F00DFD3F2 /* AutoIHomes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -368,7 +376,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = WhizIndia;
+				ORGANIZATIONNAME = "AutoI Innovations Pvt. Ltd.";
 				TargetAttributes = {
 					963C1F97202AD64F00DFD3F2 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -390,7 +398,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				963C1F97202AD64F00DFD3F2 /* WhizIndiaApp */,
+				963C1F97202AD64F00DFD3F2 /* AutoIHomes */,
 			);
 		};
 /* End PBXProject section */
@@ -441,7 +449,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C9B1323F1C6E47DB537D4F60 /* [CP] Embed Pods Frameworks */ = {
@@ -456,7 +464,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -612,7 +620,7 @@
 		};
 		963C1FB0202AD65300DFD3F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */;
+			baseConfigurationReference = 3CD8EF3F358DA60A9868A659 /* Pods-AutoIHomes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HF8YC3E6DM;
@@ -629,7 +637,7 @@
 		};
 		963C1FB1202AD65300DFD3F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C58089421DF1BC31755D39F0 /* Pods-WhizIndiaApp.release.xcconfig */;
+			baseConfigurationReference = 0DC3E7EC062012651B65CE57 /* Pods-AutoIHomes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HF8YC3E6DM;
@@ -656,7 +664,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		963C1FAF202AD65300DFD3F2 /* Build configuration list for PBXNativeTarget "WhizIndiaApp" */ = {
+		963C1FAF202AD65300DFD3F2 /* Build configuration list for PBXNativeTarget "AutoIHomes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				963C1FB0202AD65300DFD3F2 /* Debug */,

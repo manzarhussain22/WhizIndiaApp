@@ -8,6 +8,7 @@
 
 #ifndef Constants_h
 #define Constants_h
+#define IS_PROD_ENV 0
 
 #define menuSection2Array [NSArray arrayWithObjects:@"About Us",@"Contact Us",@"Logout", nil]
 
@@ -20,10 +21,15 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
-#define WebServiceURL @"http://www.whizindia.com/rest"
+#if (IS_PROD_ENV)
+#define WebServiceURL @"http://www.autoiinnovations.com.com/rest"
+#else
+#define WebServiceURL @"http://autoiinnovations.com/Test/rest"
+#endif
 
 //Login/Register Service
 #define LoginService @"login/authenticateUserWH"
+#define SocialLoginService @"register/googleSingInWH"
 #define RegisterService @"register/registerMemberWH"
 
 //Login/Register Request Modal Keys

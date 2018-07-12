@@ -9,13 +9,19 @@
 #import "LoginRequestModal.h"
 
 @implementation LoginRequestModal
-@synthesize email, password;
+@synthesize email, password,name, isSocial;
 
 - (NSMutableDictionary *)createRequestDictionary {
     
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
     
     [dict setObject:email forKey:emailKey];
+    
+    if (isSocial) {
+        [dict setObject:name forKey:usernameKey];
+        [dict setObject:@"G" forKey:modeKey];
+    }
+    else
     [dict setObject:password forKey:passwordKey];
     
     return dict;

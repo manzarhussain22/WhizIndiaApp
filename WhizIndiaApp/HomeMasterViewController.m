@@ -52,6 +52,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *editButtonLeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonTrailingConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *sideMenuButton;
 
 
 
@@ -73,13 +74,17 @@
     
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.headerView addGestureRecognizer:tapped];
-    
+    self.headerView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.headerView.layer.shadowOffset = CGSizeMake(0, 5);
+    self.headerView.layer.shadowOpacity = .6;
+    self.headerView.layer.shadowRadius = 10.;
+    self.headerView.layer.masksToBounds = NO;
     [self setupUIConstraints];
     [self checkAndSetUpContentView];
     [self setupMenuView];
     [self setUpAddEditView];
     if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-        self.view.backgroundColor = [UIColor clearColor];
+        self.view.backgroundColor = [UIColor whiteColor];
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         //always fill the view
@@ -138,8 +143,8 @@
 
 -(void)setupUIConstraints
 {
-    _menuButtonTopConstraint.constant = (28./568.) * kScreenHeight;
-    _menuButtonLeadingConstraint.constant = _settingButtonTrailingConstraint.constant =(20./320.) * kScreenWidth;
+    _menuButtonTopConstraint.constant = (30./568.) * kScreenHeight;
+    _menuButtonLeadingConstraint.constant = _settingButtonTrailingConstraint.constant =(10./320.) * kScreenWidth;
     _contentViewBottomConstraint.constant =  (40./568.) * kScreenHeight;
 }
 
@@ -177,8 +182,12 @@
     
     if (!yesNo) {
         [self presentViewController:menuView animated:YES completion:nil];
+        [self.sideMenuButton setImage:[UIImage imageNamed:@"backarrow"] forState:UIControlStateNormal];
     }
-    
+    else
+    {
+        [self.sideMenuButton setImage:[UIImage imageNamed:@"sidemenubutton"] forState:UIControlStateNormal];
+    }
     isMenu = !yesNo;
     
 }
@@ -220,6 +229,10 @@
          }
                          completion:nil];
     }
+}
+
+- (IBAction)webButtonTapped:(id)sender {
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.autoiinnovations.com"]];
 }
 
 #pragma AddEdit View User Actions

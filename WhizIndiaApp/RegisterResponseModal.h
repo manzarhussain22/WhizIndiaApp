@@ -10,7 +10,7 @@
 
 @interface RegisterResponseModal : NSObject
 
-@property(strong, nonatomic) NSNumber *registerStatus;
+@property(nonatomic, strong) NSString *registerStatus;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

@@ -9,7 +9,7 @@
 #import "RegisterRequestModal.h"
 
 @implementation RegisterRequestModal
-@synthesize username, password, email, phoneNumber,dateOfBirth;
+@synthesize username, password, email, phoneNumber;
 
 - (NSMutableDictionary *)createRequestDictionary {
     
@@ -19,9 +19,6 @@
     [dict setObject:password forKey:passwordKey];
     [dict setObject:username forKey:usernameKey];
     [dict setObject:phoneNumber forKey:phoneNumberKey];
-    if (![dateOfBirth isEqualToString:@""] && dateOfBirth != nil) {
-         [dict setObject:dateOfBirth forKey:DOBKey];
-    }
     [dict setObject:@"C" forKey:modeKey];
 
     return dict;

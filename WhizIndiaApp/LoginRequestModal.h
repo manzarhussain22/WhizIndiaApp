@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSString* email;
 @property (nonatomic, strong) NSString* password;
+@property (nonatomic, strong) NSString* name;
+@property (nonatomic) BOOL isSocial;
 
 - (NSMutableDictionary *)createRequestDictionary;
 

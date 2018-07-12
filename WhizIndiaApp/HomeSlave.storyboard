@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,6 +9,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,10 +17,6 @@
         <scene sceneID="atZ-uM-trB">
             <objects>
                 <viewController storyboardIdentifier="homeSlave" id="17k-mc-f8U" customClass="HomeSlaveViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AQ6-D2-Hug"/>
-                        <viewControllerLayoutGuide type="bottom" id="XVs-BT-PJX"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="83U-jj-Vfx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,13 +31,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="iwo-Fd-Lp0" firstAttribute="centerY" secondItem="ETY-iF-gP4" secondAttribute="centerY" id="Bob-Zx-6kO"/>
                                     <constraint firstItem="iwo-Fd-Lp0" firstAttribute="centerX" secondItem="ETY-iF-gP4" secondAttribute="centerX" id="ek9-LI-jpC"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zh-Qn-ooj" customClass="BEMSimpleLineGraphView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zh-Qn-ooj" customClass="BEMSimpleLineGraphView">
                                 <rect key="frame" x="16" y="60" width="288" height="508"/>
                                 <color key="backgroundColor" red="0.0" green="0.64313725489999995" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -83,7 +80,7 @@
                                                 <constraint firstItem="lnM-eu-lyo" firstAttribute="centerY" secondItem="WNR-6V-OfR" secondAttribute="centerY" id="g8r-F4-dgk"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94480043650000001" green="0.24937026109999999" blue="0.13650218119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="WNR-6V-OfR" firstAttribute="centerY" secondItem="ECz-rs-sIP" secondAttribute="centerY" id="YaD-Ml-ax8"/>
                                             <constraint firstItem="WNR-6V-OfR" firstAttribute="width" secondItem="ECz-rs-sIP" secondAttribute="width" multiplier="35/320" id="a0x-BD-He5"/>
@@ -102,27 +99,27 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7zh-Qn-ooj" firstAttribute="top" secondItem="ETY-iF-gP4" secondAttribute="bottom" constant="10" id="Cah-iy-9y6"/>
-                            <constraint firstItem="XVs-BT-PJX" firstAttribute="top" secondItem="7zh-Qn-ooj" secondAttribute="bottom" id="Crk-dm-bC4"/>
+                            <constraint firstItem="SP7-4L-HQq" firstAttribute="bottom" secondItem="7zh-Qn-ooj" secondAttribute="bottom" id="Crk-dm-bC4"/>
                             <constraint firstItem="7zh-Qn-ooj" firstAttribute="leading" secondItem="83U-jj-Vfx" secondAttribute="leadingMargin" id="L9l-e0-cfR"/>
                             <constraint firstItem="P5H-GW-dAa" firstAttribute="top" secondItem="ETY-iF-gP4" secondAttribute="bottom" constant="10" id="MP7-6M-ZMW"/>
-                            <constraint firstItem="XVs-BT-PJX" firstAttribute="top" secondItem="P5H-GW-dAa" secondAttribute="bottom" id="Q5K-NE-nAG"/>
+                            <constraint firstItem="SP7-4L-HQq" firstAttribute="bottom" secondItem="P5H-GW-dAa" secondAttribute="bottom" id="Q5K-NE-nAG"/>
                             <constraint firstItem="ETY-iF-gP4" firstAttribute="height" secondItem="83U-jj-Vfx" secondAttribute="height" multiplier="50/568" id="QNR-9s-qIr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P5H-GW-dAa" secondAttribute="trailing" id="RjX-6D-Vav"/>
-                            <constraint firstItem="ETY-iF-gP4" firstAttribute="leading" secondItem="83U-jj-Vfx" secondAttribute="leading" id="TJG-Jl-X2D"/>
-                            <constraint firstAttribute="trailing" secondItem="ETY-iF-gP4" secondAttribute="trailing" id="Tnf-Mp-KtK"/>
+                            <constraint firstItem="ETY-iF-gP4" firstAttribute="leading" secondItem="SP7-4L-HQq" secondAttribute="leading" id="TJG-Jl-X2D"/>
+                            <constraint firstItem="SP7-4L-HQq" firstAttribute="trailing" secondItem="ETY-iF-gP4" secondAttribute="trailing" id="Tnf-Mp-KtK"/>
                             <constraint firstItem="ETY-iF-gP4" firstAttribute="top" secondItem="83U-jj-Vfx" secondAttribute="top" id="Vbs-fi-7Ke"/>
                             <constraint firstItem="7zh-Qn-ooj" firstAttribute="trailing" secondItem="83U-jj-Vfx" secondAttribute="trailingMargin" id="ggH-TD-qtw"/>
                             <constraint firstItem="P5H-GW-dAa" firstAttribute="leading" secondItem="83U-jj-Vfx" secondAttribute="leadingMargin" id="xgo-qy-zY7"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="SP7-4L-HQq"/>
                     </view>
                     <connections>
                         <outlet property="contentTableView" destination="P5H-GW-dAa" id="yPK-8V-iko"/>
                         <outlet property="controllerTitle" destination="iwo-Fd-Lp0" id="Wto-8m-EUe"/>
                         <outlet property="matrixView" destination="7zh-Qn-ooj" id="aIn-oz-7y4"/>
-                        <outlet property="view" destination="83U-jj-Vfx" id="oS9-rr-9kD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4p8-M2-p4W" userLabel="First Responder" sceneMemberID="firstResponder"/>

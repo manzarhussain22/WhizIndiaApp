@@ -35,10 +35,10 @@
     
     UIView* snapshot = [fromVC.view snapshotViewAfterScreenUpdates:NO];
     
-//    UIView* maskView = [[SharedClass sharedInstance] sharedMaskView];
+    UIView* maskView = [[SharedClass sharedInstance] sharedMaskView];
     
     [containerView addSubview:toVC.view];
-//    [containerView addSubview:maskView];
+    [containerView addSubview:maskView];
     [containerView addSubview:snapshot];
     
     
@@ -49,7 +49,7 @@
     [UIView animateKeyframesWithDuration:duration delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations: ^{
         
         [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.7 animations:^ {
-//            maskView.alpha = 0.0;
+            maskView.alpha = 0.0;
         }];
         
         //        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.8 animations:^ {

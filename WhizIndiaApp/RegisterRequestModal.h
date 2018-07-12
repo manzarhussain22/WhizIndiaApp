@@ -14,7 +14,6 @@
 @property (nonatomic, strong) NSString* password;
 @property (nonatomic, strong) NSString* email;
 @property (nonatomic, strong) NSString* phoneNumber;
-@property (nonatomic, strong) NSString* dateOfBirth;
 
 - (NSMutableDictionary *)createRequestDictionary;
 

@@ -111,7 +111,7 @@
 
 - (id) prepareResponseObjectForServiceKey:(NSString *) responseServiceKey withData:(id)responseObj
 {
-    if ([responseServiceKey isEqualToString:LoginService]) {
+    if ([responseServiceKey isEqualToString:LoginService] || [responseServiceKey isEqualToString:SocialLoginService]) {
         LoginResponseModal *loginResponse = [[LoginResponseModal alloc] initWithDictionary:responseObj];
         return loginResponse;
     }

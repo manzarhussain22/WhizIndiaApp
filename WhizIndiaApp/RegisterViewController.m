@@ -12,21 +12,25 @@
 #import "RegisterRequestModal.h"
 #import "RegisterResponseModal.h"
 
+typedef void(^allFieldsVerified)(BOOL);
+
 @interface RegisterViewController ()<UITextFieldDelegate, DataManagerDelegate>
 {
     BOOL isUsernameVerified;
     BOOL isPasswordVerified;
     BOOL isEmailIDVerified;
     BOOL isPhoneVerified;
-    BOOL isDOBVerified;
+    WHTextField *activeField;
+    __weak IBOutlet NSLayoutConstraint *brandLogoTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *textFieldViewTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *registerButtonTopConstraint;
 }
-@property (weak, nonatomic) IBOutlet WHTextField *usernameField;
 @property (weak, nonatomic) IBOutlet WHTextField *passwordField;
 @property (weak, nonatomic) IBOutlet WHTextField *emailField;
 @property (weak, nonatomic) IBOutlet WHTextField *phoneNumberField;
-@property (weak, nonatomic) IBOutlet WHTextField *DOBField;
-@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet WHTextField *nameField;
 @property (weak, nonatomic) IBOutlet UIButton *alreadyHaveAccountButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *registerScrollView;
 
 @end
 
@@ -34,28 +38,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _usernameField.delegate = self;
     _passwordField.delegate = self;
     _emailField.delegate = self;
     _phoneNumberField.delegate = self;
-    _DOBField.delegate = self;
-    [self addDatePickerViewToTextField:_DOBField];
+    _nameField.delegate = self;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:tap];
-    _registerButton.layer.cornerRadius = (17./568.) * kScreenHeight;
     _alreadyHaveAccountButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _alreadyHaveAccountButton.titleLabel.numberOfLines = 2;
     _alreadyHaveAccountButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [_alreadyHaveAccountButton setTitle:@"Already have an account?\nClick Here" forState:UIControlStateNormal];
+    activeField = [[WHTextField alloc] init];
+    _registerScrollView.scrollEnabled = NO;
+    [self registerForKeyboardNotifications];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [[SharedClass sharedInstance] setIsRegisterStory:YES];
-    [self enableDisableRegisterButton];
 }
-
+-(void)updateUIConstraint {
+    brandLogoTopConstraint.constant = (50./568.) * kScreenHeight;
+    textFieldViewTopConstraint.constant = (50./568.) * kScreenHeight;
+    registerButtonTopConstraint.constant = (25./568.) * kScreenHeight;
+}
 -(void)viewTapped:(UITapGestureRecognizer *)tapped
 {
     [self.view endEditing:YES];
@@ -64,16 +71,24 @@
 #pragma mark - UIActions
 
 - (IBAction)registerButtonTapped:(id)sender {
-    DataManager *manager = [[DataManager alloc] init];
-    manager.serviceKey = RegisterService;
-    manager.delegate = self;
-    [manager startRegisterServiceWithParams:[self prepareDictionaryForRegister]];
-    
+    [self.view endEditing:YES];
+    [self enableDisableRegisterButton:^(BOOL verified){
+        if (verified) {
+            DataManager *manager = [[DataManager alloc] init];
+            manager.serviceKey = RegisterService;
+            manager.delegate = self;
+            [manager startRegisterServiceWithParams:[self prepareDictionaryForRegister]];
+        }
+        else
+        {
+            return;
+        }
+    }];
 }
 
 - (IBAction)signInButtonTapped:(id)sender {
     [[SharedClass sharedInstance] setIsRegisterStory:NO];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
@@ -89,7 +104,7 @@
     [textField hideBelowBorder];
     [[SharedClass sharedInstance] setUsername:_emailField.text];
     [[SharedClass sharedInstance] setPassword:_passwordField.text];
-    if (_usernameField.text !=nil && ![_usernameField.text isEqualToString:@""]) {
+    if (_nameField.text !=nil && ![_nameField.text isEqualToString:@""]) {
         isUsernameVerified = YES;
     }
     else
@@ -120,174 +135,68 @@
     {
         isPhoneVerified = NO;
     }
-    if (_DOBField.text !=nil && ![_DOBField.text isEqualToString:@""])
-    {
-        isDOBVerified = YES;
-    }
-    else
-    {
-        isDOBVerified = NO;
-    }
-    
-    [self enableDisableRegisterButton];
 }
 
 -(BOOL)textFieldShouldReturn:(WHTextField *)textField
 {
-    if (textField == _usernameField) {
+    if (textField == _emailField) {
         [_passwordField becomeFirstResponder];
     }
     else if (textField == _passwordField)
     {
-        [_emailField becomeFirstResponder];
+        [_nameField becomeFirstResponder];
     }
-    else if (textField == _emailField)
+    else if (textField == _nameField)
     {
         [_phoneNumberField becomeFirstResponder];
     }
     else if (textField == _phoneNumberField)
     {
-        [_DOBField becomeFirstResponder];
+        [textField resignFirstResponder];
     }
-    else if (textField == _DOBField)
-    {
-        [_DOBField resignFirstResponder];
-    }
-    
-    
-    
+
     return YES;
 }
 
--(void)enableDisableRegisterButton
+-(void)enableDisableRegisterButton:(allFieldsVerified)verified
 {
-    int totalFields = 5;
+    int totalFields = 4;
     int count = 0;
-    if (isUsernameVerified) {
+    if (isEmailIDVerified) {
         count++;
     }
     if (isPasswordVerified) {
         count++;
     }
-    if (isEmailIDVerified) {
+    if (isUsernameVerified) {
         count++;
     }
     if (isPhoneVerified) {
         count++;
     }
-    if (isDOBVerified) {
-        count++;
-    }
-    
     if (count == totalFields) {
-        _registerButton.enabled = YES;
-        [_registerButton setBackgroundColor:[UIColor colorWithRed:241./255. green:64./255. blue:35./255. alpha:1.0]];
+        verified(YES);
     }
     else
     {
-        _registerButton.enabled = NO;
-        [_registerButton setBackgroundColor:[UIColor lightGrayColor]];
+        verified(NO);
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Error!!!"
+                                     message:@"All fields are mandatory"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        //Add Buttons
+        
+        UIAlertAction* noButton = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleCancel
+                                   handler:nil];
+        
+        //Add your buttons to alert controller
+        [alert addAction:noButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
-}
-
-
-- (void) addDatePickerViewToTextField:(UITextField *)txtField {
-    
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *currentDate = [NSDate date];
-    
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    datePicker.backgroundColor = [UIColor blackColor];
-    [datePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    [datePicker setDate:[NSDate date]];
-    
-    UIToolbar *toolBar= [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,320,44)];
-    [toolBar setBarStyle:UIBarStyleBlackTranslucent];
-    [toolBar setBackgroundColor:[UIColor lightGrayColor]];
-    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    customButton.frame = CGRectMake(0, 0, 60, 33);
-    
-    customButton.showsTouchWhenHighlighted = YES;
-    [customButton setTitle:NSLocalizedString(@"Done",nil) forState:UIControlStateNormal];
-    [customButton.titleLabel setFont:[UIFont fontWithName:@"System-Bold" size:(12./568.)*kScreenHeight]];
-    
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 33)];
-    [lbl setText:NSLocalizedString(@"Select Date", nil)];
-    [lbl setTextColor:[UIColor whiteColor]];
-    lbl.textAlignment = NSTextAlignmentCenter;
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:lbl];
-    UIBarButtonItem *barCustomButton =[[UIBarButtonItem alloc] initWithCustomView:customButton];
-    UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-
-        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancelButton.frame = CGRectMake(0, 0, 60, 33);
-        cancelButton.showsTouchWhenHighlighted = YES;
-        [cancelButton setTitle:NSLocalizedString(@"Cancel",nil) forState:UIControlStateNormal];
-        [cancelButton.titleLabel setFont:[UIFont fontWithName:@"GothamRounded-Bold" size:(12./568.)*kScreenHeight]];
-        UIBarButtonItem *barCancelButton =[[UIBarButtonItem alloc] initWithCustomView:cancelButton];
-        toolBar.items = [[NSArray alloc] initWithObjects:barCancelButton,flexibleSpace,item,flexibleSpace,barCustomButton,nil];
-        
-        [cancelButton addTarget:self action:@selector(childBirthDatePickerViewCancelButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [customButton addTarget:self action:@selector(childBirthDatePickerViewDoneButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [datePicker addTarget:self action:@selector(updateChildBirthDateTextField:) forControlEvents:UIControlEventValueChanged];
-        
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setYear:-18];
-    NSDate *maxDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
-    
-    [datePicker setMaximumDate:maxDate];
-    
-    [comps setYear:1900];
-    [comps setMonth:01];
-    // NSDate *minDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
-    NSDate *minDate = [calendar dateFromComponents:comps];
-    [datePicker setMinimumDate:minDate];
-    
-    
-    NSDateComponents *birthComp = [[NSDateComponents alloc] init];
-    [birthComp setYear:1980];
-    [birthComp setMonth:01];
-    NSDate *defaultDate = [calendar dateFromComponents:birthComp];
-    
-    [datePicker setDate:defaultDate];
-    
-        [txtField setInputView:datePicker];
-        [txtField setInputAccessoryView:toolBar];
-    
-}
--(void)childBirthDatePickerViewDoneButtonTapped:(id)sender{
-    
-    UIDatePicker *picker = (UIDatePicker*)self.DOBField.inputView;
-    
-    self.DOBField.text = [self formatDate:picker.date];
-    [self.DOBField resignFirstResponder];
-    
-}
-
--(void)childBirthDatePickerViewCancelButtonTapped:(id)sender{
-    
-    self.DOBField.text = @"";
-    [self.DOBField resignFirstResponder];
-    
-}
--(void)updateChildBirthDateTextField:(id)sender
-{
-    UIDatePicker *picker = (UIDatePicker*)self.DOBField.inputView;
-    self.DOBField.text = [self formatDate:picker.date];
-    
-}
-
-// Formats the date chosen with the date picker.
-- (NSString *)formatDate:(NSDate *)date
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    [dateFormatter setDateFormat:@"dd-MMM-yyyy"];
-    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
-    NSString *formattedDate = [dateFormatter stringFromDate:date];
-    return formattedDate;
 }
 
 #pragma mark - Modalobject
@@ -295,20 +204,21 @@
 - (NSMutableDictionary *) prepareDictionaryForRegister {
     
     RegisterRequestModal* registerObj = [[RegisterRequestModal alloc] init];
-    registerObj.username = _usernameField.text;
+    registerObj.username = _nameField.text;
     registerObj.password = _passwordField.text;
     registerObj.email = _emailField.text;
     registerObj.phoneNumber = _phoneNumberField.text;
-    registerObj.dateOfBirth = _DOBField.text;
-    
     return [registerObj createRequestDictionary];
-    
 }
 
 #pragma mark - Datamanager Delegates
 -(void)didFinishServiceWithSuccess:(RegisterResponseModal *)responseData
 {
-    if ([responseData.registerStatus isEqual:[NSNumber numberWithInt:1]] ) {
+    if ([responseData.registerStatus isEqualToString:@"1"] ) {
+        if (self.navigationController) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     else
@@ -335,6 +245,50 @@
 -(void)didFinishServiceWithFailure:(NSString *)errorMsg
 {
     [[SharedClass sharedInstance] dismissProgressView];
+}
+
+#pragma mark - Form scroll for Keyboard Show/Hide
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    
+    self.registerScrollView.scrollEnabled = YES;
+    
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.registerScrollView.contentInset = contentInsets;
+    self.registerScrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
+        [self.registerScrollView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    
+    self.registerScrollView.scrollEnabled = NO;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.registerScrollView.contentInset = contentInsets;
+    self.registerScrollView.scrollIndicatorInsets = contentInsets;
 }
 
 @end

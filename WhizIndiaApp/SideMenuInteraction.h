@@ -1,10 +1,12 @@
 //
 //  SideMenuInteraction.h
-//  AUTOIApp
+//  AutoIHomes
 //
-//  Created by Manzar_Hussain on 13/02/18.
-//  Copyright © 2018 AUTOI. All rights reserved.
+//  Created by Manzar_Hussain on 11/07/18.
+//  Copyright © 2018 AutoI Innovations Pvt. Ltd. All rights reserved.
 //
+
+
 
 #import <Foundation/Foundation.h>
 

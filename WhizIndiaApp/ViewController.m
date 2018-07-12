@@ -13,17 +13,20 @@
 #import "RegisterViewController.h"
 #import "LoginResponseModal.h"
 #import "HomeMasterViewController.h"
+#import <GoogleSignIn/GoogleSignIn.h>
 
-@interface ViewController ()<UITextFieldDelegate, DataManagerDelegate>
+@interface ViewController ()<UITextFieldDelegate, DataManagerDelegate,GIDSignInDelegate,GIDSignInUIDelegate>
 {
     
     __weak IBOutlet NSLayoutConstraint *logoLabelTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *userNameTextFieldTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *passwordTextFieldTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *forgotPwdButtonTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *signUpButtonTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *loginButtonTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *orImageViewTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *socialLoginTopConstraint;
 
-    __weak IBOutlet NSLayoutConstraint *loginRegisterButtonViewTopConstraint;
-    __weak IBOutlet NSLayoutConstraint *textFieldViewTopConstraint;
-
-    __weak IBOutlet NSLayoutConstraint *socialLoginViewTopConstraint;
-    __weak IBOutlet UIButton *loginButton;
 }
 @property (weak, nonatomic) IBOutlet WHTextField *userNameField;
 @property (weak, nonatomic) IBOutlet WHTextField *passwordField;
@@ -63,11 +66,15 @@
 
 -(void)updateUXConstraints
 {
-    logoLabelTopConstraint.constant = (20./568.) * kScreenHeight;
-    loginRegisterButtonViewTopConstraint.constant = (50./568.) * kScreenHeight;
-    textFieldViewTopConstraint.constant = (96./568.) * kScreenHeight;
-    socialLoginViewTopConstraint.constant = (72./568.) * kScreenHeight;
-    loginButton.layer.cornerRadius = (15./568.) * kScreenHeight;
+    logoLabelTopConstraint.constant = (50./568.) * kScreenHeight;
+    userNameTextFieldTopConstraint.constant = (50./568.) * kScreenHeight;
+    passwordTextFieldTopConstraint.constant = (10./568.) * kScreenHeight;
+    forgotPwdButtonTopConstraint.constant = (15./568.) * kScreenHeight;
+    signUpButtonTopConstraint.constant = (10./568.) * kScreenHeight;
+    loginButtonTopConstraint.constant = (20./568.) * kScreenHeight;
+    orImageViewTopConstraint.constant = (20./568.) * kScreenHeight;
+    socialLoginTopConstraint.constant = (20./568.) * kScreenHeight;
+    
 }
 
 #pragma mark - UITextFieldDelegate
@@ -121,7 +128,8 @@
 - (IBAction)signUpButtonTapped:(id)sender {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Register" bundle:nil];
     UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"registerViewController"];
-    [self presentViewController:vc animated:YES completion:NULL];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:0 green:171./255. blue:157./255 alpha:1.]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)showHomeScreen
@@ -134,6 +142,12 @@
     }];
 }
 
+- (IBAction)googleSignInButtonTapped:(id)sender {
+    [GIDSignIn sharedInstance].delegate = self;
+    [GIDSignIn sharedInstance].uiDelegate = self;
+    [[GIDSignIn sharedInstance] signIn];
+}
+
 #pragma mark - Modalobject
 
 - (NSMutableDictionary *) prepareDictionaryForLogin {
@@ -141,8 +155,17 @@
     LoginRequestModal* loginObj = [[LoginRequestModal alloc] init];
     loginObj.email = self.userNameField.text;
     loginObj.password = self.passwordField.text;
-    
+    loginObj.isSocial = NO;
     return [loginObj createRequestDictionary];
+    
+}
+
+- (NSMutableDictionary *) prepareDictionaryForSocialLoginWithEmail:(NSString *)email name:(NSString *)userName {
+    LoginRequestModal* socialLoginObj = [[LoginRequestModal alloc] init];
+    socialLoginObj.email = email;
+    socialLoginObj.name = userName;
+    socialLoginObj.isSocial = YES;
+    return [socialLoginObj createRequestDictionary];
     
 }
 
@@ -165,6 +188,32 @@
 -(void)didFinishServiceWithFailure:(NSString *)errorMsg
 {
     [SVProgressHUD dismiss];
+}
+
+#pragma mark - Google SignIn Delegates
+- (void)signIn:(GIDSignIn *)signIn presentViewController:(UIViewController *)viewController
+{
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+- (void)signIn:(GIDSignIn *)signIn dismissViewController:(UIViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+    if(!error)
+    {
+        [SVProgressHUD showWithStatus:@"Logging In"];
+        DataManager *manager = [[DataManager alloc] init];
+        manager.serviceKey = SocialLoginService;
+        manager.delegate = self;
+        [manager startLoginServiceWithParams:[self prepareDictionaryForSocialLoginWithEmail:user.profile.email name:user.profile.name]];
+    }
+    else
+    {
+        NSLog(@"Google Signin error %@",error.localizedDescription);
+    }
 }
 
 @end
