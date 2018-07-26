@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [GIDSignIn sharedInstance].clientID = @"135411960204-nk0f6fnk5o1snf3javf524f76etgaelv.apps.googleusercontent.com";
+    [GIDSignIn sharedInstance].clientID = @"34955841339-gs8uua3eur37aoodgk3jjdc5jsv77e3v.apps.googleusercontent.com";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.layer.cornerRadius = (13./568.) * kScreenHeight;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -14,10 +14,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    [self.layer setCornerRadius:(20.0f/568.)*kScreenHeight];
-    // border
-    [self.layer setBorderColor:[UIColor blackColor].CGColor];
-    [self.layer setBorderWidth:1.0f];
+    [self.layer setCornerRadius:(5.0f/568.)*kScreenHeight];
     // drop shadow
     [self.layer setShadowColor:[UIColor redColor].CGColor];
     [self.layer setShadowOpacity:0.8];

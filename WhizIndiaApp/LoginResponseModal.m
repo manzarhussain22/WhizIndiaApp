@@ -23,6 +23,10 @@
     }
     NSDictionary *dict = dictionary[homeIDKey];
     homeId = dict[homeIDKey];
+    [[SharedClass sharedInstance] setProfileDetails:dictionary[ProfileKey]];
+    [[SharedClass sharedInstance] setSecurityDetails:dictionary[SecurityKey]];
+    [[SharedClass sharedInstance] setISwitchStatus:dictionary[iSwitchStatusKey]];
+    [[SharedClass sharedInstance] setTopicDetails:dictionary[TopicKey]];
     return self;
 }
 

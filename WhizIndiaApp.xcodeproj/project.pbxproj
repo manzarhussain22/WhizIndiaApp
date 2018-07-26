@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		946BA3F202E147A80EF76E68 /* libPods-WhizIndiaApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8287CD883B31E9BAEA9659 /* libPods-WhizIndiaApp.a */; };
+		19B209B6EBE44AEF5D20D572 /* Pods_AutoIHomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1B0A02042183DBA814292F /* Pods_AutoIHomes.framework */; };
 		963C1F9D202AD65000DFD3F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 963C1F9C202AD65000DFD3F2 /* main.m */; };
 		963C1FA0202AD65000DFD3F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 963C1F9F202AD65000DFD3F2 /* AppDelegate.m */; };
 		963C1FA3202AD65000DFD3F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963C1FA2202AD65000DFD3F2 /* ViewController.m */; };
@@ -43,14 +43,11 @@
 		96DF0EF22031B6BD00292573 /* MenuViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DF0EF12031B6BD00292573 /* MenuViewTableViewCell.m */; };
 		96F3EBA42055ADBB008613E6 /* AddEditCOntrollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3EBA32055ADBB008613E6 /* AddEditCOntrollerViewController.m */; };
 		96F3EBA62055ADDB008613E6 /* AddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */; };
-		CE806AED5B9AD6D215A91E37 /* Pods_AutoIHomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB224F3D62A529F6359767C /* Pods_AutoIHomes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0DC3E7EC062012651B65CE57 /* Pods-AutoIHomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoIHomes.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes.release.xcconfig"; sourceTree = "<group>"; };
-		3CD8EF3F358DA60A9868A659 /* Pods-AutoIHomes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoIHomes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes.debug.xcconfig"; sourceTree = "<group>"; };
-		4CB224F3D62A529F6359767C /* Pods_AutoIHomes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoIHomes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhizIndiaApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp.debug.xcconfig"; sourceTree = "<group>"; };
+		0B1B0A02042183DBA814292F /* Pods_AutoIHomes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoIHomes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3315E3D8F95AAAC8522A1A3F /* Pods-AutoIHomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoIHomes.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes.release.xcconfig"; sourceTree = "<group>"; };
 		963C1F98202AD64F00DFD3F2 /* AutoIHomes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoIHomes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963C1F9C202AD65000DFD3F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		963C1F9E202AD65000DFD3F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WhizIndiaApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -108,6 +105,10 @@
 		967A841920331B2400D16769 /* SideMenuShowInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuShowInteraction.m; sourceTree = "<group>"; };
 		967A841B20331B8000D16769 /* SideMenuInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuInteraction.h; sourceTree = "<group>"; };
 		967A841C20331B8000D16769 /* SideMenuInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuInteraction.m; sourceTree = "<group>"; };
+		96A1C8A0210606BA000BD1DA /* FloatingButtonController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatingButtonController.h; sourceTree = "<group>"; };
+		96A1C8A1210606BA000BD1DA /* FloatingButtonController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonController.m; sourceTree = "<group>"; };
+		96A1C8A3210607AC000BD1DA /* FloatingButtonWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatingButtonWindow.h; sourceTree = "<group>"; };
+		96A1C8A4210607AC000BD1DA /* FloatingButtonWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonWindow.m; sourceTree = "<group>"; };
 		96A282AC202AE6E70045B487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96AB02D2205847C1004FC518 /* EditControllerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditControllerTableViewCell.h; sourceTree = "<group>"; };
 		96AB02D3205847C1004FC518 /* EditControllerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditControllerTableViewCell.m; sourceTree = "<group>"; };
@@ -116,8 +117,7 @@
 		96F3EBA22055ADBB008613E6 /* AddEditCOntrollerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEditCOntrollerViewController.h; sourceTree = "<group>"; };
 		96F3EBA32055ADBB008613E6 /* AddEditCOntrollerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEditCOntrollerViewController.m; sourceTree = "<group>"; };
 		96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddEditView.storyboard; sourceTree = "<group>"; };
-		C58089421DF1BC31755D39F0 /* Pods-WhizIndiaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhizIndiaApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhizIndiaApp/Pods-WhizIndiaApp.release.xcconfig"; sourceTree = "<group>"; };
-		FF8287CD883B31E9BAEA9659 /* libPods-WhizIndiaApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WhizIndiaApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE31C1B20064B4539D80F163 /* Pods-AutoIHomes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoIHomes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,41 +125,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946BA3F202E147A80EF76E68 /* libPods-WhizIndiaApp.a in Frameworks */,
-				CE806AED5B9AD6D215A91E37 /* Pods_AutoIHomes.framework in Frameworks */,
+				19B209B6EBE44AEF5D20D572 /* Pods_AutoIHomes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3ED979ACC08BE95AD3191CB2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				68FA040A3E257F3303DB9992 /* Pods-WhizIndiaApp.debug.xcconfig */,
-				C58089421DF1BC31755D39F0 /* Pods-WhizIndiaApp.release.xcconfig */,
-				3CD8EF3F358DA60A9868A659 /* Pods-AutoIHomes.debug.xcconfig */,
-				0DC3E7EC062012651B65CE57 /* Pods-AutoIHomes.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		7BD0AAEBA34FCF6CC8DE83C0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF8287CD883B31E9BAEA9659 /* libPods-WhizIndiaApp.a */,
-				4CB224F3D62A529F6359767C /* Pods_AutoIHomes.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		963C1F8F202AD64B00DFD3F2 = {
 			isa = PBXGroup;
 			children = (
 				963C1F9A202AD64F00DFD3F2 /* WhizIndiaApp */,
 				963C1F99202AD64F00DFD3F2 /* Products */,
-				3ED979ACC08BE95AD3191CB2 /* Pods */,
-				7BD0AAEBA34FCF6CC8DE83C0 /* Frameworks */,
+				E50A37339B68A12E20AE08E7 /* Pods */,
+				A7BF280100D7D1B4F71E38FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,12 +153,13 @@
 		963C1F9A202AD64F00DFD3F2 /* WhizIndiaApp */ = {
 			isa = PBXGroup;
 			children = (
+				96A1C89F2106065C000BD1DA /* Custom Button Floater */,
 				965CD744202F226600B862B8 /* ResponseModal */,
 				965CD743202F223D00B862B8 /* RequestModal */,
 				965CD742202F223300B862B8 /* Helper */,
 				965CD741202EFF9000B862B8 /* Config */,
 				965CD740202EFF7800B862B8 /* CustomTextField */,
-				965CD73F202EFDAF00B862B8 /* Controllers */,
+				965CD73F202EFDAF00B862B8 /* View Controllers Classes */,
 				965CD751202F460F00B862B8 /* Interface */,
 				963C1FA7202AD65300DFD3F2 /* Assets.xcassets */,
 				963C1FA9202AD65300DFD3F2 /* LaunchScreen.storyboard */,
@@ -198,7 +178,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		965CD73F202EFDAF00B862B8 /* Controllers */ = {
+		965CD73F202EFDAF00B862B8 /* View Controllers Classes */ = {
 			isa = PBXGroup;
 			children = (
 				9671894C205169FF00B65E3D /* HomeSlave */,
@@ -207,7 +187,7 @@
 				967A840F2033176100D16769 /* HomeMaster */,
 				967A84102033176D00D16769 /* NavigationMenu */,
 			);
-			name = Controllers;
+			name = "View Controllers Classes";
 			sourceTree = "<group>";
 		};
 		965CD740202EFF7800B862B8 /* CustomTextField */ = {
@@ -346,6 +326,34 @@
 			name = NavigationMenu;
 			sourceTree = "<group>";
 		};
+		96A1C89F2106065C000BD1DA /* Custom Button Floater */ = {
+			isa = PBXGroup;
+			children = (
+				96A1C8A0210606BA000BD1DA /* FloatingButtonController.h */,
+				96A1C8A1210606BA000BD1DA /* FloatingButtonController.m */,
+				96A1C8A3210607AC000BD1DA /* FloatingButtonWindow.h */,
+				96A1C8A4210607AC000BD1DA /* FloatingButtonWindow.m */,
+			);
+			name = "Custom Button Floater";
+			sourceTree = "<group>";
+		};
+		A7BF280100D7D1B4F71E38FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B1B0A02042183DBA814292F /* Pods_AutoIHomes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E50A37339B68A12E20AE08E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE31C1B20064B4539D80F163 /* Pods-AutoIHomes.debug.xcconfig */,
+				3315E3D8F95AAAC8522A1A3F /* Pods-AutoIHomes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,12 +361,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963C1FAF202AD65300DFD3F2 /* Build configuration list for PBXNativeTarget "AutoIHomes" */;
 			buildPhases = (
-				0F35A29F5D42E82DC021DB2A /* [CP] Check Pods Manifest.lock */,
+				8B1FC7626F06A909DA242857 /* [CP] Check Pods Manifest.lock */,
 				963C1F94202AD64F00DFD3F2 /* Sources */,
 				963C1F95202AD64F00DFD3F2 /* Frameworks */,
 				963C1F96202AD64F00DFD3F2 /* Resources */,
-				C9B1323F1C6E47DB537D4F60 /* [CP] Embed Pods Frameworks */,
-				3DD6691F63DD9F6E4E5898C0 /* [CP] Copy Pods Resources */,
+				2325D824DB188360D1FA79C4 /* [CP] Embed Pods Frameworks */,
+				0C57DA8B712864A63D86F8D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -381,6 +389,7 @@
 					963C1F97202AD64F00DFD3F2 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = HF8YC3E6DM;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -422,22 +431,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F35A29F5D42E82DC021DB2A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		3DD6691F63DD9F6E4E5898C0 /* [CP] Copy Pods Resources */ = {
+		0C57DA8B712864A63D86F8D1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -452,7 +446,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C9B1323F1C6E47DB537D4F60 /* [CP] Embed Pods Frameworks */ = {
+		2325D824DB188360D1FA79C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -465,6 +459,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoIHomes/Pods-AutoIHomes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B1FC7626F06A909DA242857 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -620,34 +629,43 @@
 		};
 		963C1FB0202AD65300DFD3F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CD8EF3F358DA60A9868A659 /* Pods-AutoIHomes.debug.xcconfig */;
+			baseConfigurationReference = FE31C1B20064B4539D80F163 /* Pods-AutoIHomes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HF8YC3E6DM;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = WhizIndiaApp/PrefixHeader.pch;
 				INFOPLIST_FILE = WhizIndiaApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WhizIndia.WhizIndiaApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.autoiinnovations.autoihomes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WhizIndiaApp/AutoIHomes-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		963C1FB1202AD65300DFD3F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DC3E7EC062012651B65CE57 /* Pods-AutoIHomes.release.xcconfig */;
+			baseConfigurationReference = 3315E3D8F95AAAC8522A1A3F /* Pods-AutoIHomes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HF8YC3E6DM;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = WhizIndiaApp/PrefixHeader.pch;
 				INFOPLIST_FILE = WhizIndiaApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WhizIndia.WhizIndiaApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.autoiinnovations.autoihomes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WhizIndiaApp/AutoIHomes-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -10,7 +10,7 @@
 #define Constants_h
 #define IS_PROD_ENV 0
 
-#define menuSection2Array [NSArray arrayWithObjects:@"About Us",@"Contact Us",@"Logout", nil]
+#define menuSection2Array [NSArray arrayWithObjects:@"Schedules",@"Metrics",@"Logout", nil]
 
 //Cells
 #define MenuCellIdentifier @"menuCell"
@@ -39,6 +39,10 @@
 #define phoneNumberKey @"phone"
 #define modeKey @"mode"
 #define DOBKey @"DOB"
+#define ProfileKey @"profile"
+#define SecurityKey @"security"
+#define iSwitchStatusKey @"status"
+#define TopicKey @"topic"
 
 //Login Response Modal Keys
 #define controllersKey @"controllers"
@@ -54,10 +58,23 @@
 #define add_controllerPassKey @"passKey"
 #define add_controllerUsernameKey @"userName"
 #define add_controllerNameKey @"controllerName"
+#define add_firstDeviceNameKey @"device1"
+#define add_secondDeviceNameKey @"device2"
 
 #define EditControllerService @"controller/updateController"
 
+//AddController Response Keys
 #define devicesKey @"devices"
+#define broadCastDetailsKey @"broadcastDetails"
+#define deviceStatusKey @"deviceStatus"
+
+//API success/failure code
+#define Status_Failure_0 @"0"
+#define Status_Success @"1"
+#define Status_Failure_999 @"-999"
+#define messageKey @"message"
+
+#define responseKey @"response"
 
 
 #endif /* Constants_h */

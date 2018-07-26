@@ -20,9 +20,10 @@
     
     [self setTintColor:[UIColor whiteColor]];
     if (self.tag == 2) {
-        self.textColor = [UIColor blackColor];
+        self.textColor = [UIColor colorWithRed:0 green:164./255 blue:169./255 alpha:1.0];
         self.backgroundColor = [UIColor clearColor];
-        border.borderColor = [UIColor clearColor].CGColor;
+        border.borderColor = [UIColor colorWithRed:0 green:164./255 blue:169./255 alpha:1.0].CGColor;
+        [self setTintColor:[UIColor colorWithRed:0 green:164./255 blue:169./255 alpha:1.0]];
         [self.layer addSublayer:border];
         self.layer.masksToBounds = YES;
     }
@@ -47,7 +48,14 @@
     return self;
 }
 - (void) drawPlaceholderInRect:(CGRect)rect {
-    UIColor *colour = [UIColor whiteColor];
+    UIColor *colour;
+    if (self.tag == 2) {
+        colour = [UIColor colorWithRed:0 green:164./255 blue:169./255 alpha:1.0];
+    }
+    else
+    {
+        colour= [UIColor whiteColor];
+    }
     NSDictionary *attributes = @{NSForegroundColorAttributeName: colour, NSFontAttributeName: self.font};
     CGRect boundingRect = [self.placeholder boundingRectWithSize:rect.size options:0 attributes:attributes context:nil];
     [self.placeholder drawAtPoint:CGPointMake(0, (rect.size.height/2)-boundingRect.size.height/2) withAttributes:attributes];
@@ -88,19 +96,25 @@
 -(void)showBelowBorder
 {
     if (self.tag == 2 || self.tag == 3) {
-        border.borderColor = [UIColor blackColor].CGColor;
+        border.borderColor = [UIColor colorWithRed:0 green:164./255 blue:169./255 alpha:1.0].CGColor;
     }
     else
     {
         border.borderColor = [UIColor whiteColor].CGColor;
-        border.borderWidth = 4;
+       
     }
-
+     border.borderWidth = 4;
 }
 -(void)hideBelowBorder
 {
+    if (self.tag == 2 || self.tag == 3) {
+        border.borderColor = [UIColor colorWithRed:0 green:235./255 blue:150./255 alpha:1.0].CGColor;
+    }
+    else
+    {
     border.borderColor = [UIColor lightTextColor].CGColor;
-    border.borderWidth = 2;
+    }
+    border.borderWidth = 2.;
 }
 
 -(void)updateBorderWidth

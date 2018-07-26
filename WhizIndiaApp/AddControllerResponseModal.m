@@ -9,15 +9,16 @@
 #import "AddControllerResponseModal.h"
 
 @implementation AddControllerResponseModal
-@synthesize devices, addControllerStatus;
+@synthesize devices, deviceStatus, response, broadCastDetails;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [self init];
     if (self == nil) return nil;
-    NSDictionary *dict = dictionary[statusKey];
-    addControllerStatus = dict[@"status"];
-    devices = dictionary;
+    response = dictionary[responseKey];
+    deviceStatus = dictionary[deviceStatusKey];
+    devices = dictionary[devicesKey];
+    broadCastDetails = dictionary[broadCastDetailsKey];
     
     return self;
 }

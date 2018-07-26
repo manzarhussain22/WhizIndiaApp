@@ -16,10 +16,14 @@
 
 @interface AddEditCOntrollerViewController ()<UITableViewDelegate, UITableViewDataSource,DataManagerDelegate,EditControllerCellDelegate>
 {
-    
+    __weak IBOutlet NSLayoutConstraint *iSwitchPassKeyTxtFieldTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *iSwitchRoomNameTxtFieldTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *iSwitchFirstDeviceTxtFieldTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *iSwitchSecondDeviceTxtFieldTopConstraint;
     __weak IBOutlet NSLayoutConstraint *controllerNumberTxtFieldTopConstraint;
+    
+    __weak IBOutlet NSLayoutConstraint *addScrollViewBottomConstraint;
     __weak IBOutlet NSLayoutConstraint *addControllerButtonTopConstraint;
-    __weak IBOutlet NSLayoutConstraint *cancelButtonTopConstraint;
     __weak IBOutlet NSLayoutConstraint *editControllerTableViewTopConstraint;
     __weak IBOutlet NSLayoutConstraint *updateButtonTopConstraint;
     __weak IBOutlet NSLayoutConstraint *editCancelButtonTopConstraint;
@@ -29,6 +33,7 @@
     NSString *controllerName;
     NSMutableDictionary *updateDeviceDetail;
     NSMutableDictionary *updateControllerDetail;
+    WHTextField *activeField;
 }
 
 
@@ -39,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     updateDeviceDetail = [[NSMutableDictionary alloc] init];
-    _controllerNameTxtField.delegate = _controllerNumberTxtField.delegate = _controllerPasskeyTxtField.delegate = self;
+    _iSwitchIdTxtField.delegate = _iSwitchPasskeyTxtField.delegate = _iSwitchRoomNameTxtField.delegate = _firstDeviceTxtField.delegate = _secondDeviceTxtField.delegate = self;
     [self setUpUIConstraint];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:tap];
@@ -54,9 +59,9 @@
             [deviceNameArr addObject:[controllerDescriptor objectForKey:key]];
         }
     }
-    
-    
-    
+    activeField = [[WHTextField alloc] init];
+    _addControllerScrollView.scrollEnabled = NO;
+    [self registerForKeyboardNotifications];
 }
 
 -(void)viewTapped:(UITapGestureRecognizer *)gesture
@@ -66,12 +71,13 @@
 
 -(void)setUpUIConstraint
 {
-    controllerNumberTxtFieldTopConstraint.constant = (30./568.) * kScreenHeight; addControllerButtonTopConstraint.constant = (67./568.) * kScreenHeight;
-    cancelButtonTopConstraint.constant = (6./568.) * kScreenHeight;
-    _addControllerButton.layer.cornerRadius = (15./568.) * kScreenHeight;
+    controllerNumberTxtFieldTopConstraint.constant = (47./568.) * kScreenHeight;
+    addControllerButtonTopConstraint.constant = (374./568.) * kScreenHeight;
+    addScrollViewBottomConstraint.constant = (109./568.) * kScreenHeight;
+    iSwitchPassKeyTxtFieldTopConstraint.constant = iSwitchRoomNameTxtFieldTopConstraint.constant = iSwitchFirstDeviceTxtFieldTopConstraint.constant = iSwitchSecondDeviceTxtFieldTopConstraint.constant = (30./568.) * kScreenHeight;
     _updateControllerButton.layer.cornerRadius = (15./568.) * kScreenHeight;
     editControllerTableViewTopConstraint.constant = updateButtonTopConstraint.constant = editCancelButtonTopConstraint.constant = cancelButtonBottomConstraint.constant = (10./568.) * kScreenHeight;
-    
+    cancelButtonBottomConstraint.constant = (17./568.) * kScreenHeight;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -112,43 +118,52 @@
          }
                          completion:nil];
     }
-    _controllerNameTxtField.tag = _controllerNumberTxtField.tag = _controllerPasskeyTxtField.tag = 2;
-    [_controllerNameTxtField showBelowBorder];
-    [_controllerNumberTxtField showBelowBorder];
-    [_controllerPasskeyTxtField showBelowBorder];
+    _iSwitchIdTxtField.tag = _iSwitchPasskeyTxtField.tag = _iSwitchRoomNameTxtField.tag = _firstDeviceTxtField.tag = _secondDeviceTxtField.tag = 2;
+    [_iSwitchIdTxtField hideBelowBorder];
+    [_iSwitchPasskeyTxtField hideBelowBorder];
+    [_iSwitchRoomNameTxtField hideBelowBorder];
+    [_firstDeviceTxtField hideBelowBorder];
+    [_secondDeviceTxtField hideBelowBorder];
 
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    _controllerNameTxtField.text = _controllerNumberTxtField.text = _controllerPasskeyTxtField.text = @"";
+    _iSwitchIdTxtField.text = _iSwitchPasskeyTxtField.text = _iSwitchRoomNameTxtField.text = _firstDeviceTxtField.text = _secondDeviceTxtField.text =  @"";
 }
 
 -(void)textFieldDidBeginEditing:(WHTextField *)textField
 {
-    textField.tag = 0;
+    activeField = textField;
     [textField showBelowBorder];
 }
 
 -(void)textFieldDidEndEditing:(WHTextField *)textField
 {
-    textField.tag = 2;
-    [textField showBelowBorder];
+    [textField hideBelowBorder];
 }
 
 -(BOOL)textFieldShouldReturn:(WHTextField *)textField
 {
-    if (textField == _controllerNumberTxtField) {
-        [_controllerNameTxtField becomeFirstResponder];
+    if (textField == _iSwitchIdTxtField) {
+        [_iSwitchPasskeyTxtField becomeFirstResponder];
     }
-    else if (textField == _controllerNameTxtField)
+    else if (textField == _iSwitchPasskeyTxtField)
     {
-        [_controllerPasskeyTxtField becomeFirstResponder];
+        [_iSwitchRoomNameTxtField becomeFirstResponder];
     }
-    else if (textField == _controllerPasskeyTxtField)
+    else if (textField == _iSwitchRoomNameTxtField)
     {
-        [_controllerPasskeyTxtField resignFirstResponder];
+        [_firstDeviceTxtField becomeFirstResponder];
+    }
+    else if (textField == _firstDeviceTxtField)
+    {
+        [_secondDeviceTxtField becomeFirstResponder];
+    }
+    else if (textField == _secondDeviceTxtField)
+    {
+        [_secondDeviceTxtField resignFirstResponder];
     }
     else
     {
@@ -223,10 +238,12 @@
     
     AddControllerRequestModal *request = [[AddControllerRequestModal alloc] init];
     
-    request.controllerId = self.controllerNumberTxtField.text;
-    request.controllerName = self.controllerNameTxtField.text;
-    request.passKey = self.controllerPasskeyTxtField.text;
-    request.email = [[SharedClass sharedInstance] username];
+    request.controllerId = self.iSwitchIdTxtField.text;
+    request.controllerName = self.iSwitchRoomNameTxtField.text;
+    request.passKey = self.iSwitchPasskeyTxtField.text;
+    request.firstDevice = self.firstDeviceTxtField.text;
+    request.secondDevice = self.secondDeviceTxtField.text;
+    request.email = [[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"];
     
     return [request createRequestDictionary];
 }
@@ -243,7 +260,7 @@
 
 -(void)didFinishServiceWithSuccess:(AddControllerResponseModal *)responseData
 {
-    if (![[[responseData.devices valueForKey:statusKey] valueForKey:@"status"] isEqualToString:@"-999"]) {
+    if ([[responseData.response valueForKey:@"status"] isEqualToString:Status_Success]) {
         if ([self.delegate respondsToSelector:@selector(addEditControllerSuccess)]) {
             [self.delegate addEditControllerSuccess];
         }
@@ -251,8 +268,8 @@
     else
     {
         [SVProgressHUD dismiss];
-        if ([self.delegate respondsToSelector:@selector(addEditControllerFailure)]) {
-            [self.delegate addEditControllerFailure];
+        if ([self.delegate respondsToSelector:@selector(addEditControllerFailure:)]) {
+            [self.delegate addEditControllerFailure:[responseData.response valueForKey:messageKey]];
         }
         NSLog(@"Error in adding");
     }
@@ -268,7 +285,7 @@
     {
         [SVProgressHUD dismiss];
         if ([self.delegate respondsToSelector:@selector(addEditControllerFailure)]) {
-            [self.delegate addEditControllerFailure];
+           // [self.delegate addEditControllerFailure];
         }
         NSLog(@"Error in Editing");
     }
@@ -278,7 +295,7 @@
 {
     [SVProgressHUD dismiss];
     if ([self.delegate respondsToSelector:@selector(addEditControllerFailure)]) {
-        [self.delegate addEditControllerFailure];
+//        [self.delegate addEditControllerFailure];
     }
     NSLog(@"%@",errorMsg);
 }
@@ -301,6 +318,53 @@
         updateDeviceDetail = dict;
     }
     
+}
+
+#pragma mark - Form scroll for Keyboard Show/Hide
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    if (activeField == _iSwitchIdTxtField || activeField == _iSwitchRoomNameTxtField || activeField == _iSwitchPasskeyTxtField) {
+        return;
+    }
+    
+    self.addControllerScrollView.scrollEnabled = YES;
+    CGFloat controllerOffset = self.view.frame.size.height - self.addControllerView.frame.size.height;
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height - controllerOffset, 0.0);
+    self.addControllerScrollView.contentInset = contentInsets;
+    self.addControllerScrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect aRect = self.addControllerView.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
+        [self.addControllerScrollView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    
+    self.addControllerScrollView.scrollEnabled = NO;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.addControllerScrollView.contentInset = contentInsets;
+    self.addControllerScrollView.scrollIndicatorInsets = contentInsets;
 }
 
 @end

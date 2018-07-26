@@ -104,6 +104,7 @@
 #pragma mark - UIActions
 - (IBAction)loginButtonTapped:(id)sender {
     [self.view endEditing:YES];
+    [[SharedClass sharedInstance] setIsSocialLogin:NO];
     if ([_userNameField.text isEqualToString:@""] || _userNameField.text==nil) {
         [[SharedClass sharedInstance] showAlertWithMessage:@"Username cannot be empty" onView:self];
         return;
@@ -143,6 +144,8 @@
 }
 
 - (IBAction)googleSignInButtonTapped:(id)sender {
+    [self.view endEditing:YES];
+    [[SharedClass sharedInstance] setIsSocialLogin:YES];
     [GIDSignIn sharedInstance].delegate = self;
     [GIDSignIn sharedInstance].uiDelegate = self;
     [[GIDSignIn sharedInstance] signIn];

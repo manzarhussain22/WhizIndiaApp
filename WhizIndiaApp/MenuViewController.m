@@ -1,4 +1,4 @@
-//
+    //
 //  MenuViewController.m
 //  AUTOIApp
 //
@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "MenuViewTableViewCell.h"
+#import <GoogleSignIn/GoogleSignIn.h>
 
 @interface MenuViewController ()
 {
@@ -23,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIView *profileView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *profilePicImageViewLeadingConstraints;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *userNameLabelLeadingConstraints;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileEditButtonLeadingConstraints;
 
 @property (strong, nonatomic) NSMutableArray *menuSectionOneItems;
 @property (strong, nonatomic) NSArray *menuSectionTwoItems;
@@ -33,11 +37,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _profileView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-    _profileView.layer.shadowOffset = CGSizeMake(0, -5);
-    _profileView.layer.shadowOpacity = .8;
-    _profileView.layer.shadowRadius = 10.;
-    _profileView.layer.masksToBounds = NO;
     _menuSectionOneItems = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *topTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissMenu:)];
@@ -48,19 +47,54 @@
     for (NSString *str in controllerKey) {
         [_menuSectionOneItems addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:str]];
     }
-    if (controllerKey.count>0) {
-        [_menuSectionOneItems addObject:@"Matrix"];
-    }
     _menuSectionTwoItems = menuSection2Array;
-    
-    _menuTableViewLeadingConstraint.constant = (10./320.) * kScreenWidth;
+    [self updateUXConstraints];
+    [self updateProfileCell];
+}
+-(void)updateProfileCell
+{
+    self.profilePicImageView.layer.cornerRadius = ((self.profilePicImageView.frame.size.width/320.) * kScreenWidth) / 2;
+    self.profilePicImageView.clipsToBounds = YES;
+    self.profilePicImageView.layer.borderWidth = 2.0f;
+    self.profilePicImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    if ([GIDSignIn sharedInstance].currentUser.profile.hasImage) {
+        NSUInteger dimension = round(self.profilePicImageView.frame.size.width * [[UIScreen mainScreen] scale]);
+        NSURL *imageURL = [[GIDSignIn sharedInstance].currentUser.profile imageURLWithDimension:dimension];
+        
+        dispatch_async(dispatch_get_global_queue(0,0), ^{
+            NSData * data = [[NSData alloc] initWithContentsOfURL: imageURL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ( data == nil )
+                {
+                    self.profilePicImageView.image = [UIImage imageNamed:@"Avatar"];
+                    
+                }
+                else
+                {
+                    self.profilePicImageView.image = [UIImage imageWithData: data];
+                }
+            });
+        });
+    }
+    else
+    {
+        self.profilePicImageView.image = [UIImage imageNamed:@"Avatar"];
+    }
+    self.userNameLabel.text = [[[SharedClass sharedInstance] profileDetails] valueForKey:@"userName"];
+}
+-(void)updateUXConstraints {
+    _menuTableViewLeadingConstraint.constant = (0./320.) * kScreenWidth;
     _menuTableViewTrailingConstraint.constant = _menuTableViewLeadingConstraint.constant;
+    _profilePicImageViewLeadingConstraints.constant = (20./320.) * kScreenWidth;
+    _userNameLabelLeadingConstraints.constant = (15./320.) * kScreenWidth;
+    _profileEditButtonLeadingConstraints.constant = (12./320.) * kScreenWidth;
+    
+    [_userNameLabel setFont:[UIFont fontWithName:@"System-Bold" size:(15./568) * kScreenHeight]];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     if (![_menuSectionTwoItems containsObject:_controllerID]) {
         int count = -1;
         if ([_controllerID isEqualToString:@"Matrix"]) {
@@ -72,7 +106,7 @@
                 break;
             }
         }
-        selectedRowIndex = [NSIndexPath indexPathForRow:count inSection:0];
+        selectedRowIndex = [NSIndexPath indexPathForRow:count inSection:1];
     }
     else
     {
@@ -83,7 +117,7 @@
                 break;
             }
         }
-        selectedRowIndex = [NSIndexPath indexPathForRow:count inSection:1];
+        selectedRowIndex = [NSIndexPath indexPathForRow:count inSection:2];
     }
     [self.menuTableView reloadData];
 }
@@ -104,9 +138,12 @@
 {
     switch (section) {
         case 0:
-            return _menuSectionOneItems.count;
+            return 1;
             break;
         case 1:
+            return _menuSectionOneItems.count;
+            break;
+        case 2:
             return _menuSectionTwoItems.count;
             break;
         default:
@@ -117,7 +154,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,9 +164,12 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.titleLabel.text = [_menuSectionOneItems objectAtIndex:indexPath.row];
+            cell.titleLabel.text = @"Add iSwitch";
             break;
         case 1:
+            cell.titleLabel.text = [_menuSectionOneItems objectAtIndex:indexPath.row];
+            break;
+        case 2:
             cell.titleLabel.text = [_menuSectionTwoItems objectAtIndex:indexPath.row];
             break;
         default:
@@ -137,7 +177,7 @@
             break;
     }
     if (indexPath == selectedRowIndex) {
-        cell.backgroundColor = [UIColor colorWithRed:241./255. green:64./255. blue:35./255. alpha:1.0];
+        cell.backgroundColor = [UIColor clearColor];
     }
     else
     {
@@ -154,14 +194,15 @@
     switch (indexPath.section) {
         case 0:
             if ([self.delegate respondsToSelector:@selector(showDetailedControllerFor:)]) {
-                if (indexPath.row == _menuSectionOneItems.count - 1) {
-                    [self.delegate showDetailedControllerFor:[_menuSectionOneItems objectAtIndex:indexPath.row]];
-                }
-                else
-                [self.delegate showDetailedControllerFor:[controllerKey objectAtIndex:indexPath.row]];
+                [self.delegate showDetailedControllerFor:@"Add iSwitch"];
             }
             break;
         case 1:
+            if ([self.delegate respondsToSelector:@selector(showDetailedControllerFor:)]) {
+                [self.delegate showDetailedControllerFor:[controllerKey objectAtIndex:indexPath.row]];
+            }
+            break;
+        case 2:
             if ([self.delegate respondsToSelector:@selector(showDetailedControllerFor:)]) {
                 [self.delegate showDetailedControllerFor:[_menuSectionTwoItems objectAtIndex:indexPath.row]];
             }

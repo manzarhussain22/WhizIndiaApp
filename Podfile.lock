@@ -43,6 +43,9 @@ PODS:
   - MQTTClient/Manager (0.13.0):
     - MQTTClient/Min
   - MQTTClient/Min (0.13.0)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
   - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
@@ -50,6 +53,7 @@ DEPENDENCIES:
   - BEMSimpleLineGraph
   - GoogleSignIn
   - MQTTClient
+  - Realm
   - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -60,8 +64,9 @@ SPEC CHECKSUMS:
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
   MQTTClient: aced164e080fb139daa98fc745d01da279e55945
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: f674f31837104b752b28524830484fe03a178165
+PODFILE CHECKSUM: 13e12c755e9df6505371226c0a73ba3ddd397603
 
 COCOAPODS: 1.2.1

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVx-RY-IB3">
-                                <rect key="frame" x="251" y="528" width="33" height="40"/>
+                                <rect key="frame" x="143.5" y="528" width="33" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sVx-RY-IB3" secondAttribute="height" multiplier="33:40" id="Lku-h3-ZKd"/>
                                 </constraints>
@@ -33,11 +33,10 @@
                                     <action selector="addButtonTapped:" destination="mcG-l5-AxB" eventType="touchUpInside" id="e3X-r0-6Wk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uln-v5-m6x">
-                                <rect key="frame" x="36" y="530.5" width="41" height="34"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="EDIT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uln-v5-m6x">
+                                <rect key="frame" x="36" y="531.5" width="33" height="33"/>
+                                <state key="normal" image="Edit">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="editButtonTapped:" destination="mcG-l5-AxB" eventType="touchUpInside" id="2tV-2i-9d2"/>
@@ -78,7 +77,6 @@ or side panel to add new iSwitch.</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bi6-oP-u3n">
                                         <rect key="frame" x="265" y="30" width="35" height="35"/>
-                                        <state key="normal" image="WWW_Image"/>
                                         <connections>
                                             <action selector="webButtonTapped:" destination="mcG-l5-AxB" eventType="touchUpInside" id="gu1-N0-fEx"/>
                                         </connections>
@@ -114,23 +112,23 @@ or side panel to add new iSwitch.</string>
                             <constraint firstItem="zTC-8G-N58" firstAttribute="width" secondItem="mdo-1V-yal" secondAttribute="width" multiplier="35/320" id="FJr-iG-Soa"/>
                             <constraint firstItem="sVx-RY-IB3" firstAttribute="top" secondItem="x4o-vE-UbA" secondAttribute="bottom" id="FuS-qZ-vVM"/>
                             <constraint firstItem="qJN-ty-n7I" firstAttribute="width" secondItem="mdo-1V-yal" secondAttribute="width" id="I0d-py-XSO"/>
+                            <constraint firstItem="sVx-RY-IB3" firstAttribute="height" secondItem="mdo-1V-yal" secondAttribute="height" multiplier="40/568" id="Mtx-fr-ELe"/>
                             <constraint firstItem="qYS-yl-me3" firstAttribute="bottom" secondItem="x4o-vE-UbA" secondAttribute="bottom" constant="40" id="RJV-OL-sC7"/>
                             <constraint firstItem="x4o-vE-UbA" firstAttribute="top" secondItem="qJN-ty-n7I" secondAttribute="bottom" id="X2K-cK-cRR"/>
                             <constraint firstItem="sVx-RY-IB3" firstAttribute="centerY" secondItem="uln-v5-m6x" secondAttribute="centerY" id="bZZ-Dl-P3J"/>
                             <constraint firstItem="uln-v5-m6x" firstAttribute="leading" secondItem="mdo-1V-yal" secondAttribute="leadingMargin" constant="20" id="fR5-VG-cLG"/>
+                            <constraint firstItem="sVx-RY-IB3" firstAttribute="centerX" secondItem="mdo-1V-yal" secondAttribute="centerX" id="fnj-EA-AJS"/>
                             <constraint firstItem="qJN-ty-n7I" firstAttribute="leading" secondItem="qYS-yl-me3" secondAttribute="leading" id="guT-8K-hDl"/>
                             <constraint firstItem="qJN-ty-n7I" firstAttribute="top" secondItem="mdo-1V-yal" secondAttribute="top" id="jQK-3R-IEd"/>
                             <constraint firstItem="qYS-yl-me3" firstAttribute="trailing" secondItem="qJN-ty-n7I" secondAttribute="trailing" id="jRo-G9-sfc"/>
                             <constraint firstItem="qYS-yl-me3" firstAttribute="bottom" secondItem="sVx-RY-IB3" secondAttribute="bottom" id="pZJ-MN-cTR"/>
                             <constraint firstItem="x4o-vE-UbA" firstAttribute="leading" secondItem="qYS-yl-me3" secondAttribute="leading" id="qdL-xY-c4C"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sVx-RY-IB3" secondAttribute="trailing" constant="20" id="zN4-yd-kvi"/>
                             <constraint firstItem="qYS-yl-me3" firstAttribute="trailing" secondItem="x4o-vE-UbA" secondAttribute="trailing" id="zWr-J3-6d5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qYS-yl-me3"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="sVx-RY-IB3" id="wuC-sf-NfD"/>
-                        <outlet property="addButtonTrailingConstraint" destination="zN4-yd-kvi" id="FqE-lB-PSp"/>
                         <outlet property="addControllersButtonTapped" destination="sVx-RY-IB3" id="NGm-xf-FDs"/>
                         <outlet property="contentView" destination="x4o-vE-UbA" id="vMn-9r-ZEp"/>
                         <outlet property="contentViewBottomConstraint" destination="RJV-OL-sC7" id="dbd-9o-S3v"/>
@@ -152,8 +150,8 @@ or side panel to add new iSwitch.</string>
     <resources>
         <image name="Add_Icon" width="33" height="33"/>
         <image name="Brand_Logo" width="146" height="48"/>
+        <image name="Edit" width="33" height="33"/>
         <image name="ToolbarBG" width="1080" height="216"/>
-        <image name="WWW_Image" width="35" height="35"/>
         <image name="sidemenubutton" width="35" height="35"/>
     </resources>
 </document>

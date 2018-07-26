@@ -8,6 +8,7 @@ def available_AutoIHomes_Pods
     pod 'MQTTClient'
     pod 'BEMSimpleLineGraph'
     pod 'GoogleSignIn'
+    pod 'Realm'
 end
 
 target 'AutoIHomes' do

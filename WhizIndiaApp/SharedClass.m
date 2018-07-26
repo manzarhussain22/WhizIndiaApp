@@ -9,7 +9,7 @@
 #import "SharedClass.h"
 
 @implementation SharedClass
-@synthesize userObj, progressView, isRegisterStory, username, password, isSideMenuOpened, sharedMaskView;
+@synthesize userObj, progressView, isRegisterStory, username, password, isSideMenuOpened, sharedMaskView, profileDetails, securityDetails, iSwitchStatus, topicDetails, isSocialLogin;
 
 static SharedClass *singletonObject = nil;
 

@@ -21,7 +21,6 @@
 #import "LoginResponseModal.h"
 
 
-
 @interface HomeMasterViewController ()<UIViewControllerTransitioningDelegate, MenuViewDelegate,AddEditCOntrollerDelegate,DataManagerDelegate>
 {
     BOOL isMenu;
@@ -80,6 +79,7 @@
     self.headerView.layer.shadowRadius = 10.;
     self.headerView.layer.masksToBounds = NO;
     [self setupUIConstraints];
+    [self setUpAddButtonAsDraggable];
     [self checkAndSetUpContentView];
     [self setupMenuView];
     [self setUpAddEditView];
@@ -146,6 +146,30 @@
     _menuButtonTopConstraint.constant = (30./568.) * kScreenHeight;
     _menuButtonLeadingConstraint.constant = _settingButtonTrailingConstraint.constant =(10./320.) * kScreenWidth;
     _contentViewBottomConstraint.constant =  (40./568.) * kScreenHeight;
+}
+
+-(void)setUpAddButtonAsDraggable
+{
+    _addButton.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    _addButton.layer.shadowOffset = CGSizeMake(0., 2.0);
+    _addButton.layer.masksToBounds = NO;
+    _addButton.layer.shadowRadius = 1.0;
+    _addButton.layer.shadowOpacity = 1.0;
+    _addButton.layer.cornerRadius = _addButton.frame.size.width / 2;
+    UIPanGestureRecognizer *panRecognizer;
+    panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                            action:@selector(wasDragged:)];
+    // cancel touches so that touchUpInside touches are ignored
+    panRecognizer.cancelsTouchesInView = YES;
+    [self.addButton addGestureRecognizer:panRecognizer];
+    
+}
+- (void)wasDragged:(UIPanGestureRecognizer *)recognizer {
+    UIButton *button = (UIButton *)recognizer.view;
+    CGPoint translation = [recognizer translationInView:button];
+    
+    button.center = CGPointMake(button.center.x + translation.x, button.center.y + translation.y);
+    [recognizer setTranslation:CGPointZero inView:button];
 }
 
 - (IBAction)menuButtonTapped:(id)sender {
@@ -260,6 +284,10 @@
 }
 -(void)showDetailedControllerFor:(NSString *)controllerID
 {
+    if ([controllerID isEqualToString:@"Add iSwitch"]) {
+        [self addButtonTapped:nil];
+        return;
+    }
     if ([controllerID isEqualToString:@"Logout"]) {
         [self dismissViewControllerAnimated:NO completion:nil];
         [[SharedClass sharedInstance] setIsRegisterStory:NO];
@@ -268,7 +296,7 @@
     homeSlaveViewControllerId = controllerID;
     [self setUpContentViewFor];
     if (![menuSection2Array containsObject:controllerID]) {
-        if ([controllerID isEqualToString:@"Matrix"]) {
+        if ([controllerID isEqualToString:@"Metrics"]) {
             _editButton.hidden = YES;
             _addButton.hidden = YES;
         }
@@ -320,9 +348,9 @@
     [self refreshUserData];
 }
 
--(void)addEditControllerFailure
+-(void)addEditControllerFailure:(NSString *)failureMsg
 {
-    [[SharedClass sharedInstance] showAlertWithMessage:[NSString stringWithFormat:@"Error in %@",isEdit?@"Editing":@"Adding"] onView:self];
+    [[SharedClass sharedInstance] showAlertWithMessage:failureMsg onView:self];
     [self addEditCancelButtonTapped];
 }
 
@@ -332,17 +360,34 @@
 {
     DataManager *manager = [[DataManager alloc] init];
     manager.delegate = self;
-    manager.serviceKey = LoginService;
-    [manager startLoginServiceWithParams:[self prepareDictionaryForLogin]];
+    if ([[SharedClass sharedInstance] isSocialLogin]) {
+        manager.serviceKey = SocialLoginService;
+        [manager startLoginServiceWithParams:[self prepareDictionaryForSocialLoginWithEmail:[[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"] name:[[[SharedClass sharedInstance] profileDetails] valueForKey:@"userName"]]];
+    }
+    else
+    {
+        manager.serviceKey = LoginService;
+        [manager startLoginServiceWithParams:[self prepareDictionaryForLogin]];
+    }
+   
 }
 #pragma mark - Modalobject
 
 - (NSMutableDictionary *) prepareDictionaryForLogin {
     
     LoginRequestModal* loginObj = [[LoginRequestModal alloc] init];
-    loginObj.email = [[SharedClass sharedInstance] username];
+    loginObj.email = [[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"];
     loginObj.password = [[SharedClass sharedInstance] password];
+    loginObj.isSocial = NO;
     return [loginObj createRequestDictionary];
+    
+}
+- (NSMutableDictionary *) prepareDictionaryForSocialLoginWithEmail:(NSString *)email name:(NSString *)userName {
+    LoginRequestModal* socialLoginObj = [[LoginRequestModal alloc] init];
+    socialLoginObj.email = email;
+    socialLoginObj.name = userName;
+    socialLoginObj.isSocial = YES;
+    return [socialLoginObj createRequestDictionary];
     
 }
 

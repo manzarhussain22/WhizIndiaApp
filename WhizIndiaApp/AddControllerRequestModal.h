@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString* passKey;
 @property (nonatomic, strong) NSString* email;
 @property (nonatomic, strong) NSString* controllerName;
+@property (nonatomic, strong) NSString* firstDevice;
+@property (nonatomic, strong) NSString* secondDevice;
 
 - (NSMutableDictionary *)createRequestDictionary;
 

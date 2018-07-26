@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,64 +21,94 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJ2-7N-c3U">
-                                <rect key="frame" x="20" y="136" width="280" height="296"/>
+                                <rect key="frame" x="20" y="58.5" width="280" height="451"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="DnL-7j-oya">
-                                        <rect key="frame" x="20" y="30" width="240" height="120"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dc9-GA-vVh">
+                                        <rect key="frame" x="250" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Dc9-GA-vVh" secondAttribute="height" multiplier="1:1" id="RBb-FC-YFT"/>
+                                        </constraints>
+                                        <state key="normal" image="Cancel">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9s-y3-QoD">
+                                        <rect key="frame" x="20" y="47" width="240" height="295"/>
                                         <subviews>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Controller Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwZ-rI-xaz" customClass="WHTextField">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Controller Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q1U-4H-It4" customClass="WHTextField">
-                                                <rect key="frame" x="0.0" y="50" width="240" height="20"/>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter iSwitch ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwZ-rI-xaz" customClass="WHTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Pass Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2I-Cl-gYf" customClass="WHTextField">
-                                                <rect key="frame" x="0.0" y="100" width="240" height="20"/>
+                                                <rect key="frame" x="0.0" y="65" width="240" height="35"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Room Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q1U-4H-It4" customClass="WHTextField">
+                                                <rect key="frame" x="0.0" y="130" width="240" height="35"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter First Device Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dr-2h-dh8" customClass="WHTextField">
+                                                <rect key="frame" x="0.0" y="195" width="240" height="35"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Second Device Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HV4-vo-zaM" customClass="WHTextField">
+                                                <rect key="frame" x="0.0" y="260" width="240" height="35"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                    </stackView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="lwZ-rI-xaz" secondAttribute="trailing" id="5Fh-Rs-Kj0"/>
+                                            <constraint firstItem="Q1U-4H-It4" firstAttribute="height" secondItem="lwZ-rI-xaz" secondAttribute="height" id="6ZZ-5d-4hM"/>
+                                            <constraint firstItem="HV4-vo-zaM" firstAttribute="top" secondItem="9dr-2h-dh8" secondAttribute="bottom" constant="30" id="75z-WC-rxm"/>
+                                            <constraint firstItem="9dr-2h-dh8" firstAttribute="width" secondItem="lwZ-rI-xaz" secondAttribute="width" id="DBu-mT-bIr"/>
+                                            <constraint firstItem="lwZ-rI-xaz" firstAttribute="top" secondItem="b9s-y3-QoD" secondAttribute="top" id="EvG-Y7-0x4"/>
+                                            <constraint firstItem="lwZ-rI-xaz" firstAttribute="leading" secondItem="b9s-y3-QoD" secondAttribute="leading" id="I4n-HA-eYy"/>
+                                            <constraint firstItem="HV4-vo-zaM" firstAttribute="height" secondItem="lwZ-rI-xaz" secondAttribute="height" id="IMf-Ty-n5A"/>
+                                            <constraint firstItem="Q1U-4H-It4" firstAttribute="width" secondItem="lwZ-rI-xaz" secondAttribute="width" id="JUt-kY-ZcT"/>
+                                            <constraint firstItem="9dr-2h-dh8" firstAttribute="leading" secondItem="lwZ-rI-xaz" secondAttribute="leading" id="M2u-V7-0pt"/>
+                                            <constraint firstItem="e2I-Cl-gYf" firstAttribute="top" secondItem="lwZ-rI-xaz" secondAttribute="bottom" constant="30" id="QWj-Qt-Dtg"/>
+                                            <constraint firstItem="HV4-vo-zaM" firstAttribute="width" secondItem="lwZ-rI-xaz" secondAttribute="width" id="UGF-hK-En1"/>
+                                            <constraint firstItem="e2I-Cl-gYf" firstAttribute="leading" secondItem="lwZ-rI-xaz" secondAttribute="leading" id="Ybb-jf-fVY"/>
+                                            <constraint firstItem="9dr-2h-dh8" firstAttribute="top" secondItem="Q1U-4H-It4" secondAttribute="bottom" constant="30" id="fcK-oS-KWt"/>
+                                            <constraint firstItem="Q1U-4H-It4" firstAttribute="leading" secondItem="lwZ-rI-xaz" secondAttribute="leading" id="hUK-7V-t8O"/>
+                                            <constraint firstItem="e2I-Cl-gYf" firstAttribute="width" secondItem="lwZ-rI-xaz" secondAttribute="width" id="i7s-Zj-6v8"/>
+                                            <constraint firstItem="9dr-2h-dh8" firstAttribute="height" secondItem="lwZ-rI-xaz" secondAttribute="height" id="j6u-pD-uIy"/>
+                                            <constraint firstItem="Q1U-4H-It4" firstAttribute="top" secondItem="e2I-Cl-gYf" secondAttribute="bottom" constant="30" id="mfN-0t-5qC"/>
+                                            <constraint firstAttribute="bottom" secondItem="HV4-vo-zaM" secondAttribute="bottom" id="nT7-gM-Sn7"/>
+                                            <constraint firstItem="HV4-vo-zaM" firstAttribute="leading" secondItem="lwZ-rI-xaz" secondAttribute="leading" id="tPr-2U-mE0"/>
+                                            <constraint firstItem="e2I-Cl-gYf" firstAttribute="height" secondItem="lwZ-rI-xaz" secondAttribute="height" id="wX0-mA-s5Q"/>
+                                        </constraints>
+                                    </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-8Z-5fG">
-                                        <rect key="frame" x="40" y="207" width="200" height="30"/>
-                                        <color key="backgroundColor" red="0.94480043650000001" green="0.24937026109999999" blue="0.13650218119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="25" y="374" width="230" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="ADD CONTROLLER">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" backgroundImage="AddiSwitch_BG">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="addControllerButtonTapped:" destination="9nn-El-NXh" eventType="touchUpInside" id="l7l-kT-RDc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHe-kW-Ome">
-                                        <rect key="frame" x="90" y="243" width="100" height="33"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Cancel">
-                                                    <attributes>
-                                                        <color key="NSColor" red="1" green="0.083451934611972423" blue="0.10594528603207576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="18" name=".SFNSText-Bold"/>
-                                                        <font key="NSOriginalFont" size="18" name=".SFNSText-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        <integer key="NSUnderline" value="1"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="FHe-kW-Ome" firstAttribute="top" secondItem="dVZ-8Z-5fG" secondAttribute="bottom" constant="6" id="T8m-cm-3aU"/>
-                                    <constraint firstItem="DnL-7j-oya" firstAttribute="top" secondItem="PJ2-7N-c3U" secondAttribute="top" constant="30" id="lLI-Is-A7v"/>
-                                    <constraint firstItem="dVZ-8Z-5fG" firstAttribute="top" secondItem="DnL-7j-oya" secondAttribute="bottom" constant="57" id="ljm-SB-4cg"/>
+                                    <constraint firstItem="Dc9-GA-vVh" firstAttribute="top" secondItem="PJ2-7N-c3U" secondAttribute="top" id="7Tj-bq-Dil"/>
+                                    <constraint firstItem="dVZ-8Z-5fG" firstAttribute="top" secondItem="PJ2-7N-c3U" secondAttribute="top" constant="374" id="9C1-Bp-jhG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dc9-GA-vVh" secondAttribute="trailing" id="JnH-nV-ZQX"/>
+                                    <constraint firstItem="b9s-y3-QoD" firstAttribute="top" secondItem="Dc9-GA-vVh" secondAttribute="bottom" constant="17" id="UlX-R9-JyB"/>
+                                    <constraint firstAttribute="bottom" secondItem="b9s-y3-QoD" secondAttribute="bottom" constant="109" id="XRg-j5-Xr3"/>
+                                    <constraint firstItem="b9s-y3-QoD" firstAttribute="centerX" secondItem="PJ2-7N-c3U" secondAttribute="centerX" id="dv6-nq-8hN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9a5-B5-CbZ">
@@ -165,44 +196,51 @@
                         <constraints>
                             <constraint firstItem="PJ2-7N-c3U" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="1hl-eQ-zR2"/>
                             <constraint firstItem="9a5-B5-CbZ" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="280/320" id="2dq-iM-jxX"/>
-                            <constraint firstItem="FHe-kW-Ome" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="33/568" id="3jr-I4-kzp"/>
-                            <constraint firstItem="FHe-kW-Ome" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="100/320" id="5XL-ka-ydP"/>
                             <constraint firstItem="PJ2-7N-c3U" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="280/320" id="6mp-iv-Hzg"/>
-                            <constraint firstItem="dVZ-8Z-5fG" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="200/320" id="80C-oI-UFr"/>
-                            <constraint firstItem="DnL-7j-oya" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="8qa-BO-znf"/>
+                            <constraint firstItem="dVZ-8Z-5fG" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="230/320" id="80C-oI-UFr"/>
                             <constraint firstItem="IMr-xf-fT4" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="100/320" id="8yQ-W4-9cJ"/>
+                            <constraint firstItem="PJ2-7N-c3U" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="BRn-zG-CoH"/>
+                            <constraint firstItem="lwZ-rI-xaz" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="35/568" id="Bjj-O5-Dv8"/>
                             <constraint firstItem="9a5-B5-CbZ" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="KsP-GZ-Xhd"/>
                             <constraint firstItem="dVZ-8Z-5fG" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="M34-wa-Bge"/>
                             <constraint firstItem="DKT-LZ-dn8" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="260/320" id="Rt4-zM-qmc"/>
+                            <constraint firstItem="lwZ-rI-xaz" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="240/320" id="SDw-bf-Rfj"/>
                             <constraint firstItem="oNR-HP-Q1a" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="30/568" id="VYM-ZH-6lo"/>
+                            <constraint firstItem="b9s-y3-QoD" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="240/320" id="YIW-gK-854"/>
                             <constraint firstItem="oNR-HP-Q1a" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="200/320" id="ZhV-jT-bbi"/>
-                            <constraint firstItem="PJ2-7N-c3U" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="296/568" id="ZpN-jm-gB1"/>
-                            <constraint firstItem="FHe-kW-Ome" firstAttribute="centerX" secondItem="d3n-SW-vml" secondAttribute="centerX" id="dLR-SG-ZVb"/>
+                            <constraint firstItem="PJ2-7N-c3U" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="451/568" id="ZpN-jm-gB1"/>
                             <constraint firstItem="IMr-xf-fT4" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="25/568" id="dw0-Z7-qDx"/>
                             <constraint firstItem="9a5-B5-CbZ" firstAttribute="centerY" secondItem="d3n-SW-vml" secondAttribute="centerY" id="g9u-rV-H5R"/>
-                            <constraint firstItem="DnL-7j-oya" firstAttribute="width" secondItem="d3n-SW-vml" secondAttribute="width" multiplier="240/320" id="t3t-Am-YIO"/>
-                            <constraint firstItem="dVZ-8Z-5fG" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="30/568" id="tOY-u7-zkj"/>
+                            <constraint firstItem="Dc9-GA-vVh" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="30/568" id="sXA-tE-DQB"/>
+                            <constraint firstItem="dVZ-8Z-5fG" firstAttribute="height" secondItem="d3n-SW-vml" secondAttribute="height" multiplier="45/568" id="tOY-u7-zkj"/>
                             <constraint firstItem="PJ2-7N-c3U" firstAttribute="centerY" secondItem="d3n-SW-vml" secondAttribute="centerY" id="uEi-HC-kkP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pcT-wi-zum"/>
                     </view>
                     <connections>
                         <outlet property="addControllerButton" destination="dVZ-8Z-5fG" id="6TS-lR-jCp"/>
-                        <outlet property="addControllerButtonTopConstraint" destination="ljm-SB-4cg" id="MVf-Xt-NGc"/>
+                        <outlet property="addControllerButtonTopConstraint" destination="9C1-Bp-jhG" id="YS8-b6-djz"/>
+                        <outlet property="addControllerScrollView" destination="b9s-y3-QoD" id="30H-Tx-obw"/>
                         <outlet property="addControllerView" destination="PJ2-7N-c3U" id="H6D-nL-5SU"/>
-                        <outlet property="cancelButton" destination="FHe-kW-Ome" id="1Fk-nw-ybP"/>
-                        <outlet property="cancelButtonBottomConstraint" destination="S5p-eW-XAw" id="ntX-gy-wXt"/>
-                        <outlet property="cancelButtonTopConstraint" destination="T8m-cm-3aU" id="O4P-gC-mEP"/>
-                        <outlet property="controllerNameTxtField" destination="Q1U-4H-It4" id="ZJH-Fa-Gak"/>
-                        <outlet property="controllerNumberTxtField" destination="lwZ-rI-xaz" id="osn-ev-I09"/>
-                        <outlet property="controllerNumberTxtFieldTopConstraint" destination="lLI-Is-A7v" id="i6L-Sz-dmQ"/>
-                        <outlet property="controllerPasskeyTxtField" destination="e2I-Cl-gYf" id="pBZ-yp-GS7"/>
+                        <outlet property="addScrollViewBottomConstraint" destination="XRg-j5-Xr3" id="PLa-FM-6hD"/>
+                        <outlet property="cancelButton" destination="Dc9-GA-vVh" id="fbD-9o-QgF"/>
+                        <outlet property="cancelButtonBottomConstraint" destination="UlX-R9-JyB" id="SlB-Zx-6Bl"/>
+                        <outlet property="controllerNumberTxtFieldTopConstraint" destination="UlX-R9-JyB" id="Y1k-cc-ymi"/>
                         <outlet property="editCancelButton" destination="IMr-xf-fT4" id="EiF-0L-nXk"/>
                         <outlet property="editCancelButtonTopConstraint" destination="2QT-IT-l6D" id="MM6-5x-uxh"/>
                         <outlet property="editControllerTableView" destination="DKT-LZ-dn8" id="r3W-OB-6DZ"/>
                         <outlet property="editControllerTableViewTopConstraint" destination="Qvp-da-4ie" id="2l9-SI-F76"/>
                         <outlet property="editControllerView" destination="9a5-B5-CbZ" id="NHD-EZ-Cbx"/>
                         <outlet property="editViewHeightConstraint" destination="qWp-NC-q9z" id="lt8-l3-qa8"/>
+                        <outlet property="firstDeviceTxtField" destination="9dr-2h-dh8" id="qQe-sw-XEz"/>
+                        <outlet property="iSwitchFirstDeviceTxtFieldTopConstraint" destination="fcK-oS-KWt" id="cDh-HL-c1W"/>
+                        <outlet property="iSwitchIdTxtField" destination="lwZ-rI-xaz" id="b1m-O8-TZI"/>
+                        <outlet property="iSwitchPassKeyTxtFieldTopConstraint" destination="QWj-Qt-Dtg" id="OiW-iJ-Myw"/>
+                        <outlet property="iSwitchPasskeyTxtField" destination="e2I-Cl-gYf" id="1dY-nW-ntJ"/>
+                        <outlet property="iSwitchRoomNameTxtField" destination="Q1U-4H-It4" id="agp-IJ-0aP"/>
+                        <outlet property="iSwitchRoomNameTxtFieldTopConstraint" destination="mfN-0t-5qC" id="Gdy-Uz-Olf"/>
+                        <outlet property="iSwitchSecondDeviceTxtFieldTopConstraint" destination="75z-WC-rxm" id="fBT-Ep-N23"/>
+                        <outlet property="secondDeviceTxtField" destination="HV4-vo-zaM" id="xgU-OO-G7z"/>
                         <outlet property="updateButtonTopConstraint" destination="s7f-KE-MCK" id="mLN-bf-7RZ"/>
                         <outlet property="updateControllerButton" destination="oNR-HP-Q1a" id="ryi-jY-IGB"/>
                     </connections>
@@ -212,4 +250,8 @@
             <point key="canvasLocation" x="86.25" y="152.11267605633802"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AddiSwitch_BG" width="228" height="45"/>
+        <image name="Cancel" width="15" height="22"/>
+    </resources>
 </document>

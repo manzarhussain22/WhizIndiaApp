@@ -9,7 +9,7 @@
 #import "AddControllerRequestModal.h"
 
 @implementation AddControllerRequestModal
-@synthesize controllerId,controllerName,email, passKey;
+@synthesize controllerId,controllerName,email, passKey, firstDevice, secondDevice;
 
 - (NSMutableDictionary *)createRequestDictionary {
     
@@ -19,6 +19,8 @@
     [dict setObject:passKey forKey:add_controllerPassKey];
     [dict setObject:controllerId forKey:add_controllerIdKey];
     [dict setObject:controllerName forKey:add_controllerNameKey];
+    [dict setObject:firstDevice forKey:add_firstDeviceNameKey];
+    [dict setObject:secondDevice forKey:add_secondDeviceNameKey];
     
     return dict;
 }
