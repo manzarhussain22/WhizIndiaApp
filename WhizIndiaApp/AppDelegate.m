@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <AFNetworking/AFNetworking.h>
 
 @interface AppDelegate ()
 
@@ -19,16 +20,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [self startNetworkMonitoring];
+    [self performMigrationIfNeeded];
     [GIDSignIn sharedInstance].clientID = @"34955841339-gs8uua3eur37aoodgk3jjdc5jsv77e3v.apps.googleusercontent.com";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"Login"];
-    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:vc];
-    [navigation setNavigationBarHidden:YES];
-    self.window.rootViewController = navigation;
-    [self.window makeKeyAndVisible];
+    [self navigateToAppropriateScreen];
     return YES;
 }
 - (BOOL)application:(UIApplication *)app
@@ -63,6 +59,96 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)navigateToAppropriateScreen {
+    if ([self ifAlreadyLoggedIn]) {
+        [self goToHomeScreen];
+    }
+    else
+    {
+        [self goToLoginScreen];
+    }
+}
+
+-(BOOL)ifAlreadyLoggedIn {
+    BOOL isLoggedIn = [[[NSUserDefaults standardUserDefaults] valueForKey:isUserLoggedIn] boolValue];
+    return isLoggedIn;
+}
+
+-(void)goToLoginScreen {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *login = [sb instantiateViewControllerWithIdentifier:@"Login"];
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:login];
+    [navigation setNavigationBarHidden:YES];
+    self.window.rootViewController = navigation;
+    [self.window makeKeyAndVisible];
+    
+}
+
+-(void)goToHomeScreen {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"HomeMaster" bundle:nil];
+    UIViewController *homeMaster = [sb instantiateViewControllerWithIdentifier:@"homeMaster"];
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:homeMaster];
+    [navigation setNavigationBarHidden:YES];
+    self.window.rootViewController = navigation;
+    [self.window makeKeyAndVisible];
+}
+
+-(void)logout {
+    [[SharedClass sharedInstance] logoutUser];
+    [self goToLoginScreen];
+}
+-(void)performMigrationIfNeeded {
+    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+    // Set the new schema version. This must be greater than the previously used
+    // version (if you've never set a schema version before, the version is 0).
+    config.schemaVersion = config.schemaVersion + 1;
+    
+    // Set the block which will be called automatically when opening a Realm with a
+    // schema version lower than the one set above
+    config.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
+        // We haven’t migrated anything yet, so oldSchemaVersion == 0
+        if (oldSchemaVersion < 1) {
+            // Nothing to do!
+            // Realm will automatically detect new properties and removed properties
+            // And will update the schema on disk automatically
+        }
+    };
+    
+    // Tell Realm to use this new configuration object for the default Realm
+    [RLMRealmConfiguration setDefaultConfiguration:config];
+}
+
+-(void)startNetworkMonitoring
+{
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        
+        // Check the reachability status and show an alert if the internet connection is not available
+        switch (status) {
+            case -1:
+                // AFNetworkReachabilityStatusUnknown = -1,
+                NSLog(@"The reachability status is Unknown");
+                break;
+            case 0:
+                // AFNetworkReachabilityStatusNotReachable = 0
+                NSLog(@"The reachability status is not reachable");
+                break;
+            case 1:
+                NSLog(@"The reachability status is reachable via wan");
+                break;
+            case 2:
+                // AFNetworkReachabilityStatusReachableViaWiFi = 2
+                NSLog(@"The reachability status is reachable via WiFi");
+                break;
+                
+            default:
+                break;
+        }
+        
+    }];
 }
 
 @end

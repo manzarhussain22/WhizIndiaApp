@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import "Reachability.h"
 
 @protocol DataManagerDelegate <NSObject>
 
 -(void) didFinishServiceWithSuccess:(id)responseData;
+-(void) didFinishServiceWithSuccess;
 -(void) didFinishServiceWithFailure:(NSString *)errorMsg;
 @optional
 -(void) didFinishEditControllerServiceWithSuccess:(id)responseData;
@@ -23,6 +25,8 @@
 @property (strong, nonatomic) NSString *serviceKey;
 @property (strong, nonatomic) id<DataManagerDelegate> delegate;
 @property (strong, nonatomic) NSURL* baseUrl;
+@property Reachability *reachability;
+@property (strong, nonatomic) NSDictionary* addControllerDetail;
 
 -(void)startLoginServiceWithParams:(NSMutableDictionary *)postData;
 -(void)startRegisterServiceWithParams:(NSMutableDictionary *)postData;

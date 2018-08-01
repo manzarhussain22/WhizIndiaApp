@@ -9,19 +9,29 @@
 #import "AddControllerResponseModal.h"
 
 @implementation AddControllerResponseModal
-@synthesize devices, deviceStatus, response, broadCastDetails;
+@synthesize iSwitchIDAndName;
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [self init];
-    if (self == nil) return nil;
-    response = dictionary[responseKey];
-    deviceStatus = dictionary[deviceStatusKey];
-    devices = dictionary[devicesKey];
-    broadCastDetails = dictionary[broadCastDetailsKey];
-    
-    return self;
+-(void)parseDataToRealmDatabaseFromResponse:(NSDictionary *)dictionary {
+    NSMutableDictionary *iSwitchDict = [[NSMutableDictionary alloc] init];
+    [iSwitchDict setObject:[iSwitchIDAndName valueForKey:iSwitchIdKey] forKey:iSwitchIdKey];
+    [iSwitchDict setObject:[iSwitchIDAndName valueForKey:iSwitchNameKey] forKey:iSwitchNameKey];
+    [iSwitchDict setObject:[dictionary[broadCastDetailsKey] valueForKey:SecurityKey] forKey:iSwitchSecurityKey];
+    [iSwitchDict setObject:[dictionary[broadCastDetailsKey] valueForKey:TopicKey] forKey:iSwitchTopicKey];
+    [iSwitchDict setObject:[self createDeviceDictWithDevice:dictionary[devicesKey] andStatus:dictionary[deviceStatusKey]] forKey:iSwitchDevicesKey];
+    [[RealmHelper sharedInstance] persistToiSwitchRealm:iSwitchDict];
 }
 
+-(NSArray *)createDeviceDictWithDevice:(NSDictionary *)deviceDict andStatus:(NSDictionary *)deviceStatus {
+    NSMutableArray *devicesArr = [[NSMutableArray alloc] init];
+    
+    for (NSString *deviceId in [deviceDict allKeys]) {
+        NSMutableDictionary *devices = [[NSMutableDictionary alloc] init];
+        [devices setObject:deviceId forKey:iSwitchDeviceIdKey];
+        [devices setObject:deviceDict[deviceId] forKey:iSwitchDeviceNameKey];
+        [devices setObject:deviceStatus[deviceId] forKey:iSwitchDeviceStatusKey];
+        [devicesArr addObject:devices];
+    }
+    return devicesArr;
+}
 
 @end

@@ -12,6 +12,8 @@
 
 #define menuSection2Array [NSArray arrayWithObjects:@"Schedules",@"Metrics",@"Logout", nil]
 
+#define isUserLoggedIn @"isUserLoggedIn"
+
 //Cells
 #define MenuCellIdentifier @"menuCell"
 #define ContentCellIdentifier @"contentCell"
@@ -76,5 +78,22 @@
 
 #define responseKey @"response"
 
+//Profile object keys
+#define Profile_Email_Key @"email"
+#define Profile_User_Name @"userName"
 
+//iSwitch Realm Object Keys
+#define iSwitchIdKey @"iSwitchId"
+#define iSwitchNameKey @"iSwitchName"
+#define iSwitchTopicKey @"iSwitchTopic"
+#define iSwitchSecurityKey @"iSwitchSecurity"
+#define iSwitchDevicesKey @"iSwitchDevices"
+#define iSwitchDeviceIdKey @"iSwitchDeviceId"
+#define iSwitchDeviceNameKey @"iSwitchDeviceName"
+#define iSwitchDeviceStatusKey @"iSwitchDeviceStatus"
+
+//No Internet Connection Message
+
+#define No_Connection_MSG @"No Internet Connection. Please connect to Internet and try again"
+#define API_Failure_MSG @"There seems to be some problem with our server. Please try later."
 #endif /* Constants_h */

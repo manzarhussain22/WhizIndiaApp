@@ -173,11 +173,19 @@
 }
 
 #pragma mark - DataManager Delegate
+
+-(void)didFinishServiceWithSuccess {
+     [SVProgressHUD dismiss];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:isUserLoggedIn];
+    [self showHomeScreen];
+}
+
 -(void)didFinishServiceWithSuccess:(LoginResponseModal *)responseData
 {
     [SVProgressHUD dismiss];
     [[SharedClass sharedInstance] setUserObj:responseData];
     if ([[[SharedClass sharedInstance] userObj].homeId isEqualToString:@"1"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:isUserLoggedIn];
         [self showHomeScreen];
     }
     else
@@ -191,6 +199,7 @@
 -(void)didFinishServiceWithFailure:(NSString *)errorMsg
 {
     [SVProgressHUD dismiss];
+    [[SharedClass sharedInstance] showAlertWithMessage:errorMsg onView:self];
 }
 
 #pragma mark - Google SignIn Delegates

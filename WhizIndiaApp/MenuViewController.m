@@ -9,6 +9,8 @@
 #import "MenuViewController.h"
 #import "MenuViewTableViewCell.h"
 #import <GoogleSignIn/GoogleSignIn.h>
+#import "iSwitches.h"
+#import "UserProfile.h"
 
 @interface MenuViewController ()
 {
@@ -43,10 +45,10 @@
     UITapGestureRecognizer *rightTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissMenu:)];
     [self.topTapView addGestureRecognizer:topTapGesture];
     [self.rightTapview addGestureRecognizer:rightTapGesture];
-    controllerKey = [[[[SharedClass sharedInstance] userObj].controllers allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
-    for (NSString *str in controllerKey) {
-        [_menuSectionOneItems addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:str]];
-    }
+//    controllerKey = [[[[SharedClass sharedInstance] userObj].controllers allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
+//    for (NSString *str in [[[RealmHelper sharedInstance] fetchiSwitches] valueForKey:iSwitchNameKey]) {
+//        [_menuSectionOneItems addObject:str];
+//    }
     _menuSectionTwoItems = menuSection2Array;
     [self updateUXConstraints];
     [self updateProfileCell];
@@ -80,7 +82,8 @@
     {
         self.profilePicImageView.image = [UIImage imageNamed:@"Avatar"];
     }
-    self.userNameLabel.text = [[[SharedClass sharedInstance] profileDetails] valueForKey:@"userName"];
+    NSString *userName = [[[UserProfile allObjects] objectAtIndex:0] valueForKey:Profile_User_Name];
+    self.userNameLabel.text = userName;
 }
 -(void)updateUXConstraints {
     _menuTableViewLeadingConstraint.constant = (0./320.) * kScreenWidth;
@@ -141,7 +144,7 @@
             return 1;
             break;
         case 1:
-            return _menuSectionOneItems.count;
+            return [[[RealmHelper sharedInstance] fetchiSwitches] count];
             break;
         case 2:
             return _menuSectionTwoItems.count;
@@ -167,8 +170,11 @@
             cell.titleLabel.text = @"Add iSwitch";
             break;
         case 1:
-            cell.titleLabel.text = [_menuSectionOneItems objectAtIndex:indexPath.row];
+        {
+            iSwitches *iSwitch = [[[RealmHelper sharedInstance] fetchiSwitches] objectAtIndex:indexPath.row];
+            cell.titleLabel.text = iSwitch.iSwitchName;
             break;
+        }
         case 2:
             cell.titleLabel.text = [_menuSectionTwoItems objectAtIndex:indexPath.row];
             break;
@@ -199,7 +205,8 @@
             break;
         case 1:
             if ([self.delegate respondsToSelector:@selector(showDetailedControllerFor:)]) {
-                [self.delegate showDetailedControllerFor:[controllerKey objectAtIndex:indexPath.row]];
+                iSwitches *iSwitch = [[[RealmHelper sharedInstance] fetchiSwitches] objectAtIndex:indexPath.row];
+                [self.delegate showDetailedControllerFor:iSwitch.iSwitchId];
             }
             break;
         case 2:

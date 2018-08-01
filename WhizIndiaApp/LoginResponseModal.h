@@ -15,5 +15,6 @@
 @property(strong, nonatomic) NSMutableDictionary *detailedController;
 @property(strong, nonatomic) NSMutableDictionary *userDict;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
+-(void)parseDataToRealmFrom:(NSDictionary *)response;
 
 @end

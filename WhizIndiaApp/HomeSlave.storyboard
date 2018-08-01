@@ -61,7 +61,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbs-NZ-CdQ">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hbs-NZ-CdQ">
                                                     <rect key="frame" x="236" y="10" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="deviceButtonTapped:" destination="ECz-rs-sIP" eventType="valueChanged" id="8W8-gr-t8n"/>

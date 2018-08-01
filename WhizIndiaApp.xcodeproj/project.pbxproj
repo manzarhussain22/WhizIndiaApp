@@ -29,6 +29,8 @@
 		9660AF97205AF3F9001B393C /* EditControllerRequestModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF96205AF3F9001B393C /* EditControllerRequestModal.m */; };
 		966D523520595F2B0044390B /* AddControllerRequestModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 966D523420595F2B0044390B /* AddControllerRequestModal.m */; };
 		966D5238205961610044390B /* AddControllerResponseModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 966D5237205961610044390B /* AddControllerResponseModal.m */; };
+		966DA490210A48560010BEEC /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 966DA48F210A48560010BEEC /* UserProfile.m */; };
+		966DA493210A49380010BEEC /* RealmHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 966DA492210A49380010BEEC /* RealmHelper.m */; };
 		9671894F20516A3100B65E3D /* HomeSlaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671894E20516A3100B65E3D /* HomeSlaveViewController.m */; };
 		9671895120516A4F00B65E3D /* HomeSlave.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671895020516A4F00B65E3D /* HomeSlave.storyboard */; };
 		96718954205170BE00B65E3D /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96718953205170BE00B65E3D /* ContentTableViewCell.m */; };
@@ -38,8 +40,11 @@
 		967A84172033188600D16769 /* HideSideMenuAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A84162033188600D16769 /* HideSideMenuAnimationView.m */; };
 		967A841A20331B2400D16769 /* SideMenuShowInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A841920331B2400D16769 /* SideMenuShowInteraction.m */; };
 		967A841D20331B8000D16769 /* SideMenuInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A841C20331B8000D16769 /* SideMenuInteraction.m */; };
+		967DD1F5210EFDA00079ADAA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 967DD1F3210EFDA00079ADAA /* Reachability.m */; };
+		9695BFC5210A5C55005DE471 /* iSwitches.m in Sources */ = {isa = PBXBuildFile; fileRef = 9695BFC4210A5C55005DE471 /* iSwitches.m */; };
 		96A282AD202AE6E70045B487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A282AB202AE6E70045B487 /* Main.storyboard */; };
 		96AB02D4205847C1004FC518 /* EditControllerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AB02D3205847C1004FC518 /* EditControllerTableViewCell.m */; };
+		96ABD36C210B3032004A85FE /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABD36B210B3032004A85FE /* Device.m */; };
 		96DF0EF22031B6BD00292573 /* MenuViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DF0EF12031B6BD00292573 /* MenuViewTableViewCell.m */; };
 		96F3EBA42055ADBB008613E6 /* AddEditCOntrollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3EBA32055ADBB008613E6 /* AddEditCOntrollerViewController.m */; };
 		96F3EBA62055ADDB008613E6 /* AddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */; };
@@ -89,6 +94,10 @@
 		966D523420595F2B0044390B /* AddControllerRequestModal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddControllerRequestModal.m; path = WhizIndiaApp/AddControllerRequestModal.m; sourceTree = SOURCE_ROOT; };
 		966D5236205961610044390B /* AddControllerResponseModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddControllerResponseModal.h; path = WhizIndiaApp/AddControllerResponseModal.h; sourceTree = SOURCE_ROOT; };
 		966D5237205961610044390B /* AddControllerResponseModal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddControllerResponseModal.m; path = WhizIndiaApp/AddControllerResponseModal.m; sourceTree = SOURCE_ROOT; };
+		966DA48E210A48560010BEEC /* UserProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		966DA48F210A48560010BEEC /* UserProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		966DA491210A49380010BEEC /* RealmHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealmHelper.h; sourceTree = "<group>"; };
+		966DA492210A49380010BEEC /* RealmHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RealmHelper.m; sourceTree = "<group>"; };
 		9671894D20516A3100B65E3D /* HomeSlaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeSlaveViewController.h; path = WhizIndiaApp/HomeSlaveViewController.h; sourceTree = SOURCE_ROOT; };
 		9671894E20516A3100B65E3D /* HomeSlaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeSlaveViewController.m; path = WhizIndiaApp/HomeSlaveViewController.m; sourceTree = SOURCE_ROOT; };
 		9671895020516A4F00B65E3D /* HomeSlave.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeSlave.storyboard; sourceTree = "<group>"; };
@@ -105,6 +114,10 @@
 		967A841920331B2400D16769 /* SideMenuShowInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuShowInteraction.m; sourceTree = "<group>"; };
 		967A841B20331B8000D16769 /* SideMenuInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuInteraction.h; sourceTree = "<group>"; };
 		967A841C20331B8000D16769 /* SideMenuInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuInteraction.m; sourceTree = "<group>"; };
+		967DD1F3210EFDA00079ADAA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		967DD1F4210EFDA00079ADAA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		9695BFC3210A5C55005DE471 /* iSwitches.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSwitches.h; sourceTree = "<group>"; };
+		9695BFC4210A5C55005DE471 /* iSwitches.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSwitches.m; sourceTree = "<group>"; };
 		96A1C8A0210606BA000BD1DA /* FloatingButtonController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatingButtonController.h; sourceTree = "<group>"; };
 		96A1C8A1210606BA000BD1DA /* FloatingButtonController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloatingButtonController.m; sourceTree = "<group>"; };
 		96A1C8A3210607AC000BD1DA /* FloatingButtonWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatingButtonWindow.h; sourceTree = "<group>"; };
@@ -112,6 +125,8 @@
 		96A282AC202AE6E70045B487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96AB02D2205847C1004FC518 /* EditControllerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditControllerTableViewCell.h; sourceTree = "<group>"; };
 		96AB02D3205847C1004FC518 /* EditControllerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditControllerTableViewCell.m; sourceTree = "<group>"; };
+		96ABD36A210B3032004A85FE /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		96ABD36B210B3032004A85FE /* Device.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
 		96DF0EF02031B6BD00292573 /* MenuViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewTableViewCell.h; path = WhizIndiaApp/MenuViewTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		96DF0EF12031B6BD00292573 /* MenuViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewTableViewCell.m; path = WhizIndiaApp/MenuViewTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		96F3EBA22055ADBB008613E6 /* AddEditCOntrollerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEditCOntrollerViewController.h; sourceTree = "<group>"; };
@@ -153,8 +168,10 @@
 		963C1F9A202AD64F00DFD3F2 /* WhizIndiaApp */ = {
 			isa = PBXGroup;
 			children = (
+				967DD1F1210EFD6C0079ADAA /* Library */,
+				966DA48D210A48280010BEEC /* Realm Object */,
 				96A1C89F2106065C000BD1DA /* Custom Button Floater */,
-				965CD744202F226600B862B8 /* ResponseModal */,
+				965CD744202F226600B862B8 /* Response Parser */,
 				965CD743202F223D00B862B8 /* RequestModal */,
 				965CD742202F223300B862B8 /* Helper */,
 				965CD741202EFF9000B862B8 /* Config */,
@@ -218,6 +235,8 @@
 				965CD74C202F33C000B862B8 /* SharedClass.m */,
 				9656837D2067A291000B22E5 /* MQTTHelper.h */,
 				9656837E2067A291000B22E5 /* MQTTHelper.m */,
+				966DA491210A49380010BEEC /* RealmHelper.h */,
+				966DA492210A49380010BEEC /* RealmHelper.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -237,7 +256,7 @@
 			name = RequestModal;
 			sourceTree = "<group>";
 		};
-		965CD744202F226600B862B8 /* ResponseModal */ = {
+		965CD744202F226600B862B8 /* Response Parser */ = {
 			isa = PBXGroup;
 			children = (
 				965CD74E202F3A8D00B862B8 /* LoginResponseModal.h */,
@@ -249,7 +268,7 @@
 				9660AF92205AEA61001B393C /* EditControllerResponseModal.h */,
 				9660AF93205AEA61001B393C /* EditControllerResponseModal.m */,
 			);
-			name = ResponseModal;
+			name = "Response Parser";
 			sourceTree = "<group>";
 		};
 		965CD751202F460F00B862B8 /* Interface */ = {
@@ -263,6 +282,16 @@
 				96F3EBA52055ADDB008613E6 /* AddEditView.storyboard */,
 			);
 			name = Interface;
+			sourceTree = "<group>";
+		};
+		966DA48D210A48280010BEEC /* Realm Object */ = {
+			isa = PBXGroup;
+			children = (
+				96ABD366210B2D90004A85FE /* Devices */,
+				9695BFC2210A5BD5005DE471 /* iSwitches */,
+				9695BFC1210A5BC7005DE471 /* UserProfile */,
+			);
+			name = "Realm Object";
 			sourceTree = "<group>";
 		};
 		9671894C205169FF00B65E3D /* HomeSlave */ = {
@@ -326,6 +355,41 @@
 			name = NavigationMenu;
 			sourceTree = "<group>";
 		};
+		967DD1F1210EFD6C0079ADAA /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				967DD1F2210EFD790079ADAA /* Reachability */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		967DD1F2210EFD790079ADAA /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				967DD1F4210EFDA00079ADAA /* Reachability.h */,
+				967DD1F3210EFDA00079ADAA /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		9695BFC1210A5BC7005DE471 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				966DA48E210A48560010BEEC /* UserProfile.h */,
+				966DA48F210A48560010BEEC /* UserProfile.m */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		9695BFC2210A5BD5005DE471 /* iSwitches */ = {
+			isa = PBXGroup;
+			children = (
+				9695BFC3210A5C55005DE471 /* iSwitches.h */,
+				9695BFC4210A5C55005DE471 /* iSwitches.m */,
+			);
+			name = iSwitches;
+			sourceTree = "<group>";
+		};
 		96A1C89F2106065C000BD1DA /* Custom Button Floater */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +399,15 @@
 				96A1C8A4210607AC000BD1DA /* FloatingButtonWindow.m */,
 			);
 			name = "Custom Button Floater";
+			sourceTree = "<group>";
+		};
+		96ABD366210B2D90004A85FE /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				96ABD36A210B3032004A85FE /* Device.h */,
+				96ABD36B210B3032004A85FE /* Device.m */,
+			);
+			name = Devices;
 			sourceTree = "<group>";
 		};
 		A7BF280100D7D1B4F71E38FD /* Frameworks */ = {
@@ -487,6 +560,7 @@
 				965CD767202F7CB100B862B8 /* HomeMasterViewController.m in Sources */,
 				967A841A20331B2400D16769 /* SideMenuShowInteraction.m in Sources */,
 				96AB02D4205847C1004FC518 /* EditControllerTableViewCell.m in Sources */,
+				966DA490210A48560010BEEC /* UserProfile.m in Sources */,
 				965CD747202F276400B862B8 /* DataManager.m in Sources */,
 				963C1FA3202AD65000DFD3F2 /* ViewController.m in Sources */,
 				963C1FA0202AD65000DFD3F2 /* AppDelegate.m in Sources */,
@@ -499,12 +573,16 @@
 				965CD754202F465700B862B8 /* RegisterViewController.m in Sources */,
 				9660AF94205AEA61001B393C /* EditControllerResponseModal.m in Sources */,
 				967A841D20331B8000D16769 /* SideMenuInteraction.m in Sources */,
+				96ABD36C210B3032004A85FE /* Device.m in Sources */,
 				967A8413203317B800D16769 /* ShowSideMenuAnimationView.m in Sources */,
 				966D523520595F2B0044390B /* AddControllerRequestModal.m in Sources */,
+				9695BFC5210A5C55005DE471 /* iSwitches.m in Sources */,
 				965CD750202F3A8D00B862B8 /* LoginResponseModal.m in Sources */,
 				966D5238205961610044390B /* AddControllerResponseModal.m in Sources */,
 				963C1F9D202AD65000DFD3F2 /* main.m in Sources */,
 				965CD74A202F30D700B862B8 /* LoginRequestModal.m in Sources */,
+				966DA493210A49380010BEEC /* RealmHelper.m in Sources */,
+				967DD1F5210EFDA00079ADAA /* Reachability.m in Sources */,
 				96F3EBA42055ADBB008613E6 /* AddEditCOntrollerViewController.m in Sources */,
 				967A840A2033101F00D16769 /* MenuViewController.m in Sources */,
 				965CD74D202F33C000B862B8 /* SharedClass.m in Sources */,

@@ -212,39 +212,36 @@ typedef void(^allFieldsVerified)(BOOL);
 }
 
 #pragma mark - Datamanager Delegates
--(void)didFinishServiceWithSuccess:(RegisterResponseModal *)responseData
+-(void)didFinishServiceWithSuccess
 {
-    if ([responseData.registerStatus isEqualToString:@"1"] ) {
-        if (self.navigationController) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        else
-        [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {
-        UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"Failed"
-                                     message:@"An issue occured. Please try again"
-                                     preferredStyle:UIAlertControllerStyleAlert];
-        
-        //Add Buttons
-        
-        UIAlertAction* noButton = [UIAlertAction
-                                   actionWithTitle:@"Cancel"
-                                   style:UIAlertActionStyleCancel
-                                   handler:nil];
-        
-        //Add your buttons to alert controller
-        [alert addAction:noButton];
-        
-        [self presentViewController:alert animated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
+    
 }
 
 -(void)didFinishServiceWithFailure:(NSString *)errorMsg
 {
     [[SharedClass sharedInstance] dismissProgressView];
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Failed"
+                                 message:errorMsg
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    //Add Buttons
+    UIAlertAction* noButton = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleCancel
+                               handler:nil];
+    
+    //Add your buttons to alert controller
+    [alert addAction:noButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Form scroll for Keyboard Show/Hide

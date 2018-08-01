@@ -10,19 +10,21 @@
 #import "ContentTableViewCell.h"
 #import "MQTTHelper.h"
 #import "BEMSimpleLineGraphView.h"
+#import <Realm/RLMResults_Private.h>
+#import "Device.h"
 
 #define mqttTopic @"/test/light1"
 
 @interface HomeSlaveViewController ()<ContentTableViewCellDelegate,MQTTHelperDelegate,BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate>
 {
     NSDictionary *controllerDescriptor;
-    NSArray *deviceIDArr;
     NSMutableArray *controllerNameArr;
     BOOL isSwitchOn;
     MQTTHelper *mqttHelper;
     NSString *contentDeviceID;
     NSMutableArray *graphPoints;
     NSMutableArray *arrayOfDates;
+    RLMResults *deviceResults;
 }
 @property (weak, nonatomic) IBOutlet UITableView *contentTableView;
 @property (weak, nonatomic) IBOutlet BEMSimpleLineGraphView *matrixView;
@@ -34,15 +36,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _buttonStatus = [[NSMutableDictionary alloc] init];
-    controllerDescriptor = [[[SharedClass sharedInstance] userObj].userDict objectForKey:_controllerID];
-    controllerNameArr = [[NSMutableArray alloc] init];
-    deviceIDArr = [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
-    for (NSString *key in deviceIDArr) {
-        [controllerNameArr addObject:[controllerDescriptor objectForKey:key]];
-        [_buttonStatus setObject:[NSNumber numberWithBool:NO] forKey:key];
-    }
-    
+//    _buttonStatus = [[NSMutableDictionary alloc] init];
+//    controllerDescriptor = [[[SharedClass sharedInstance] userObj].userDict objectForKey:_controllerID];
+//    controllerNameArr = [[NSMutableArray alloc] init];
+//    deviceIDArr = [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
+//    for (NSString *key in deviceIDArr) {
+//        [controllerNameArr addObject:[controllerDescriptor objectForKey:key]];
+//        [_buttonStatus setObject:[NSNumber numberWithBool:NO] forKey:key];
+//    }
+//
+    deviceResults = [[RealmHelper sharedInstance] fetchDevicesForiSwitchId:_controllerID];
     if ([menuSection2Array containsObject:_controllerID]) {
         self.controllerTitle.text = [_controllerID uppercaseString];
     }
@@ -145,17 +148,18 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return controllerDescriptor.count;
+    return [deviceResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContentTableViewCell *contentCell = [tableView dequeueReusableCellWithIdentifier:ContentCellIdentifier forIndexPath:indexPath];
-    contentCell.deviceID = [deviceIDArr objectAtIndex:indexPath.section];
-    contentCell.detailDescription.text = [controllerNameArr objectAtIndex:indexPath.section];
+    Device *device = [deviceResults objectAtIndex:indexPath.section];
+    contentCell.deviceID = device.deviceId;
+    contentCell.detailDescription.text = device.deviceName;
     contentCell.indexPath = indexPath;
     contentCell.delegate = self;
-    [contentCell.controllerSwitch setOn:((NSNumber *)[_buttonStatus objectForKey:[deviceIDArr objectAtIndex:indexPath.section]]).boolValue animated:YES];
+    [contentCell.controllerSwitch setOn:device.status animated:YES];
     return contentCell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -265,5 +269,7 @@
     NSString *label = [df stringFromDate:date];
     return label;
 }
+
+
 
 @end

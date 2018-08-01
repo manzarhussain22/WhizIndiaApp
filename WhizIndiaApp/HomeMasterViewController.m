@@ -16,12 +16,8 @@
 #import "HomeSlaveViewController.h"
 #import "AddEditCOntrollerViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "DataManager.h"
-#import "LoginRequestModal.h"
-#import "LoginResponseModal.h"
 
-
-@interface HomeMasterViewController ()<UIViewControllerTransitioningDelegate, MenuViewDelegate,AddEditCOntrollerDelegate,DataManagerDelegate>
+@interface HomeMasterViewController ()<UIViewControllerTransitioningDelegate, MenuViewDelegate,AddEditCOntrollerDelegate>
 {
     BOOL isMenu;
     BOOL isEdit;
@@ -35,7 +31,6 @@
     AddEditCOntrollerViewController *addEditView;
     UIVisualEffectView *blurEffectView;
     NSString *homeSlaveViewControllerId;
-    
 }
 
 
@@ -62,15 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    isMenu = NO;
-    
-    menuView = [[MenuViewController alloc] init];
-    
-    showSideMenuAnimationViewController = [[ShowSideMenuAnimationView alloc] init];
-    hideSideMenuAnimationViewController = [[HideSideMenuAnimationView alloc] init];
-    sideMenuHideInteractionController = [[SideMenuInteraction alloc] init];
-    sideMenuShowInteractionController = [[SideMenuShowInteraction alloc] init];
-    
+    [self configureMenuView];
     UITapGestureRecognizer *tapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.headerView addGestureRecognizer:tapped];
     self.headerView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
@@ -115,14 +102,12 @@
 
 -(void)checkAndSetUpContentView
 {
-    if (homeSlaveViewControllerId == nil || [homeSlaveViewControllerId isEqualToString:@""]) {
-        homeSlaveViewControllerId = [[[[[SharedClass  sharedInstance] userObj].controllers allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]] firstObject];
-    }
-    
-    if ([[[SharedClass sharedInstance] userObj].controllers count]>0) {
+    if ([[[RealmHelper sharedInstance] fetchiSwitches] count]>0) {
         _editButton.hidden = NO;
+        if (homeSlaveViewControllerId == nil || [homeSlaveViewControllerId isEqualToString:@""]) {
+           homeSlaveViewControllerId = [[[[RealmHelper sharedInstance] fetchiSwitches] firstObject] valueForKey:iSwitchIdKey];
+        }
         [self setUpContentViewFor];
-    
     }
     else
     {
@@ -199,6 +184,17 @@
     menuView.transitioningDelegate = self;
     
     
+}
+
+-(void)configureMenuView {
+    isMenu = NO;
+    
+    menuView = [[MenuViewController alloc] init];
+    
+    showSideMenuAnimationViewController = [[ShowSideMenuAnimationView alloc] init];
+    hideSideMenuAnimationViewController = [[HideSideMenuAnimationView alloc] init];
+    sideMenuHideInteractionController = [[SideMenuInteraction alloc] init];
+    sideMenuShowInteractionController = [[SideMenuShowInteraction alloc] init];
 }
 
 -(void)hideMenu:(BOOL)yesNo{
@@ -289,8 +285,7 @@
         return;
     }
     if ([controllerID isEqualToString:@"Logout"]) {
-        [self dismissViewControllerAnimated:NO completion:nil];
-        [[SharedClass sharedInstance] setIsRegisterStory:NO];
+        [self logout];
         return;
     }
     homeSlaveViewControllerId = controllerID;
@@ -345,7 +340,10 @@
 
 -(void)addEditControllerSuccess
 {
-    [self refreshUserData];
+    [self checkAndSetUpContentView];
+    [self setupMenuView];
+    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@",isEdit?@"Updated Successfully":@"Added Successfully"]];
+    [self addEditCancelButtonTapped];
 }
 
 -(void)addEditControllerFailure:(NSString *)failureMsg
@@ -356,61 +354,76 @@
 
 #pragma mark - Refresh UserData
 
--(void)refreshUserData
-{
-    DataManager *manager = [[DataManager alloc] init];
-    manager.delegate = self;
-    if ([[SharedClass sharedInstance] isSocialLogin]) {
-        manager.serviceKey = SocialLoginService;
-        [manager startLoginServiceWithParams:[self prepareDictionaryForSocialLoginWithEmail:[[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"] name:[[[SharedClass sharedInstance] profileDetails] valueForKey:@"userName"]]];
+//-(void)refreshUserData
+//{
+//    DataManager *manager = [[DataManager alloc] init];
+//    manager.delegate = self;
+//    if ([[SharedClass sharedInstance] isSocialLogin]) {
+//        manager.serviceKey = SocialLoginService;
+//        [manager startLoginServiceWithParams:[self prepareDictionaryForSocialLoginWithEmail:[[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"] name:[[[SharedClass sharedInstance] profileDetails] valueForKey:@"userName"]]];
+//    }
+//    else
+//    {
+//        manager.serviceKey = LoginService;
+//        [manager startLoginServiceWithParams:[self prepareDictionaryForLogin]];
+//    }
+//
+//}
+//#pragma mark - Modalobject
+//
+//- (NSMutableDictionary *) prepareDictionaryForLogin {
+//
+//    LoginRequestModal* loginObj = [[LoginRequestModal alloc] init];
+//    loginObj.email = [[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"];
+//    loginObj.password = [[SharedClass sharedInstance] password];
+//    loginObj.isSocial = NO;
+//    return [loginObj createRequestDictionary];
+//
+//}
+//- (NSMutableDictionary *) prepareDictionaryForSocialLoginWithEmail:(NSString *)email name:(NSString *)userName {
+//    LoginRequestModal* socialLoginObj = [[LoginRequestModal alloc] init];
+//    socialLoginObj.email = email;
+//    socialLoginObj.name = userName;
+//    socialLoginObj.isSocial = YES;
+//    return [socialLoginObj createRequestDictionary];
+//
+//}
+
+//#pragma mark - DataManager Delegate
+//-(void)didFinishServiceWithSuccess:(LoginResponseModal *)responseData
+//{
+//    [[SharedClass sharedInstance] setUserObj:responseData];
+//    if ([[[SharedClass sharedInstance] userObj].homeId isEqualToString:@"1"]) {
+//        [self checkAndSetUpContentView];
+//        [self setupMenuView];
+//    }
+//    else
+//    {
+//        NSLog(@"Error in login %@",responseData.homeId);
+//    }
+//    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@",isEdit?@"Updated Successfully":@"Added Successfully"]];
+//    [self addEditCancelButtonTapped];
+//}
+//
+//-(void)didFinishServiceWithFailure:(NSString *)errorMsg
+//{
+//    [SVProgressHUD dismiss];
+//    [self addEditCancelButtonTapped];
+//}
+
+#pragma mark - Initiate Logout
+
+-(void)logout {
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {
-        manager.serviceKey = LoginService;
-        [manager startLoginServiceWithParams:[self prepareDictionaryForLogin]];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
-   
-}
-#pragma mark - Modalobject
-
-- (NSMutableDictionary *) prepareDictionaryForLogin {
     
-    LoginRequestModal* loginObj = [[LoginRequestModal alloc] init];
-    loginObj.email = [[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"];
-    loginObj.password = [[SharedClass sharedInstance] password];
-    loginObj.isSocial = NO;
-    return [loginObj createRequestDictionary];
-    
-}
-- (NSMutableDictionary *) prepareDictionaryForSocialLoginWithEmail:(NSString *)email name:(NSString *)userName {
-    LoginRequestModal* socialLoginObj = [[LoginRequestModal alloc] init];
-    socialLoginObj.email = email;
-    socialLoginObj.name = userName;
-    socialLoginObj.isSocial = YES;
-    return [socialLoginObj createRequestDictionary];
-    
-}
-
-#pragma mark - DataManager Delegate
--(void)didFinishServiceWithSuccess:(LoginResponseModal *)responseData
-{
-    [[SharedClass sharedInstance] setUserObj:responseData];
-    if ([[[SharedClass sharedInstance] userObj].homeId isEqualToString:@"1"]) {
-        [self checkAndSetUpContentView];
-        [self setupMenuView];
-    }
-    else
-    {
-        NSLog(@"Error in login %@",responseData.homeId);
-    }
-    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@",isEdit?@"Updated Successfully":@"Added Successfully"]];
-    [self addEditCancelButtonTapped];
-}
-
--(void)didFinishServiceWithFailure:(NSString *)errorMsg
-{
-    [SVProgressHUD dismiss];
-    [self addEditCancelButtonTapped];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate logout];
 }
 
 @end

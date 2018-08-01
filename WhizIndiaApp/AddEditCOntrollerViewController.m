@@ -13,6 +13,9 @@
 #import "AddControllerResponseModal.h"
 #import "EditControllerRequestModal.h"
 #import "EditControllerResponseModal.h"
+#import "iSwitches.h"
+#import "Device.h"
+#import "UserProfile.h"
 
 @interface AddEditCOntrollerViewController ()<UITableViewDelegate, UITableViewDataSource,DataManagerDelegate,EditControllerCellDelegate>
 {
@@ -26,7 +29,7 @@
     __weak IBOutlet NSLayoutConstraint *addControllerButtonTopConstraint;
     __weak IBOutlet NSLayoutConstraint *editControllerTableViewTopConstraint;
     __weak IBOutlet NSLayoutConstraint *updateButtonTopConstraint;
-    __weak IBOutlet NSLayoutConstraint *editCancelButtonTopConstraint;
+    __weak IBOutlet NSLayoutConstraint *updateButtonBottomConstraint;
     __weak IBOutlet NSLayoutConstraint *cancelButtonBottomConstraint;
     NSArray *deviceIDArr;
     NSMutableArray *deviceNameArr;
@@ -34,6 +37,7 @@
     NSMutableDictionary *updateDeviceDetail;
     NSMutableDictionary *updateControllerDetail;
     WHTextField *activeField;
+    iSwitches *iSwitchesObj;
 }
 
 
@@ -43,22 +47,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    iSwitchesObj = [[iSwitches objectsWhere:@"iSwitchId == %@",_controllerID] firstObject];
     updateDeviceDetail = [[NSMutableDictionary alloc] init];
     _iSwitchIdTxtField.delegate = _iSwitchPasskeyTxtField.delegate = _iSwitchRoomNameTxtField.delegate = _firstDeviceTxtField.delegate = _secondDeviceTxtField.delegate = self;
     [self setUpUIConstraint];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:tap];
-    
-    if(_controllerID != nil && ![_controllerID isEqualToString:@""])
-    {
-        NSDictionary *controllerDescriptor = [[[SharedClass sharedInstance] userObj].userDict objectForKey:_controllerID];
-        deviceIDArr = [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
-        deviceNameArr = [[NSMutableArray alloc] init];
-        [deviceNameArr addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:_controllerID]];
-        for (NSString *key in deviceIDArr) {
-            [deviceNameArr addObject:[controllerDescriptor objectForKey:key]];
-        }
-    }
+//    if(_controllerID != nil && ![_controllerID isEqualToString:@""])
+//    {
+//        NSDictionary *controllerDescriptor = [[[SharedClass sharedInstance] userObj].userDict objectForKey:_controllerID];
+//        deviceIDArr = [[controllerDescriptor allKeys] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]]];
+//        deviceNameArr = [[NSMutableArray alloc] init];
+//        [deviceNameArr addObject:[[[SharedClass sharedInstance] userObj].controllers objectForKey:_controllerID]];
+//        for (NSString *key in deviceIDArr) {
+//            [deviceNameArr addObject:[controllerDescriptor objectForKey:key]];
+//        }
+//    }
     activeField = [[WHTextField alloc] init];
     _addControllerScrollView.scrollEnabled = NO;
     [self registerForKeyboardNotifications];
@@ -76,7 +80,9 @@
     addScrollViewBottomConstraint.constant = (109./568.) * kScreenHeight;
     iSwitchPassKeyTxtFieldTopConstraint.constant = iSwitchRoomNameTxtFieldTopConstraint.constant = iSwitchFirstDeviceTxtFieldTopConstraint.constant = iSwitchSecondDeviceTxtFieldTopConstraint.constant = (30./568.) * kScreenHeight;
     _updateControllerButton.layer.cornerRadius = (15./568.) * kScreenHeight;
-    editControllerTableViewTopConstraint.constant = updateButtonTopConstraint.constant = editCancelButtonTopConstraint.constant = cancelButtonBottomConstraint.constant = (10./568.) * kScreenHeight;
+    editControllerTableViewTopConstraint.constant = (30./568.) * kScreenHeight;
+    updateButtonTopConstraint.constant = (45./568.) * kScreenHeight;
+    updateButtonBottomConstraint.constant = (10./568.) * kScreenHeight;
     cancelButtonBottomConstraint.constant = (17./568.) * kScreenHeight;
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -91,9 +97,9 @@
 {
     [super viewDidAppear:animated];
     
-    CGFloat editViewHeight = self.editControllerTableView.contentSize.height + (100./568.)*kScreenHeight;
+    CGFloat editViewHeight = self.editControllerTableView.contentSize.height + (135./568.)*kScreenHeight;
     if (editViewHeight>kScreenHeight) {
-        self.editViewHeightConstraint.constant = kScreenHeight - (100./568.) *kScreenHeight;
+        self.editViewHeightConstraint.constant = kScreenHeight - (135./568.) *kScreenHeight;
     }
     else
     {
@@ -177,6 +183,10 @@
     [SVProgressHUD showWithStatus:@"Adding...."];
     DataManager *manager = [[DataManager alloc] init];
     manager.serviceKey = AddControllerService;
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:self.iSwitchIdTxtField.text forKey:iSwitchIdKey];
+    [dict setValue:_iSwitchRoomNameTxtField.text forKey:iSwitchNameKey];
+    manager.addControllerDetail = dict;
     manager.delegate = self;
     [manager startAddControllerServiceWithParams:[self prepareDictionaryToAddController]];
 }
@@ -201,7 +211,7 @@
     if (section == 0) {
         return 1;
     }
-    return deviceNameArr.count - 1;
+    return [iSwitchesObj.devices count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -210,27 +220,22 @@
     
     if (indexPath.section == 0) {
         [cell.editControllerTextField setPlaceholder:@"Controller Name"];
-        cell.editControllerTextField.text = [deviceNameArr objectAtIndex:indexPath.row];
+        cell.editControllerTextField.text = iSwitchesObj.iSwitchName;
     }
     else{
         [cell.editControllerTextField setPlaceholder:[NSString stringWithFormat:@"Device %ld",(long)indexPath.row +1]];
-        cell.editControllerTextField.text = [deviceNameArr objectAtIndex:indexPath.row + 1];
+        Device *device = [iSwitchesObj.devices objectAtIndex:indexPath.row];
+        cell.editControllerTextField.text = device.deviceName;
     }
     cell.cellIndex = indexPath;
     cell.delegate = self;
     return cell;
 }
+ -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (35./568.) * kScreenHeight;
+}
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return (8./568.) * kScreenHeight; // you can have your own choice, of course
-//}
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *headerView = [[UIView alloc] init];
-//    headerView.backgroundColor = [UIColor clearColor];
-//    return headerView;
-//}
 
 #pragma mark - Modalobject
 
@@ -243,8 +248,7 @@
     request.passKey = self.iSwitchPasskeyTxtField.text;
     request.firstDevice = self.firstDeviceTxtField.text;
     request.secondDevice = self.secondDeviceTxtField.text;
-    request.email = [[[SharedClass sharedInstance] profileDetails] valueForKey:@"email"];
-    
+    request.email = ((UserProfile *)[[[RealmHelper sharedInstance] fetchUserProfile] firstObject]).emailAddress;
     return [request createRequestDictionary];
 }
 
@@ -258,21 +262,15 @@
 
 #pragma mark - DataManager Delegate
 
+-(void)didFinishServiceWithSuccess {
+    if ([self.delegate respondsToSelector:@selector(addEditControllerSuccess)]) {
+        [self.delegate addEditControllerSuccess];
+    }
+}
+
 -(void)didFinishServiceWithSuccess:(AddControllerResponseModal *)responseData
 {
-    if ([[responseData.response valueForKey:@"status"] isEqualToString:Status_Success]) {
-        if ([self.delegate respondsToSelector:@selector(addEditControllerSuccess)]) {
-            [self.delegate addEditControllerSuccess];
-        }
-    }
-    else
-    {
-        [SVProgressHUD dismiss];
-        if ([self.delegate respondsToSelector:@selector(addEditControllerFailure:)]) {
-            [self.delegate addEditControllerFailure:[responseData.response valueForKey:messageKey]];
-        }
-        NSLog(@"Error in adding");
-    }
+    
 }
 -(void)didFinishEditControllerServiceWithSuccess:(EditControllerResponseModal *)responseData
 {
@@ -284,7 +282,7 @@
     else
     {
         [SVProgressHUD dismiss];
-        if ([self.delegate respondsToSelector:@selector(addEditControllerFailure)]) {
+        if ([self.delegate respondsToSelector:@selector(addEditControllerFailure:)]) {
            // [self.delegate addEditControllerFailure];
         }
         NSLog(@"Error in Editing");
@@ -294,7 +292,7 @@
 -(void)didFinishServiceWithFailure:(NSString *)errorMsg
 {
     [SVProgressHUD dismiss];
-    if ([self.delegate respondsToSelector:@selector(addEditControllerFailure)]) {
+    if ([self.delegate respondsToSelector:@selector(addEditControllerFailure:)]) {
 //        [self.delegate addEditControllerFailure];
     }
     NSLog(@"%@",errorMsg);

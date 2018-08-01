@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "LoginResponseModal.h"
+#import <GoogleSignIn/GoogleSignIn.h>
 
 @interface SharedClass : NSObject
 
@@ -30,4 +31,5 @@
 -(void)showProgressView:(UIViewController *)viewController;
 -(void)dismissProgressView;
 -(void)showAlertWithMessage:(NSString *)message onView:(UIViewController *)view;
+-(void)logoutUser;
 @end

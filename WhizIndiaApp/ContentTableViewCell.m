@@ -20,7 +20,10 @@
     [self.layer setShadowOpacity:0.8];
     [self.layer setShadowRadius:5.0];
     [self.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
-    [_controllerSwitch setTintColor:[UIColor blackColor]];
+    [_controllerSwitch setOnTintColor:[UIColor greenColor]];
+    [_controllerSwitch setTintColor:[UIColor redColor]];
+    _controllerSwitch.layer.cornerRadius = _controllerSwitch.frame.size.height/2;
+    _controllerSwitch.backgroundColor = [UIColor redColor];
     _contentImageLeadingConstraint.constant = (16./320.) * kScreenWidth;
     _contentLabelLeadingConstraint.constant = _contentImageLeadingConstraint.constant;
 }

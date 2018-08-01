@@ -13,20 +13,20 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.editControllerTextField showBelowBorder];
+    [self.editControllerTextField hideBelowBorder];
     self.editControllerTextField.delegate = self;
 }
 
 -(void)textFieldDidBeginEditing:(WHTextField *)textField
 {
-    textField.tag = 0;
+    textField.tag = 2;
     [textField showBelowBorder];
 }
 
 -(void)textFieldDidEndEditing:(WHTextField *)textField
 {
     textField.tag = 2;
-    [textField showBelowBorder];
+    [textField hideBelowBorder];
     if ([self.delegate respondsToSelector:@selector(textFieldEnteredValue:forCellIndex:)])
     {
         [self.delegate textFieldEnteredValue:textField.text forCellIndex:_cellIndex];

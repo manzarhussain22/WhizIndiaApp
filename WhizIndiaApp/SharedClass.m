@@ -62,4 +62,11 @@ static SharedClass *singletonObject = nil;
     [view presentViewController:alert animated:YES completion:nil];
 }
 
+-(void)logoutUser {
+    [self setIsRegisterStory:NO];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:isUserLoggedIn];
+    [[GIDSignIn sharedInstance] signOut];
+    [[RealmHelper sharedInstance] clearRealmOnLogout];
+}
+
 @end
